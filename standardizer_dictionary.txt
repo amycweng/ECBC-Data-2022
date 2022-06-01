@@ -26,6 +26,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
 # code values: 0 (always replace), 1 (archaic verb ending variant), 2 (modern verb ending variant)
 # every 1 variant must have a 2 and vice-versa for archaic ending switching to work properly
 # punctuation and carrots in words ('tis:it,is:0) are acceptable, but not commas
