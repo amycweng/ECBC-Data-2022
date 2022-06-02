@@ -64,6 +64,9 @@ def text(soup):
     '''
     text = soup.body.get_text()
     text = text.replace('\n',' ')
+    while text.count(''):
+        text.remove('')
+    text = ' '.join(text)
     return text 
 
 def convert(folder,file):
