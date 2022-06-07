@@ -24,19 +24,17 @@ def authors(soup):
         auth = 'Anonymous'
     return auth
 
-def pub(soup):
+def keywords(soup):
     '''
-    Returns a three-line maximum string that contains the publisher, pubplace, and keywords separated by semicolons 
+    Returns the keywords separated by semicolons 
     '''
-    publisher = soup.find_all('publisher')[1].string
-    pubplace = soup.find_all('pubplace')[1].string
     keywords = soup.find_all('keywords')
-    pubStr = publisher + '; ' + pubplace
     if len(keywords) != 0:
         keywords = soup.find_all('keywords')[0].get_text()
         keywords = keywords.replace('\n',' ')
-        pubStr = pubStr + '; ' + keywords 
-    return pubStr
+        keywords = keywords.replace('--','')
+        return keywords
+    return 'No Keywords'
 
 def date(soup):
     '''
@@ -55,7 +53,7 @@ def date(soup):
     if len(intDates) != 0:
         for d in intDates:
             if int(d) in range(1470,1800):
-                return str(d)
+                return d
     return 'Date Unknown'
 
 def text(soup):
@@ -64,33 +62,63 @@ def text(soup):
     '''
     text = soup.body.get_text()
     text = text.replace('\n',' ')
-    while text.count(''):
-        text.remove('')
-    text = ' '.join(text)
+    
+    # while text.count(''):
+    #     text.remove('')
+    # text = ' '.join(text)
+    
     return text 
+    
+
+def idno(soup):
+    idnums = soup.find_all('idno', attrs={'type': 'stc'})
+    if len(idnums) == 2:
+        stc = idnums[0].string
+        s = stc.split(' ')
+        estc = idnums[1].string
+        e = estc.split(' ')
+        return (s[1],e[1])
+    elif len(idnums) == 1:
+        id = idnums[0].string
+        i = id.split(' ')
+        if i[0] == "STC":
+            return(i[1],  "None")
+        else:
+            return("None", i[1])
+    else:
+        return("None", "None")
 
 def convert(folder,file):
     '''
     Master function for converting each XML file into a dataframe 
     '''
     fileName = os.path.join(folder,file)
+    name = file.rpartition('.P4')[0]
     data = simple_clean(fileName)
     soup = BeautifulSoup(data,'html.parser')
     # Parse all the information that we need for each dataframe 
     title = soup.title.string
-    a,p,d,t = authors(soup),pub(soup),date(soup),text(soup)
-    dict = {'id':file,'title':title,'author':a,'publication':p,'date':d,'text':t}
+    a,d,t,k = authors(soup),date(soup),text(soup),keywords(soup)
+    publisher = soup.find_all('publisher')[1].string
+    pubplace = soup.find_all('pubplace')[1].string
+    idInfo = idno(soup)
+    dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
+            'title':title,'author':a,
+            'publisher':publisher,'pubplace':pubplace, 'keywords':k,
+            'date':d,'text':t}
     return pd.DataFrame(data=dict,index=[0])
     
 if __name__ == '__main__':
     folder = input('Enter folder path: ')
     newCSV = input ('Enter the path of your output CSV file: ')
     count = 0
-    outFile = pd.DataFrame(columns = ('id','title','author','publication','date','text'))
     for file in os.listdir(folder):
-        count+=1
-        if count % 5 == 0 and count != 0:
+        count += 1
+        if count % 100 == 0 and count != 0:
             print("Processed " + str(count) + " files so far")
+        if count == 1: 
+            outFile = convert(folder,file)
+            continue
         df = convert(folder,file)
         outFile = pd.concat([outFile,df],ignore_index = True)
     print('The number of total files is ' + str(count))
