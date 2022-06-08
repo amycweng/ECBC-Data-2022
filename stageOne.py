@@ -56,22 +56,41 @@ def date(soup):
                 return d
     return 'Date Unknown'
 
+def dateTXT():
+    '''
+    Extracts the integer date or date range from the corresponding entry in TCP's official 
+    documentation of all the EEBO IDs and dates. Returns a dictionary with the data from 
+    both Phase I and II.  
+
+    This function should only be called once. Afterwards, the user can directly refer to the 
+    returned dictionary to find dates. 
+    '''
+    f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
+    f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
+    names = {}
+    data1 = open(f1,'r')
+    data2 = open(f2,'r')
+    data1 = data1.readlines()
+    data2 = data2.readlines()
+    data = data1 
+    data.extend(data2)
+    for d in data:
+        datum = d.replace('\n','')
+        datum = d.split('\t')
+        id = datum[0]
+        date = datum[1].replace('\n','')
+        names[id] = date
+    return names
+
+
 def text(soup):
     '''
-    Gets the body of the text file into string format without newline characters. 
+    Gets the body of the text file into string format but still gets title page etc. 
     '''
-    text = soup.body.get_text()
-    text = text.replace('\n',' ')
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
     
-    # while text.count(''):
-    #     text.remove('')
-    # text = ' '.join(text)
-    
-    return text 
-    
-
 def idno(soup):
-    idnums = soup.find_all('idno', attrs={'type': 'stc'})
+    idnums = soup.find_all('idno', attrs={'type': 'STC'})
     if len(idnums) == 2:
         stc = idnums[0].string
         s = stc.split(' ')
@@ -88,20 +107,25 @@ def idno(soup):
     else:
         return("None", "None")
 
-def convert(folder,file):
+def convert(folder,file,dates):
     '''
     Master function for converting each XML file into a dataframe 
     '''
     fileName = os.path.join(folder,file)
-    name = file.rpartition('.P4')[0]
+    name = file.split('.')[0]
     data = simple_clean(fileName)
     soup = BeautifulSoup(data,'html.parser')
+    
     # Parse all the information that we need for each dataframe 
-    title = soup.title.string
-    a,d,t,k = authors(soup),date(soup),text(soup),keywords(soup)
+    title = soup.find_all('ep:title')[0].string
+    a,t,k = authors(soup),text(soup),keywords(soup)
     publisher = soup.find_all('publisher')[1].string
     pubplace = soup.find_all('pubplace')[1].string
+    pubplace = re.findall('\w+',pubplace)[0]
     idInfo = idno(soup)
+    d = dates[name]
+
+    # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
             'title':title,'author':a,
             'publisher':publisher,'pubplace':pubplace, 'keywords':k,
@@ -112,14 +136,15 @@ if __name__ == '__main__':
     folder = input('Enter folder path: ')
     newCSV = input ('Enter the path of your output CSV file: ')
     count = 0
+    dates = dateTXT()
     for file in os.listdir(folder):
         count += 1
         if count % 100 == 0 and count != 0:
             print("Processed " + str(count) + " files so far")
         if count == 1: 
-            outFile = convert(folder,file)
+            outFile = convert(folder,file,dates)
             continue
-        df = convert(folder,file)
+        df = convert(folder,file,dates)
         outFile = pd.concat([outFile,df],ignore_index = True)
     print('The number of total files is ' + str(count))
     outFile.to_csv(newCSV)
