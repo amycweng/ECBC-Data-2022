@@ -171,12 +171,24 @@ def textTCP(soup):
     '''
     Gets the body of the text file into string format without newline characters. 
     '''
+    dedication = soup.find_all('div1', attrs={'type': 'dedication'})
+    dedExists = False
+    if len(dedication) != 0:
+        d = dedication[0]
+        d = d.get_text()
+        d = d.split('\n')
+        while d.count(''):
+            d.remove('')
+        d = ' '.join(d)
+        dedExists = True
     text = soup.body.get_text()
     text = text.split('\n')
     while text.count(''):
         text.remove('')
     text = ' '.join(text)
-    return text 
+    if dedExists == True:
+        return d + ' ' + text 
+    return text
 
 def convertTCP(folder,file,dates):
     '''
