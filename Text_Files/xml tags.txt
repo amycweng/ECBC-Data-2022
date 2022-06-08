@@ -1,0 +1,24 @@
+Remove these tags:
+
+    <header> or <temphead> (contains <availability>, <idno>, <language>, etc.)
+        or just remove everything outside of <eebo>
+    everything outside of <ets> (the tag for text), which will just be ref links
+          or outside of <eebo>
+    <date> (after obtaining pub dates)
+          but also may be part of header and thus deleted together
+    <bibno> and <altbibno>
+    <idg>, <stc>
+    <vid>
+    <keywords>
+    <milestone> (usually pg or ln numbers)
+    <lb>, <pb>
+    removing comments? tag might be <!>
+    <text lang>
+
+interesting tags:
+    <ref>, <note> (because it could be notes from EEBO 400 years later or notes from the author, such as definitions, but also need to remove "note place"), <gap> (for illegible characters)
+
+
+file/folder accessibility:
+     chmod -R g+rwx 'directoryName'
+     chmod g+w 'filename'

@@ -6,6 +6,8 @@ from characterCleaner import simple_clean
 
 '''
 STAGE I FUNCTIONS 
+
+TODO: 
 '''
 
 def authors(soup):
@@ -85,29 +87,52 @@ def dateTXT():
 
 def text(soup):
     '''
-    Gets the body of the text file into string format but still gets title page etc. 
+    Gets the body of the text file into string format (does not get title page). 
     '''
-    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
     
 def idno(soup):
-    idnums = soup.find_all('idno', attrs={'type': 'STC'})
-    if len(idnums) == 2:
-        stc = idnums[0].string
+    idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
+    idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
+    if len(idnums_u) == 2:
+        stc = idnums_u[0].string
         s = stc.split(' ')
-        estc = idnums[1].string
+        estc = idnums_u[1].string
         e = estc.split(' ')
         return (s[1],e[1])
-    elif len(idnums) == 1:
-        id = idnums[0].string
+    elif len(idnums_l) == 2:
+        stc = idnums_l[0].string
+        s = stc.split(' ')
+        estc = idnums_l[1].string
+        e = estc.split(' ')
+        return (s[1],e[1])
+    elif len(idnums_u) == 1 and len(idnums_l) == 0:
+        id = idnums_u[0].string
         i = id.split(' ')
         if i[0] == "STC":
             return(i[1],  "None")
         else:
             return("None", i[1])
+    elif len(idnums_u) == 0 and len(idnums_l) == 1:
+        id = idnums_l[0].string
+        i = id.split(' ')
+        if i[0] == "STC":
+            return(i[1],  "None")
+        else:
+            return("None", i[1])
+    elif len(idnums_u) == 1 and len(idnums_l) == 1:
+        id_u = idnums_u[0].string
+        i_u = id_u.split(' ')
+        id_l = idnums_l[0].string
+        i_l = id_l.split(' ')
+        if i_u[0] == "STC":
+            return(i_u[1], i_l[1])
+        else:
+            return(i_l[1], i_u[1])
     else:
         return("None", "None")
 
-def convert(folder,file,dates):
+def convertEP(folder,file,dates):
     '''
     Master function for converting each XML file into a dataframe 
     '''
@@ -132,19 +157,60 @@ def convert(folder,file,dates):
             'date':d,'text':t}
     return pd.DataFrame(data=dict,index=[0])
     
+def textTCP(soup):
+    text = soup.body.string 
+    print(text)
+    # text = text.replace('\n',' ')
+    return text 
+
+def convertTCP(folder,file,dates):
+    '''
+    Master function for converting each XML file into a dataframe 
+    '''
+    fileName = os.path.join(folder,file)
+    name = file.split('.')[0]
+    data = simple_clean(fileName)
+    soup = BeautifulSoup(data,'html.parser')
+    
+    # Parse all the information that we need for each dataframe 
+    title = soup.title.string 
+    a,t,k = authors(soup),textTCP(soup),keywords(soup)
+    publisher = soup.find_all('publisher')[1].string
+    pubplace = soup.find_all('pubplace')[1].string
+    pubplace = re.findall('\w+',pubplace)[0]
+    idInfo = idno(soup)
+    d = dates[name]
+
+    # Input all of the relevant column info into a dictionary to be returned as a dataframe 
+    dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
+            'title':title,'author':a,
+            'publisher':publisher,'pubplace':pubplace, 'keywords':k,
+            'date':d,'text':t}
+    return pd.DataFrame(data=dict,index=[0])
+
 if __name__ == '__main__':
     folder = input('Enter folder path: ')
     newCSV = input ('Enter the path of your output CSV file: ')
+    version = input('Enter the type of file you want to convert (either TCP or EP). TCP refers to the original TCP XML files. EP refers to the processed Early Print XML files. Type here: ')
     count = 0
     dates = dateTXT()
     for file in os.listdir(folder):
         count += 1
         if count % 100 == 0 and count != 0:
             print("Processed " + str(count) + " files so far")
+       
+        # initalize output CSV dataframe  
         if count == 1: 
-            outFile = convert(folder,file,dates)
+            if version == 'EP':
+                outFile = convertEP(folder,file,dates)
+            if version == 'TCP':
+                outFile = convertTCP(folder,file,dates)
             continue
-        df = convert(folder,file,dates)
+
+        if version == 'EP':
+            df = convertEP(folder,file,dates)
+        if version == 'TCP':
+            df = convertTCP(folder,file,dates)
         outFile = pd.concat([outFile,df],ignore_index = True)
     print('The number of total files is ' + str(count))
     outFile.to_csv(newCSV)
