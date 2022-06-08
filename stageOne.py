@@ -26,6 +26,17 @@ def authors(soup):
         auth = 'Anonymous'
     return auth
 
+def pubplace(str):
+    pubplace = re.findall('\w+',str)
+    count = 0
+    for p in pubplace:
+        if count == 0:
+            count += 1
+            cleanPlace = p 
+        else: 
+            cleanPlace = cleanPlace + ' ' + p
+    return cleanPlace
+
 def keywords(soup):
     '''
     Returns the keywords separated by semicolons 
@@ -138,29 +149,35 @@ def convertEP(folder,file,dates):
     '''
     fileName = os.path.join(folder,file)
     name = file.split('.')[0]
-    data = simple_clean(fileName)
+    data = open(fileName,'r')
+    data = data.read()
     soup = BeautifulSoup(data,'html.parser')
     
     # Parse all the information that we need for each dataframe 
     title = soup.find_all('ep:title')[0].string
     a,t,k = authors(soup),text(soup),keywords(soup)
     publisher = soup.find_all('publisher')[1].string
-    pubplace = soup.find_all('pubplace')[1].string
-    pubplace = re.findall('\w+',pubplace)[0]
+    pubplaceStr = soup.find_all('pubplace')[1].string
+    pp = pubplace(pubplaceStr)
     idInfo = idno(soup)
     d = dates[name]
 
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
             'title':title,'author':a,
-            'publisher':publisher,'pubplace':pubplace, 'keywords':k,
+            'publisher':publisher,'pubplace':pp, 'keywords':k,
             'date':d,'text':t}
     return pd.DataFrame(data=dict,index=[0])
     
 def textTCP(soup):
-    text = soup.body.string 
-    print(text)
-    # text = text.replace('\n',' ')
+    '''
+    Gets the body of the text file into string format without newline characters. 
+    '''
+    text = soup.body.get_text()
+    text = text.split('\n')
+    while text.count(''):
+        text.remove('')
+    text = ' '.join(text)
     return text 
 
 def convertTCP(folder,file,dates):
@@ -176,15 +193,15 @@ def convertTCP(folder,file,dates):
     title = soup.title.string 
     a,t,k = authors(soup),textTCP(soup),keywords(soup)
     publisher = soup.find_all('publisher')[1].string
-    pubplace = soup.find_all('pubplace')[1].string
-    pubplace = re.findall('\w+',pubplace)[0]
+    pubplaceStr = soup.find_all('pubplace')[1].string
+    pp = pubplace(pubplaceStr)
     idInfo = idno(soup)
     d = dates[name]
 
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
             'title':title,'author':a,
-            'publisher':publisher,'pubplace':pubplace, 'keywords':k,
+            'publisher':publisher,'pubplace':pp, 'keywords':k,
             'date':d,'text':t}
     return pd.DataFrame(data=dict,index=[0])
 
