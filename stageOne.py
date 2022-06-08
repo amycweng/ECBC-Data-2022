@@ -6,8 +6,6 @@ from characterCleaner import simple_clean
 
 '''
 STAGE I FUNCTIONS 
-
-TODO: 
 '''
 
 def authors(soup):
