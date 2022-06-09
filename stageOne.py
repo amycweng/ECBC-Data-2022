@@ -118,36 +118,36 @@ def idno(soup):
         s = stc.split(' ')
         estc = idnums_u[1].string
         e = estc.split(' ')
-        return (s[1],e[1])
+        return (s[-1],e[-1])
     elif len(idnums_l) == 2:
         stc = idnums_l[0].string
         s = stc.split(' ')
         estc = idnums_l[1].string
         e = estc.split(' ')
-        return (s[1],e[1])
+        return (s[-1],e[-1])
     elif len(idnums_u) == 1 and len(idnums_l) == 0:
         id = idnums_u[0].string
         i = id.split(' ')
         if i[0] == "STC":
-            return(i[1],  "None")
+            return(i[-1],  "None")
         else:
-            return("None", i[1])
+            return("None", i[-1])
     elif len(idnums_u) == 0 and len(idnums_l) == 1:
         id = idnums_l[0].string
         i = id.split(' ')
         if i[0] == "STC":
-            return(i[1],  "None")
+            return(i[-1],  "None")
         else:
-            return("None", i[1])
+            return("None", i[-1])
     elif len(idnums_u) == 1 and len(idnums_l) == 1:
         id_u = idnums_u[0].string
         i_u = id_u.split(' ')
         id_l = idnums_l[0].string
         i_l = id_l.split(' ')
         if i_u[0] == "STC":
-            return(i_u[1], i_l[1])
+            return(i_u[-1], i_l[-1])
         else:
-            return(i_l[1], i_u[1])
+            return(i_l[-1], i_u[-1])
     else:
         return("None", "None")
 
