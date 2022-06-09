@@ -21,14 +21,15 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - **EIC**: English East India Company
 - **TCP**: Text Creation Partnership (https://textcreationpartnership.org)
 - **EP**: EarlyPrint (https://earlyprint.org)  
+- **VEP**: Visualizing Early Print (https://graphics.cs.wisc.edu/WP/vep/)
 
 ## Code File Descriptions
-- *stageOne.py*: Code for Stage I processing, i.e., conversion of TCP and EP 
-- *stageTwo.py*: 
-- *dates.ipynb*: 
+- *stageOne.py*: Stage I processing, i.e., Relevant XML -> CSV Conversion. 'Relevant' means within our date range. 
+- *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
+- *dates.ipynb*: Extracts and converts date information from XML and TXT files. 
 - *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
-- *characterCleaner.py*:
-- *conversion_dict.py*: 
+- *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
+- *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
 
 ## Text_Files (Folder)
 - *dateRangeTextNames*: All TCP texts that have ranged dates. 
