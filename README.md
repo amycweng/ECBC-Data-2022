@@ -1,6 +1,6 @@
 # Ethical Consumption Before Capitalism Data+ Year 3
 
-We combine close and distant reading techniques to evaluate the metaphorical and ethical language surrounding three major English trading companies from 1580 to 1640. These are the English East India, Levant, and Virginia companies. More than just the exchange of goods, we explore the early modern documentation of how these companies facilitated cultural, religious, political, and economic affairs both peacefully and violently, as well as how authors used various arguments to justify England's colonial aspirations abroad. 
+We combine close and distant reading techniques to evaluate the metaphorical and ethical language surrounding three major English trading companies from 1580 to 1641. We include 1641 because these English texts were dated using the Julian calendar instead of the Gregorian calendar, so some dates can be one year off. These are the English East India, Levant, and Virginia companies. More than just the exchange of goods, we explore the early modern documentation of how these companies facilitated cultural, religious, political, and economic affairs both peacefully and violently, as well as how authors used various arguments to justify England's colonial aspirations abroad. 
 
 ## We build upon the work of previous Duke University Data+ and Bass Connections projects:   
 
@@ -33,10 +33,10 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 ## Text_Files (Folder)
 - *dateRangeTextNames*: All TCP texts that have ranged dates. 
 - *EPmissing*: All TCP texts that are missing from the EP text library. 
-- *relevantEPmissing*: All TCP texts missing from the EP text library that are dated within 1580-1640, including texts with ranged dates. 
+- *relevantEPmissingPhaseI*: All TCP Phase I texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
+- *relevantEPmissingPhaseII*: All TCP Phase II texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
 - *xml tags*: Miscellaneous notes 
 
 ## Image_Files (Folder)
-- *barTextsYear*: Bar graph of texts within 1580-1640, including texts with ranged dates 
+- *barTextsYear*: Bar graph of texts within 1580-1641, including texts with ranged dates 
 - *dateRangeTexts*: The distribution of texts with ranged dates 
-- *scatterTextsYear*: Scatter plot of texts within 1580-1640, including texts with ranged dates 
