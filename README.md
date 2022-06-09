@@ -26,7 +26,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *stageOne.py*: Code for Stage I processing, i.e., conversion of TCP and EP 
 - *stageTwo.py*: 
 - *dates.ipynb*: 
-- *catalog.ipynb*:
+- *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
 - *characterCleaner.py*:
 - *conversion_dict.py*: 
 
