@@ -119,13 +119,13 @@ def idno(soup):
         estc = idnums_u[-1].string
         e = estc.split(' ')
         return (s[-1],e[-1])
-    if len(idnums_l) == 3:
+    elif len(idnums_l) == 3:
         stc = idnums_u[0].string
         s = stc.split(' ')
         estc = idnums_u[-1].string
         e = estc.split(' ')
         return (s[-1],e[-1])
-    if len(idnums_u) == 2:
+    elif len(idnums_u) == 2:
         stc = idnums_u[0].string
         s = stc.split(' ')
         estc = idnums_u[1].string
