@@ -96,10 +96,20 @@ def dateTXT():
 
 def text(soup):
     '''
-    Gets the body of the text file into string format (does not get title page). 
+    Gets the body of the text file into string format.
+    -----------------------------------
+    Gets dedication but not title page 
     '''
-    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
-    
+
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'title_page' not in [ats['type'] for ats in [parent.attrs for parent in sibling.parents] if 'type' in ats.keys() and ats['type'] == 'title_page'] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+    '''
+    Does not get dedication or titlepage
+    '''
+    #return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+
+def dedicationEP(soup):
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'dedication' in [ats['type'] for ats in [parent.attrs for parent in sibling.parents] if 'type' in ats.keys() and ats['type'] == 'dedication'] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
     idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
@@ -159,35 +169,41 @@ def convertEP(folder,file,dates):
     pp = pubplace(pubplaceStr)
     idInfo = idno(soup)
     d = dates[name]
+    ded = dedicationEP(soup)
 
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
             'title':title,'author':a,
             'publisher':publisher,'pubplace':pp, 'keywords':k,
-            'date':d,'text':t}
+            'date':d, 'dedication':ded, 'text':t}
     return pd.DataFrame(data=dict,index=[0])
+    
+def dedicationTCP(soup):
+    dedication = soup.find_all('div1', attrs={'type': 'dedication'})
+    dedExists = False
+    fullDed = []
+    if len(dedication) != 0:
+        for ded in dedication: 
+            d = ded.get_text()
+            d = d.split('\n')
+            while d.count(''):
+                d.remove('')
+            d = ' '.join(d)
+            fullDed.append(d)
+        dedExists = True
+    if dedExists == True:
+        return ' '.join(fullDed)
+    return 'None' 
     
 def textTCP(soup):
     '''
     Gets the body of the text file into string format without newline characters. 
     '''
-    dedication = soup.find_all('div1', attrs={'type': 'dedication'})
-    dedExists = False
-    if len(dedication) != 0:
-        d = dedication[0]
-        d = d.get_text()
-        d = d.split('\n')
-        while d.count(''):
-            d.remove('')
-        d = ' '.join(d)
-        dedExists = True
     text = soup.body.get_text()
     text = text.split('\n')
     while text.count(''):
         text.remove('')
     text = ' '.join(text)
-    if dedExists == True:
-        return d + ' ' + text 
     return text
 
 def convertTCP(folder,file,dates):
@@ -207,12 +223,12 @@ def convertTCP(folder,file,dates):
     pp = pubplace(pubplaceStr)
     idInfo = idno(soup)
     d = dates[name]
-
+    ded = dedicationTCP(soup)
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':name,'stc':idInfo[0],'estc':idInfo[1],
             'title':title,'author':a,
             'publisher':publisher,'pubplace':pp, 'keywords':k,
-            'date':d,'text':t}
+            'date':d,'dedication':ded,'text':t}
     return pd.DataFrame(data=dict,index=[0])
 
 if __name__ == '__main__':
