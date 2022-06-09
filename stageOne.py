@@ -113,6 +113,18 @@ def dedicationEP(soup):
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
     idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
+    if len(idnums_u) == 3:
+        stc = idnums_u[0].string
+        s = stc.split(' ')
+        estc = idnums_u[-1].string
+        e = estc.split(' ')
+        return (s[-1],e[-1])
+    if len(idnums_l) == 3:
+        stc = idnums_u[0].string
+        s = stc.split(' ')
+        estc = idnums_u[-1].string
+        e = estc.split(' ')
+        return (s[-1],e[-1])
     if len(idnums_u) == 2:
         stc = idnums_u[0].string
         s = stc.split(' ')
