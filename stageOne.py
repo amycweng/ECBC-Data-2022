@@ -94,6 +94,7 @@ def dateTXT():
         names[id] = date
     return names
 
+
 def text(soup):
     '''
     Gets the body of the text file into string format.
@@ -108,10 +109,12 @@ def text(soup):
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
     
+
     '''
     Does not get dedication or titlepage
     '''
     #return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+
 def dedicationEP(soup):
     text_list = []
     for sibling in soup.find_all('w'):
@@ -120,6 +123,7 @@ def dedicationEP(soup):
         if 'dedication' in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
+
 
 def idno_test(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
@@ -145,6 +149,7 @@ def idno_test(soup):
                 e = i[-1]
 
     return (s,e)
+
 
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
@@ -199,7 +204,7 @@ def idno(soup):
     else:
         return("None", "None")
 
-def convertEP(folder,file,dates,textfolder):
+def convertEP(folder,file,dates, textfolder):
     '''
     Master function for converting each XML file into a dataframe 
     '''
@@ -209,8 +214,10 @@ def convertEP(folder,file,dates,textfolder):
     data = data.read()
     soup = BeautifulSoup(data,'html.parser')
     #call text function to output the body text as a plain text file 
-    #TODO: pass id number and textFolder into the text function 
-    # text(soup)
+    #TODO: pass id number and textFolder into the text function
+    with open(os.path.join(textfolder, name + '.txt'), 'a+') as file:
+        toFile = text(soup)
+        file.write(toFile) 
     
     # Parse the metadata that we need for each dataframe 
     title = soup.find_all('ep:title')[0].string
@@ -298,15 +305,14 @@ if __name__ == '__main__':
     outfile = open(newCSV,'a+')
     columns = ['id', 'stc', 'estc','title','author','publisher','pubplace','keywords','date','dedication']
     writer = csv.DictWriter(outfile, fieldnames=columns)
-    writer.writeheader()
     for file in os.listdir(folder):
         count += 1
-        # if count % 100 == 0:
+        # if count % 100 == 0 and count != 0:
         print("Processed " + str(count) + " files so far")
         if version == 'EP':
             df = convertEP(folder,file,dates,textfolder)
         if version == 'TCP':
-            df = convertTCP(folder,file,dates)
+            df = convertTCP(folder,file,dates,textfolder)
 
         writer.writerow(df)
     print('The number of total files is ' + str(count))
