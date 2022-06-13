@@ -79,10 +79,9 @@ def dateTXT():
     f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
     f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
     names = {}
-    data1 = open(f1,'r')
-    data2 = open(f2,'r')
-    data1 = data1.readlines()
-    data2 = data2.readlines()
+    file1,file2 = open(f1,'r'),open(f2,'r')
+    data1 = file1.readlines()
+    data2 = file2.readlines()
     data = data1 
     data.extend(data2)
     for d in data:
@@ -91,6 +90,8 @@ def dateTXT():
         id = datum[0]
         date = datum[1].replace('\n','')
         names[id] = date
+    file1.close()
+    file2.close()
     return names
 
 
