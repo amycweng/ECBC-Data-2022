@@ -80,10 +80,9 @@ def dateTXT():
     f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
     f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
     names = {}
-    data1 = open(f1,'r')
-    data2 = open(f2,'r')
-    data1 = data1.readlines()
-    data2 = data2.readlines()
+    file1,file2 = open(f1,'r'),open(f2,'r')
+    data1 = file1.readlines()
+    data2 = file2.readlines()
     data = data1 
     data.extend(data2)
     for d in data:
@@ -92,6 +91,8 @@ def dateTXT():
         id = datum[0]
         date = datum[1].replace('\n','')
         names[id] = date
+    file1.close()
+    file2.close()
     return names
 
 
@@ -100,55 +101,18 @@ def text(soup):
     Gets the body of the text file into string format.
     -----------------------------------
     Gets dedication but not title page 
+
+    Outputs the corresponding body text into a separate TXT file. 
     '''
-    text_list = []
-    for sibling in soup.find_all('w'):
-        parent_attrs = [parent.attrs for parent in sibling.parents]
-        parent_title = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'title_page']
-        if 'title_page' not in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
-            text_list.append(sibling['lemma'])
-    return ' '.join(text_list)
     
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'title_page' not in [ats['type'] for ats in [parent.attrs for parent in sibling.parents] if 'type' in ats.keys() and ats['type'] == 'title_page'] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
     '''
     Does not get dedication or titlepage
     '''
     #return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
 
 def dedicationEP(soup):
-    text_list = []
-    for sibling in soup.find_all('w'):
-        parent_attrs = [parent.attrs for parent in sibling.parents]
-        parent_title = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'dedication']
-        if 'dedication' in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
-            text_list.append(sibling['lemma'])
-    return ' '.join(text_list)
-
-
-def idno_test(soup):
-    idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
-    idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
-    s = "None"
-    e = "None"
-
-    if len(idnums_u) != 0:
-        for id in idnums_u:
-            idstr = id.string
-            i = idstr.split(' ')
-            if i[0] == "STC":
-                s = i[-1]
-            if i[0] == "ESTC":
-                e = i[-1]
-    if len(idnums_l) != 0:
-        for id in idnums_l:
-            idstr = id.string
-            i = idstr.split(' ')
-            if i[0] == "STC":
-                s = i[-1]
-            if i[0] == "ESTC":
-                e = i[-1]
-
-    return (s,e)
-
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'dedication' in [ats['type'] for ats in [parent.attrs for parent in sibling.parents] if 'type' in ats.keys() and ats['type'] == 'dedication'] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
 
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
@@ -222,7 +186,7 @@ def convertEP(folder,file,dates):
     publisher = soup.find_all('publisher')[1].string
     pubplaceStr = soup.find_all('pubplace')[1].string
     pp = pubplace(pubplaceStr)
-    idInfo = idno_test(soup)
+    idInfo = idno(soup)
     d = dates[name]
 
     #TODO: figure out where to put the dedication (in the metadata CSV?)
@@ -291,7 +255,7 @@ def convertTCP(folder,file,dates):
 
 if __name__ == '__main__':
     '''
-    Initializes and writes metadata to a new CSV file. 
+    Initializes and writes metadata to new CSV files. 
     '''
     folder = input('Enter folder path: ')
     newCSV = input ('Enter the desired path of your metadata CSV file, including the name of the new CSV: ')
@@ -315,3 +279,4 @@ if __name__ == '__main__':
 
         writer.writerow(df)
     print('The number of total files is ' + str(count))
+    csv.close()
