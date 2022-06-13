@@ -25,7 +25,6 @@ def getSpecials(filepath,output):
     output.close()
     file.close()
 
-getSpecials('/srv/data/sample.txt','/srv/data/ECBC-Data-2022/Text_Files/special.txt')
 if __name__ == '__main__':
     folder = input('Enter folder path: ')
     output = input('Enter output TXT file path: ')
