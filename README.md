@@ -1,6 +1,6 @@
 # Ethical Consumption Before Capitalism Data+ Year 3
 
-We combine close and distant reading techniques to evaluate the metaphorical and ethical language surrounding three major English trading companies from 1580 to 1641. We include 1641 because these English texts were dated using the Julian calendar instead of the Gregorian calendar, so some dates can be one year off. These are the English East India, Levant, and Virginia companies. More than just the exchange of goods, we explore the early modern documentation of how these companies facilitated cultural, religious, political, and economic affairs both peacefully and violently, as well as how authors used various arguments to justify England's colonial aspirations abroad. 
+We combine close and distant reading techniques to evaluate the metaphorical and ethical language surrounding three major English trading companies from 1580 to 1641. These are the English East India, Levant, and Virginia companies. We include 1641 because these English texts were dated using the Julian calendar instead of the Gregorian calendar, so some dates can be one year off. More than just the exchange of goods, we explore the early modern documentation of how these companies facilitated cultural, religious, political, and economic affairs both peacefully and violently, as well as how authors used various arguments to justify England's colonial aspirations abroad. 
 
 ## We build upon the work of previous Duke University Data+ and Bass Connections projects:   
 
@@ -23,7 +23,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - **EP**: EarlyPrint (https://earlyprint.org)  
 - **VEP**: Visualizing Early Print (https://graphics.cs.wisc.edu/WP/vep/)
 
-## Code File Descriptions
+## File Descriptions
 - *stageOne.py*: Stage I processing, i.e., Relevant XML -> CSV Conversion. 'Relevant' means within our date range. 
 - *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
 - *dates.ipynb*: Extracts and converts date information from XML and TXT files. 
