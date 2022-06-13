@@ -94,7 +94,6 @@ def dateTXT():
         names[id] = date
     return names
 
-
 def text(soup):
     '''
     Gets the body of the text file into string format.
@@ -113,7 +112,6 @@ def text(soup):
     Does not get dedication or titlepage
     '''
     #return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
-
 def dedicationEP(soup):
     text_list = []
     for sibling in soup.find_all('w'):
@@ -122,7 +120,6 @@ def dedicationEP(soup):
         if 'dedication' in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
-
 
 def idno_test(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
@@ -148,7 +145,6 @@ def idno_test(soup):
                 e = i[-1]
 
     return (s,e)
-
 
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
@@ -203,7 +199,7 @@ def idno(soup):
     else:
         return("None", "None")
 
-def convertEP(folder,file,dates):
+def convertEP(folder,file,dates,textfolder):
     '''
     Master function for converting each XML file into a dataframe 
     '''
@@ -225,15 +221,14 @@ def convertEP(folder,file,dates):
     idInfo = idno_test(soup)
     d = dates[name]
 
-    #TODO: figure out where to put the dedication (in the metadata CSV?)
-    # ded = dedicationEP(soup)
+    # TODO: figure out where to put the dedication (in the metadata CSV?)
+    ded = dedicationEP(soup)
 
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
     dict = {'id':str(name),'stc':str(idInfo[0]),'estc':str(idInfo[1]),
             'title':str(title),'author':str(a),
             'publisher':str(publisher),'pubplace':str(pp), 'keywords':str(k),
-            'date':str(d)}
-    print(dict)
+            'date':str(d),'dedication':str(ded)}
     return dict
     
 def dedicationTCP(soup):
@@ -295,21 +290,21 @@ if __name__ == '__main__':
     '''
     folder = input('Enter folder path: ')
     newCSV = input ('Enter the desired path of your metadata CSV file, including the name of the new CSV: ')
-    # textfolder = input('Enter the folder path for your output text files: ')
+    textfolder = input('Enter the folder path for your output text files: ')
     version = input('Enter the type of file you want to convert (either TCP or EP). TCP refers to the original TCP XML files. EP refers to the processed Early Print XML files. Type here: ')
     
     count = 0
     dates = dateTXT()
     outfile = open(newCSV,'a+')
-    columns = ['id', 'stc', 'estc','title','author','publisher','pubplace','keywords','date']
+    columns = ['id', 'stc', 'estc','title','author','publisher','pubplace','keywords','date','dedication']
     writer = csv.DictWriter(outfile, fieldnames=columns)
     writer.writeheader()
     for file in os.listdir(folder):
         count += 1
-        if count % 100 == 0 and count != 0:
-            print("Processed " + str(count) + " files so far")
+        # if count % 100 == 0:
+        print("Processed " + str(count) + " files so far")
         if version == 'EP':
-            df = convertEP(folder,file,dates)
+            df = convertEP(folder,file,dates,textfolder)
         if version == 'TCP':
             df = convertTCP(folder,file,dates)
 
