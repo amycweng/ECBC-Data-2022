@@ -135,7 +135,7 @@ def idno_test(soup):
         for id in idnums_u:
             idstr = id.string
             i = idstr.split(' ')
-            if i[0] == "STC":
+            if i[0] == "STC" or i[0] == "Wing":
                 s = i[-1]
             if i[0] == "ESTC":
                 e = i[-1]

@@ -26,7 +26,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 ## File Descriptions
 - *stageOne.py*: Stage I processing, i.e., Relevant XML -> CSV Conversion. 'Relevant' means within our date range. 
 - *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
-- *dates.ipynb*: Extracts and converts date information from XML and TXT files. 
+- *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
 - *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
@@ -34,8 +34,11 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 ## Text_Files (Folder)
 - *dateRangeTextNames*: All TCP texts that have ranged dates. 
 - *EPmissing*: All TCP texts that are missing from the EP text library. 
+- *EPunderscores.txt*: All TCP texts that have been partitioned into several EP files 
+- *relevant.txt*: All TCP texts within our relevant time period 
 - *relevantEPmissingPhaseI*: All TCP Phase I texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
 - *relevantEPmissingPhaseII*: All TCP Phase II texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
+- *special.txt*: Words with special characters that occur in relevant EP texts. 
 - *xml tags*: Miscellaneous notes 
 
 ## Image_Files (Folder)
