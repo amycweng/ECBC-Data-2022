@@ -79,9 +79,10 @@ def dateTXT():
     f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
     f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
     names = {}
-    file1,file2 = open(f1,'r'),open(f2,'r')
-    data1 = file1.readlines()
-    data2 = file2.readlines()
+    data1 = open(f1,'r')
+    data2 = open(f2,'r')
+    data1 = data1.readlines()
+    data2 = data2.readlines()
     data = data1 
     data.extend(data2)
     for d in data:
@@ -90,8 +91,6 @@ def dateTXT():
         id = datum[0]
         date = datum[1].replace('\n','')
         names[id] = date
-    file1.close()
-    file2.close()
     return names
 
 
@@ -110,6 +109,33 @@ def text(soup):
 
 def dedicationEP(soup):
     return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'dedication' in [ats['type'] for ats in [parent.attrs for parent in sibling.parents] if 'type' in ats.keys() and ats['type'] == 'dedication'] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+
+
+def idno_test(soup):
+    idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
+    idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
+    s = "None"
+    e = "None"
+
+    if len(idnums_u) != 0:
+        for id in idnums_u:
+            idstr = id.string
+            i = idstr.split(' ')
+            if i[0] == "STC":
+                s = i[-1]
+            if i[0] == "ESTC":
+                e = i[-1]
+    if len(idnums_l) != 0:
+        for id in idnums_l:
+            idstr = id.string
+            i = idstr.split(' ')
+            if i[0] == "STC":
+                s = i[-1]
+            if i[0] == "ESTC":
+                e = i[-1]
+
+    return (s,e)
+
 
 def idno(soup):
     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
