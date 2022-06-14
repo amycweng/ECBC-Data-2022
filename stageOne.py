@@ -98,21 +98,22 @@ def text(soup):
     '''
     Gets the body of the text file into string format.
     -----------------------------------
-    Gets dedication but not title page 
-    '''
-    #text_list = []
-    #for sibling in soup.find_all('w'):
-    #    parent_attrs = [parent.attrs for parent in sibling.parents]
-    #    parent_title = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'title_page']
-    #    if 'title_page' not in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
-    #        text_list.append(sibling['lemma'])
-    #return ' '.join(text_list)
-    
+    Does not grab any text in the tag <front> which contains div tags such as ['title_page', 'dedication',
+    'to_the_reader', 'list'...] that are not part of the main text. 
 
+    Does not grab any text in the tag <back> which contains div tags such as ['errata', 'index', 
+    'supplied_by_editor', ...] that are not part of the main text. 
+
+    Does not grab any text under the <table> tag
     '''
-    Does not get dedication or titlepage
-    '''
-    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+    text_list = []
+    for sibling in soup.find_all('w'):
+        parent_name = [parent.name for parent in sibling.parents]
+        parent_attrs = [parent.attrs for parent in sibling.parents]
+        if not any(x in parent_name for x in ['front', 'table', 'back']) and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
+            text_list.append(sibling['lemma'])
+    return ' '.join(text_list)
+
 
 def dedicationEP(soup):
     text_list = []
@@ -216,7 +217,7 @@ def convertEP(folder,file,dates, textfolder):
     with open(os.path.join(textfolder, name + '.txt'), 'a+') as file:
         toFile = text(soup)
         file.write(toFile) 
-    
+
     # Parse the metadata that we need for each dataframe 
     title = soup.find_all('ep:title')[0].string
     a,k = authors(soup),keywords(soup)

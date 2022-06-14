@@ -22,7 +22,7 @@ def getTexts(folder):
         f.close()
     return textStrings,fileNames
 
-def keywords(csv,groups):
+def keywords(csv):
     df = pd.read_csv(csv)
     keywords = df['keywords']
     ids = df['id']
@@ -49,12 +49,7 @@ def keywords(csv,groups):
         newWords.discard('To')
         dict[ids[count]] = newWords
         count += 1
-    for k,v in groups.items():
-        print(f'Group {k}')
-        keyterms = []
-        for name in v: 
-            keyterms.extend(dict[name])
-        print(Counter(keyterms))
+    return dict 
 
 from nltk.corpus import stopwords
 stop_words = stopwords.words('english')
