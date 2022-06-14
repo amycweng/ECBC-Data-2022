@@ -43,8 +43,7 @@ def keywords(soup):
     keywords = soup.find_all('keywords')
     if len(keywords) != 0:
         keywords = soup.find_all('keywords')[0].get_text()
-        keywords = keywords.replace('\n',' ')
-        keywords = keywords.replace('--','')
+        keywords = keywords.replace('\n','--')
         return keywords
     return 'No Keywords'
 
@@ -214,7 +213,6 @@ def convertEP(folder,file,dates, textfolder):
     data = data.read()
     soup = BeautifulSoup(data,'html.parser')
     #call text function to output the body text as a plain text file 
-    #TODO: pass id number and textFolder into the text function
     with open(os.path.join(textfolder, name + '.txt'), 'a+') as file:
         toFile = text(soup)
         file.write(toFile) 
@@ -227,8 +225,6 @@ def convertEP(folder,file,dates, textfolder):
     pp = pubplace(pubplaceStr)
     idInfo = idno_test(soup)
     d = dates[name]
-
-    # TODO: figure out where to put the dedication (in the metadata CSV?)
     ded = dedicationEP(soup)
 
     # Input all of the relevant column info into a dictionary to be returned as a dataframe 
@@ -305,6 +301,7 @@ if __name__ == '__main__':
     outfile = open(newCSV,'a+')
     columns = ['id', 'stc', 'estc','title','author','publisher','pubplace','keywords','date','dedication']
     writer = csv.DictWriter(outfile, fieldnames=columns)
+    writer.writeheader()
     for file in os.listdir(folder):
         count += 1
         # if count % 100 == 0 and count != 0:
