@@ -23,3 +23,11 @@ file/folder accessibility:
      chmod -R g+rwx 'directoryName'
      chmod g+w 'filename'
 
+keywords to remove or process: 
+    - 'Early works to 1800'
+    - '17th century' 
+    - collapse all 'Colonial period' into one (remove the info that comes after, e.g., (New Plymouth) or ca.1600-1775)
+    - Collapse all 'Sermons, English' into one 
+    - remove all keywords that are simply dates 
+    - Collapse all 'Missions' 
+    - remove periods 

@@ -100,19 +100,19 @@ def text(soup):
     -----------------------------------
     Gets dedication but not title page 
     '''
-    text_list = []
-    for sibling in soup.find_all('w'):
-        parent_attrs = [parent.attrs for parent in sibling.parents]
-        parent_title = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'title_page']
-        if 'title_page' not in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
-            text_list.append(sibling['lemma'])
-    return ' '.join(text_list)
+    #text_list = []
+    #for sibling in soup.find_all('w'):
+    #    parent_attrs = [parent.attrs for parent in sibling.parents]
+    #    parent_title = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'title_page']
+    #    if 'title_page' not in parent_title and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
+    #        text_list.append(sibling['lemma'])
+    #return ' '.join(text_list)
     
 
     '''
     Does not get dedication or titlepage
     '''
-    #return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
+    return ' '.join([sibling['lemma'] for sibling in soup.find_all('w') if 'front' not in [parent.name for parent in sibling.parents] and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a' ])
 
 def dedicationEP(soup):
     text_list = []

@@ -38,8 +38,8 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *relevant.txt*: All TCP texts within our relevant time period 
 - *relevantEPmissingPhaseI*: All TCP Phase I texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
 - *relevantEPmissingPhaseII*: All TCP Phase II texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
-- *special.txt*: Words with special characters that occur in relevant EP texts. 
-- *xml tags*: Miscellaneous notes 
+- *special*: Words with special characters that occur in relevant EP texts. 
+- *notes*: Miscellaneous notes 
 
 ## Image_Files (Folder)
 - *barTextsYear*: Bar graph of texts within 1580-1641, including texts with ranged dates 
