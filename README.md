@@ -28,10 +28,11 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
 - *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
 - *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
-- *stopwords.py*
-- *supervised.ipynb*
-- *topic.ipynb*
-- *vocab.ipynb*
+- *functions.py*: Custom utility functions, e.g., functions for removing stopwords, extracting content from plain text files, and processing metadata
+- *topics.py*: LDA topic modeling w/ Gensim to generate 'topic words' for individual texts. Also generates word clouds of the topic words
+- *supervised.ipynb*: Supervised text classification with logistic regression (see file for citations)
+- *unsupervised.ipynb*: Unsupervised k-means clustering and visualization (see file for citations)
+- *vocab.ipynb*: TF-IDF analysis and visualization, as well as word cloud generation
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
 
