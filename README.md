@@ -33,6 +33,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *topics.py*: LDA topic modeling w/ Gensim to generate 'topic words' for individual texts. Also generates word clouds of the topic words
 - *supervised.ipynb*: Supervised text classification with logistic regression (see file for citations)
 - *unsupervised.ipynb*: Unsupervised k-means clustering and visualization (see file for citations)
+- *select.py*: Code that helps copy relevant files into other folders. 
 - *vocab.ipynb*: TF-IDF analysis and visualization, as well as word cloud generation
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
