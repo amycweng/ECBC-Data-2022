@@ -9,91 +9,6 @@ from characterCleaner import simple_clean
 STAGE I FUNCTIONS 
 '''
 
-def authors(soup):
-    '''
-    Returns a string of all mentioned authors separated by semi-colons
-    ''' 
-    authors = soup.find_all('author')
-    auth = ''
-    for a in authors:
-        if auth != '':
-            if not re.search(a.get_text(),auth):
-                auth = auth + '; ' + a.get_text()
-        else: 
-            auth += a.get_text()
-    if auth == '':
-        auth = 'Anonymous'
-    return auth
-
-def pubplace(str):
-    pubplace = re.findall('\w+',str)
-    count = 0
-    for p in pubplace:
-        if count == 0:
-            count += 1
-            cleanPlace = p 
-        else: 
-            cleanPlace = cleanPlace + ' ' + p
-    return cleanPlace
-
-def keywords(soup):
-    '''
-    Returns the keywords separated by semicolons 
-    '''
-    keywords = soup.find_all('keywords')
-    if len(keywords) != 0:
-        keywords = soup.find_all('keywords')[0].get_text()
-        keywords = keywords.replace('\n','--')
-        return keywords
-    return 'No Keywords'
-
-def date(soup):
-    '''
-    Converts the contents of the SECOND date tag in each XML file. 
-    Function keeps the contents unaltered if it is an estimated date range, but converts 
-    all other dates into a single date (type = string). 
-    For all other edge cases, the function returns "Date Unknown"
-    '''
-    dateStr = soup.find_all('date')[1].string
-    # keep dateStr unaltered if it is a date range, e.g., [between XXXX and XXXX] or [between XXXX-XXXX]
-    estimates = re.search('between',dateStr)
-    if estimates != None:
-        return dateStr
-    # otherwise, convert dateStr to a single date 
-    intDates = re.findall(r'\d{4}',dateStr)
-    if len(intDates) != 0:
-        for d in intDates:
-            if int(d) in range(1470,1800):
-                return d
-    return 'Date Unknown'
-
-def dateTXT():
-    '''
-    Extracts the integer date or date range from the corresponding entry in TCP's official 
-    documentation of all the EEBO IDs and dates. Returns a dictionary with the data from 
-    both Phase I and II.  
-
-    This function should only be called once. Afterwards, the user can directly refer to the 
-    returned dictionary to find dates. 
-    '''
-    f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
-    f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
-    names = {}
-    data1 = open(f1,'r')
-    data2 = open(f2,'r')
-    data1 = data1.readlines()
-    data2 = data2.readlines()
-    data = data1 
-    data.extend(data2)
-    for d in data:
-        datum = d.replace('\n','')
-        datum = d.split('\t')
-        id = datum[0]
-        date = datum[1].replace('\n','')
-        names[id] = date
-    return names
-
-
 def text(soup):
     '''
     Gets the body of the text file into string format.
@@ -110,7 +25,8 @@ def text(soup):
     for sibling in soup.find_all('w'):
         parent_name = [parent.name for parent in sibling.parents]
         parent_attrs = [parent.attrs for parent in sibling.parents]
-        if not any(x in parent_name for x in ['front', 'table', 'back']) and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
+        div = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'coat_of_arms']
+        if not any(x in parent_name for x in ['front', 'table', 'back']) and 'coat_of_arms' not in div and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
 
@@ -143,7 +59,7 @@ def idno_test(soup):
         for id in idnums_l:
             idstr = id.string
             i = idstr.split(' ')
-            if i[0] == "STC":
+            if i[0] == "STC" or i[0] == "Wing":
                 s = i[-1]
             if i[0] == "ESTC":
                 e = i[-1]

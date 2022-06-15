@@ -23,6 +23,9 @@ file/folder accessibility:
      chmod -R g+rwx 'directoryName'
      chmod g+w 'filename'
 
+
+python -W ignore file.py 
+
 keywords to remove or process: 
     - 'Early works to 1800'
     - '17th century' 

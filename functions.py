@@ -63,3 +63,24 @@ def remove_stopwords(data):
     
     return [[word for word in simple_preprocess(str(doc))
             if word not in stop_words] for doc in data]
+
+
+def date(soup):
+    '''
+    Converts the contents of the SECOND date tag in each XML file. 
+    Function keeps the contents unaltered if it is an estimated date range, but converts 
+    all other dates into a single date (type = string). 
+    For all other edge cases, the function returns "Date Unknown"
+    '''
+    dateStr = soup.find_all('date')[1].string
+    # keep dateStr unaltered if it is a date range, e.g., [between XXXX and XXXX] or [between XXXX-XXXX]
+    estimates = re.search('between',dateStr)
+    if estimates != None:
+        return dateStr
+    # otherwise, convert dateStr to a single date 
+    intDates = re.findall(r'\d{4}',dateStr)
+    if len(intDates) != 0:
+        for d in intDates:
+            if int(d) in range(1470,1800):
+                return d
+    return 'Date Unknown'
