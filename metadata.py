@@ -2,7 +2,7 @@ from bs4 import SoupStrainer,BeautifulSoup
 import re,os,csv,time
 
 '''
-Stage I Processing of Metadata
+STAGE I METADATA PROCESSING 
 Takes a folder of individual EEBO-TCP XML files and writes the metadata into a separate CSV file. 
 
 For Stage I text processing, see text.py 
@@ -149,7 +149,7 @@ def oldIDNO(soup):
             return(i_l[-1], i_u[-1])
     else:
         return("None", "None")
-        
+
 def dateTXT():
     '''
     Extracts the integer date or date range from the corresponding entry in TCP's official 
