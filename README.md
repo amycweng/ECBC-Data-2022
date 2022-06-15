@@ -24,7 +24,8 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - **VEP**: Visualizing Early Print (https://graphics.cs.wisc.edu/WP/vep/)
 
 ## File Descriptions
-- *stageOne.py*: Stage I processing, i.e., Relevant XML -> CSV Conversion. 'Relevant' means within our date range. 
+- *metadata.py*: Stage I metadata processing; Takes in a folder of individual TCP XML files and writes the metadata into a separate CSV file. 
+- *text.py*: Stage I text processing 
 - *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
 - *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
 - *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
