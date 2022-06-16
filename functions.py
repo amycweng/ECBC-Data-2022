@@ -33,6 +33,7 @@ def keywords(csv):
         words = set(keywords[count].split('--'))
         # removing unnecessary keywords
         words.discard(' Early works to 1800.')
+        words.discard('Great Britain')
         words.discard('')
         # Removing unnecessary dates  
         newWords = []
