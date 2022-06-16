@@ -220,8 +220,8 @@ if __name__ == '__main__':
         count += 1
         if count % 10 == 0:
             print("Processed " + str(count) + " files so far")
-        df = convert(folder,file)
-        writer.writerow(df)
+        dict = convert(folder,file)
+        writer.writerow(dict)
     print('The number of total files is ' + str(count))
     end = time.time()
     print("The time of execution is :", end-start, ' seconds')
