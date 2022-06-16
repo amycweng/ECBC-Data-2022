@@ -159,8 +159,8 @@ def dateTXT():
     This function should only be called once. Afterwards, the user can directly refer to the 
     returned dictionary to find dates. 
     '''
-    f1 = '/srv/data/eebo_phase1_IDs_and_dates.txt'
-    f2 = '/srv/data/EEBO_Phase2_IDs_and_dates.txt' 
+    f1 = '/srv/data/ECBC-Data-2022/Text_Files/eebo_phase1_IDs_and_dates.txt'
+    f2 = '/srv/data/ECBC-Data-2022/Text_Files/EEBO_Phase2_IDs_and_dates.txt' 
     names = {}
     data1 = open(f1,'r')
     data2 = open(f2,'r')
