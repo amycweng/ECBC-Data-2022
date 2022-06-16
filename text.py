@@ -16,13 +16,18 @@ def text(soup):
     Does not grab any text in the tag <back> which contains div tags such as ['errata', 'index', 
     'supplied_by_editor', ...] that are not part of the main text. 
 
-    Does not grab any text under the <table> tag
+    Does not grab any text under the <table> or <foreign> tags
+
+    Does not grab any text under div type 'coat_of_arms' or attribute 'lat'
+
     '''
     text_list = []
     for sibling in soup.find_all('w'):
         parent_name = [parent.name for parent in sibling.parents]
         parent_attrs = [parent.attrs for parent in sibling.parents]
-        if not any(x in parent_name for x in ['front', 'table', 'back']) and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
+        divType = [ats['type'] for ats in parent_attrs if 'type' in ats.keys() and ats['type'] == 'coat_of_arms']
+        divLat = [ats['xml:lang'] for ats in parent_attrs if 'xml:lang' in ats.keys() and ats['xml:lang'] == 'lat']
+        if not any(x in parent_name for x in ['front', 'table', 'back','foreign']) and 'coat_of_arms' not in divType and 'lat' not in divLat and re.search('lemma',str(sibling)) and str(sibling['lemma']) != 'n/a':
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
 

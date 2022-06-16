@@ -26,8 +26,7 @@ def authors(data):
     auth = ''
     for a in authors:
         if auth != '':
-            if not re.search(a.get_text(),auth):
-                auth = auth + '; ' + a.get_text()
+            auth = auth + '; ' + a.get_text()
         else: 
             auth += a.get_text()
     if auth == '':
@@ -37,23 +36,29 @@ def authors(data):
 def pubplace(data):
     tags = SoupStrainer('pubplace')
     soup = BeautifulSoup(data,parse_only=tags,features='html.parser')
-    str = soup.find_all('pubplace')[1].string
-    pubplace = re.findall('\w+',str)
-    count = 0
-    for p in pubplace:
-        if count == 0:
-            count += 1
-            cleanPlace = p 
-        else: 
-            cleanPlace = cleanPlace + ' ' + p
-    return cleanPlace
+    pubplace = soup.find_all('pubplace')
+    if len(pubplace) == 2:
+        str = pubplace[1].string
+        pubplace = re.findall('\w+',str)
+        count = 0
+        for p in pubplace:
+            if count == 0:
+                count += 1
+                cleanPlace = p 
+            else: 
+                cleanPlace = cleanPlace + ' ' + p
+        return cleanPlace
+    return 'No pubplace'
 
 def publisher(data):
     tags = SoupStrainer('publisher')
     soup = BeautifulSoup(data,parse_only=tags,features='html.parser')
-    pub = soup.find_all('publisher')[1].string
-    words = re.findall('\w+',pub)
-    return ' '.join(words)
+    pubs = soup.find_all('publisher')
+    if len(pubs) == 2:
+        pub = pubs[1].string
+        words = re.findall('\w+',pub)
+        return ' '.join(words)
+    return 'No publisher'
 
 def keywords(data):
     '''
@@ -218,7 +223,7 @@ if __name__ == '__main__':
     writer.writeheader()
     for file in os.listdir(folder):
         count += 1
-        if count % 10 == 0:
+        if count % 100 == 0:
             print("Processed " + str(count) + " files so far")
         dict = convert(folder,file)
         writer.writerow(dict)

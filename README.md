@@ -35,18 +35,26 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *unsupervised.ipynb*: Unsupervised k-means clustering and visualization (see file for citations)
 - *select.py*: Code that helps copy relevant files into other folders. 
 - *vocab.ipynb*: TF-IDF analysis and visualization, as well as word cloud generation
+- *network.ipynb*: Social network visualization based on TCP metadata
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
 
 ## Text_Files (Folder)
 - *dateRangeTextNames*: All TCP texts that have ranged dates. 
+- *eebo_phase1_IDs_and_dates*: TCP Phase I text IDs and dates 
+- *EEBO_Phase2_IDs_and_dates*: TCP Phase II text IDs and dates 
 - *EPmissing*: All TCP texts that are missing from the EP text library. 
-- *EPunderscores.txt*: All TCP texts that have been partitioned into several EP files 
-- *relevant.txt*: All TCP texts within our relevant time period 
+- *EPunderscores*: All TCP texts that have been partitioned into several EP files 
+- *keywords*: Relevant keywords from TCP 
+- *levantPeople*: People associated with the Levant Co. 
+- *notes*: Miscellaneous notes 
+- *people*: Relevant people associated with the three companies 
+- *relevant*: All TCP texts within our relevant time period 
 - *relevantEPmissingPhaseI*: All TCP Phase I texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
 - *relevantEPmissingPhaseII*: All TCP Phase II texts missing from the EP text library that are dated within 1580-1641, including texts with ranged dates. 
 - *special*: Words with special characters that occur in relevant EP texts. 
-- *notes*: Miscellaneous notes 
+- *terms*: Key commodities and ethical language
+- *VirginiaCompanyTexts*: Texts written by men who are associated with or write about the Virginia Company 
 
 ## Image_Files (Folder)
 - *barTextsYear*: Bar graph of texts within 1580-1641, including texts with ranged dates 

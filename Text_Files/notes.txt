@@ -20,8 +20,8 @@ interesting tags:
 
 
 file/folder accessibility:
-     chmod -R g+rwx 'directoryName'
-     chmod g+w 'filename'
+     chmod -R g+rwx directoryName
+     chmod g+w filename
 
 
 python -W ignore file.py 
