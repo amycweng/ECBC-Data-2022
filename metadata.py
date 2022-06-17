@@ -13,8 +13,11 @@ def title(data):
     '''
     tags = SoupStrainer('title')
     soup = BeautifulSoup(data,parse_only=tags,features='html.parser')
-    title = soup.find_all('title')[0].get_text()
-    return title
+    title = soup.find_all('title')
+    if len(title) != 0:
+        title = title[0].get_text()
+        return title
+    return 'No title'
 
 def authors(data):
     '''

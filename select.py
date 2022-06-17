@@ -4,8 +4,8 @@ import shutil
 #search = input('Enter your text TCP ID here: ')
 search = open('/srv/data/ECBC-Data-2022/Text_Files/VirginiaCompanyTexts.txt', 'r')
 # dir = '/srv/data/allPhase1Extract'
-dir = '/srv/data/allPhase2Extract'
-# dir = '/srv/data/eebotcp/texts'
+# dir = '/srv/data/allPhase2Extract'
+dir = '/srv/data/eebotcp/texts'
 
 #for each id search
 for line in search:
@@ -20,15 +20,15 @@ for line in search:
             for file in os.listdir(folder): 
                 text = os.path.join(folder, file)
                 if text.endswith('.xml'):
-                    #for phase1 or phase2 extract folders:
-                    name = text.split('/')[5].split('.')[0]
+                    # for phase1 or phase2 extract folders:
+                    #name = text.split('/')[5].split('.')[0]
                     
-                    #for EP eebotcp folder
-                    # name = text.split('/')[6].split('.')[0]
+                    # for EP eebotcp folder
+                    name = text.split('/')[6].split('.')[0]
                     if s in name:
                         print(s,'has been copied!')
                         count += 1
-                        shutil.copy(text, '/srv/data/VirginiaTextsTCP')
+                        shutil.copy(text, '/srv/data/VirginiaEP')
                     
                     else: continue
     if count == 0:

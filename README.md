@@ -28,7 +28,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *text.py*: Stage I text processing 
 - *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
 - *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
-- *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. 
+- *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. Filters TCP texts by keywords and dates. 
 - *functions.py*: Custom utility functions, e.g., functions for removing stopwords, extracting content from plain text files, and processing keywords
 - *topics.py*: LDA topic modeling w/ Gensim to generate 'topic words' for individual texts. Also generates word clouds of the topic words
 - *supervised.ipynb*: Supervised text classification with logistic regression (see file for citations)

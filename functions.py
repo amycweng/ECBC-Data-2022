@@ -37,9 +37,13 @@ def remove_stopwords(data):
             if word not in stop_words] for doc in data]
 
 def keywords(csv):
+    '''
+    Returns a dictionary in this format {id : (keywords,date)}
+    '''
     df = pd.read_csv(csv)
     keywords = df['keywords']
     ids = df['id']
+    dates = df['date']
     numFiles = len(ids)
     count = 0
     dict = {}
@@ -65,10 +69,12 @@ def keywords(csv):
         newWords.discard('17th century')
         newWords.discard('Early works to')
         newWords.discard('To')
-        words.discard('Great Britain')
-        dict[ids[count]] = newWords
+        newWords.discard('No Keywords')
+        newWords.discard('Great Britain')
+        dict[ids[count]] = (newWords,dates[count])
         count += 1
     return dict 
+
 
 def date(soup):
     '''
