@@ -231,6 +231,7 @@ if __name__ == '__main__':
         dict = convert(folder,file)
         writer.writerow(dict)
     print('The number of total files is ' + str(count))
+    outfile.close()
     end = time.time()
     print("The time of execution is :", end-start, ' seconds')
 
