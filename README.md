@@ -13,7 +13,7 @@ https://bigdata.duke.edu/projects/ethical-consumption-capitalism
 
 Bass Connections (2021-2022) - Ethical Consumption Before Capitalism
 https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-2021-2022
-    Team Website: https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-2021-2022 
+    Team Website: https://sites.duke.edu/ecbc
 
 ## Common terms defined:
 - **ECBC**: Ethical Consumption Before Capitalism
