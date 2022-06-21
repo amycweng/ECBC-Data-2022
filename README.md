@@ -34,7 +34,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *supervised.ipynb*: Supervised text classification with logistic regression (see file for citations)
 - *unsupervised.ipynb*: Unsupervised k-means clustering and visualization (see file for citations)
 - *select.py*: Code that helps copy relevant files into other folders. 
-- *vocab.ipynb*: TF-IDF analysis and visualization, as well as word cloud generation
+- *vocab.ipynb*: TF-IDF analysis and visualization, term frequency word cloud generation and bigram models
 - *network.ipynb*: Social network visualization based on TCP metadata
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
