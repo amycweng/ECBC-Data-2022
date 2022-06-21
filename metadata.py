@@ -105,59 +105,6 @@ def idno(data):
 
     return (s,e)
 
-def oldIDNO(soup):
-    idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
-    idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
-    if len(idnums_u) == 3:
-        stc = idnums_u[0].string
-        s = stc.split(' ')
-        estc = idnums_u[-1].string
-        e = estc.split(' ')
-        return (s[-1],e[-1])
-    elif len(idnums_l) == 3:
-        stc = idnums_l[0].string
-        s = stc.split(' ')
-        estc = idnums_l[-1].string
-        e = estc.split(' ')
-        return (s[-1],e[-1])
-    elif len(idnums_u) == 2:
-        stc = idnums_u[0].string
-        s = stc.split(' ')
-        estc = idnums_u[1].string
-        e = estc.split(' ')
-        return (s[-1],e[-1])
-    elif len(idnums_l) == 2:
-        stc = idnums_l[0].string
-        s = stc.split(' ')
-        estc = idnums_l[1].string
-        e = estc.split(' ')
-        return (s[-1],e[-1])
-    elif len(idnums_u) == 1 and len(idnums_l) == 0:
-        id = idnums_u[0].string
-        i = id.split(' ')
-        if i[0] == "STC":
-            return(i[-1],  "None")
-        else:
-            return("None", i[-1])
-    elif len(idnums_u) == 0 and len(idnums_l) == 1:
-        id = idnums_l[0].string
-        i = id.split(' ')
-        if i[0] == "STC":
-            return(i[-1],  "None")
-        else:
-            return("None", i[-1])
-    elif len(idnums_u) == 1 and len(idnums_l) == 1:
-        id_u = idnums_u[0].string
-        i_u = id_u.split(' ')
-        id_l = idnums_l[0].string
-        i_l = id_l.split(' ')
-        if i_u[0] == "STC":
-            return(i_u[-1], i_l[-1])
-        else:
-            return(i_l[-1], i_u[-1])
-    else:
-        return("None", "None")
-
 def dateTXT():
     '''
     Extracts the integer date or date range from the corresponding entry in TCP's official 
@@ -235,3 +182,58 @@ if __name__ == '__main__':
     end = time.time()
     print("The time of execution is :", end-start, ' seconds')
 
+'''
+Old deprecated code commented out below
+'''
+# def oldIDNO(soup):
+#     idnums_u = soup.find_all('idno', attrs={'type': 'STC'})
+#     idnums_l = soup.find_all('idno', attrs={'type': 'stc'})
+#     if len(idnums_u) == 3:
+#         stc = idnums_u[0].string
+#         s = stc.split(' ')
+#         estc = idnums_u[-1].string
+#         e = estc.split(' ')
+#         return (s[-1],e[-1])
+#     elif len(idnums_l) == 3:
+#         stc = idnums_l[0].string
+#         s = stc.split(' ')
+#         estc = idnums_l[-1].string
+#         e = estc.split(' ')
+#         return (s[-1],e[-1])
+#     elif len(idnums_u) == 2:
+#         stc = idnums_u[0].string
+#         s = stc.split(' ')
+#         estc = idnums_u[1].string
+#         e = estc.split(' ')
+#         return (s[-1],e[-1])
+#     elif len(idnums_l) == 2:
+#         stc = idnums_l[0].string
+#         s = stc.split(' ')
+#         estc = idnums_l[1].string
+#         e = estc.split(' ')
+#         return (s[-1],e[-1])
+#     elif len(idnums_u) == 1 and len(idnums_l) == 0:
+#         id = idnums_u[0].string
+#         i = id.split(' ')
+#         if i[0] == "STC":
+#             return(i[-1],  "None")
+#         else:
+#             return("None", i[-1])
+#     elif len(idnums_u) == 0 and len(idnums_l) == 1:
+#         id = idnums_l[0].string
+#         i = id.split(' ')
+#         if i[0] == "STC":
+#             return(i[-1],  "None")
+#         else:
+#             return("None", i[-1])
+#     elif len(idnums_u) == 1 and len(idnums_l) == 1:
+#         id_u = idnums_u[0].string
+#         i_u = id_u.split(' ')
+#         id_l = idnums_l[0].string
+#         i_l = id_l.split(' ')
+#         if i_u[0] == "STC":
+#             return(i_u[-1], i_l[-1])
+#         else:
+#             return(i_l[-1], i_u[-1])
+#     else:
+#         return("None", "None")
