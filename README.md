@@ -36,6 +36,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *select.py*: Code that helps copy relevant files into other folders. 
 - *vocab.ipynb*: TF-IDF analysis and visualization, term frequency word cloud generation and bigram models
 - *network.ipynb*: Social network visualization based on TCP metadata
+- *wordembedbigram.ipynb*: Word embeddings w/ Word2Vec. PCA + heatmap visualizations  
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
 
