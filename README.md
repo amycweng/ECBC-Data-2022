@@ -26,7 +26,6 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 ## File Descriptions
 - *metadata.py*: Stage I metadata processing; Takes in a folder of individual TCP XML files and writes the metadata into a separate CSV file. 
 - *text.py*: Stage I text processing 
-- *stageTwo.py*: Stage II processing, i.e., Additional Orthographic and Character Conversion 
 - *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
 - *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. Filters TCP texts by keywords and dates. 
 - *functions.py*: Custom utility functions, e.g., functions for removing stopwords, extracting content from plain text files, and processing keywords
@@ -36,6 +35,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *select.py*: Code that helps copy relevant files into other folders. 
 - *vocab.ipynb*: TF-IDF analysis and visualization, term frequency word cloud generation and bigram models
 - *network.ipynb*: Social network visualization based on TCP metadata
+- *corrections.py*: Selective correction of words w/ missing characters, as well as lemmatization 
 - *wordembedbigram.ipynb*: Word embeddings w/ Word2Vec. PCA + heatmap visualizations  
 - *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
 - *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
