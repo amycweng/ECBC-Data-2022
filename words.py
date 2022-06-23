@@ -3,23 +3,25 @@ from collections import Counter
 from tkinter import N 
 from bs4 import BeautifulSoup, SoupStrainer 
 
-def legomena(string,output,file):
+def legomena(strings,output):
     outfile = open(output,'a+')
+    bigString = ' '.join(strings)
     list = []
-    text = string.split(' ')
+    text = bigString.split(' ')
     words = dict(Counter(text))
     for w,freq in words.items():
         if len(w) <= 2: continue
         if freq == 1 or freq == 2: 
             list.append(w)
-    outfile.write(file + ': ' + str(list)+ '\n') 
+    outfile.write(str(list)) 
 
-def special(string):
+def special(strings):
     specials = []
-    text = string.split(' ')
-    for t in text: 
-        if '●' in t: 
-            specials.append(t)
+    for string in strings: 
+        text = string.split(' ')
+        for t in text: 
+            if '●' in t: 
+                specials.append(t)
     return specials
 
 def specialNouns(file):
@@ -46,17 +48,17 @@ if option != 'nouns':
         outfile = open(output,'a+')
         outfile.write(str(data))
     
-    specials = []
+    strings = []
     folder = input('Enter input folder path: ')
     for file in os.listdir(folder):
         path = os.path.join(folder,file)
         f = open(path,'r')
         line = f.readlines()[0]
+        strings.append(line)
         f.close()
-        if option == 'special': specials.extend(special(line))
-        if option == 'legomena': legomena(line,output,file)
-
+    if option == 'legomena': legomena(strings,output)
     if option == 'special':  
+        specials = special(strings)
         outfile = open(output,'a+')
         outfile.write(str(dict(Counter(specials).most_common(n=5000)).keys()))
 else: 
