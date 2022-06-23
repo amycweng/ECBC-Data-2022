@@ -22,14 +22,32 @@ def special(string):
             specials.append(t)
     return specials
 
-option = input('Enter legomena or special or nouns: ')
+def specialNouns(file):
+    specials = []
+    file = open(file,'r')
+    data = file.readlines()
+    file.close()
+    for line in data: 
+        line = line.split(':')
+        for item in line: 
+            if '●' in item: 
+                specials.append(item)
+    return specials
+
+option = input('Enter legomena or special or nouns or specialNouns: ')
 start = time.time()
 
 
 if option != 'nouns': 
-    folder = input('Enter input folder path: ')
     output = input('Enter output TXT file path: ')
+    if option == 'specialNouns': 
+        file = input('Enter path of TXT file with noun info: ')
+        data = specialNouns(file)
+        outfile = open(output,'a+')
+        outfile.write(str(data))
+    
     specials = []
+    folder = input('Enter input folder path: ')
     for file in os.listdir(folder):
         path = os.path.join(folder,file)
         f = open(path,'r')
@@ -40,7 +58,7 @@ if option != 'nouns':
 
     if option == 'special':  
         outfile = open(output,'a+')
-        outfile.write(str(dict(Counter(specials).most_common(n=5000))))
+        outfile.write(str(dict(Counter(specials).most_common(n=5000)).keys()))
 else: 
     epFolder = input('Enter EP folder: ')
     output = input('Enter output TXT file path: ')

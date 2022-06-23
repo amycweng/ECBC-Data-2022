@@ -4,6 +4,7 @@ from collections import Counter
 
 # import nltk
 # nltk.download('stopwords')
+#test
 
 def getTexts(folder):
     '''
