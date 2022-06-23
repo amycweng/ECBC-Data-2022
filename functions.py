@@ -31,8 +31,49 @@ def remove_stopwords(data):
                     'wherein', 'whereby', 'whereas', 'also', 'us', 'upon', 
                     'would', 'within', 'indeed', 'become', 'viz', 'per', 'anno', 
                     'whilst', 'shall','may','unto','say','day','one','make',
-                    'two','come','time','place'])
-    
+                    'two','come','time','place','whereof','thou','thy', 
+                    'afterward','rather','etc','eg', 'ie', 'either', 'else',
+                    'ever','even','ew','often','seldom','ever','even','likewise'
+                    'must','without', 'thus', 'thereof', 'thence', 'thee', 'therein', 
+                    'wherein', 'whereby', 'whereas', 'whereof','also', 'us', 'upon', 
+                    'would', 'within', 'indeed', 'become', 'viz', 'per', 'anno', 
+                    'whilst', 'shall','may','unto','say','day','one','make','such'
+                    'two','come','time','place','said','hath','made','much','mr',
+                    'sir','how','like','full','three','four','five','say','thou','thy',
+                    'done','do','have','know','heard','hear','saying','think','rather',
+                    'either','neither','or','and','till','until','might','could','begin',
+                    'began','went','last','matter','seeing','go','gone','little','without',
+                    'long','aforesaid','old','can','afterward','before','therefore'
+                    'unto','part','through','let','neve','ne','de','est','et','though',
+                    'printed','doth','iq','esq','esq.','first','second','third','fourth',
+                    'dr','ditto','self','almost','conerning','near','far','since','always',
+                    'otherwise','hereby','inasmuch','includes','char','seems','seem','cannot',
+                    'themselves','himself','herself','itself','it','likewise','mentioned',
+                    'he','we','she','her','his','him','her','fol','pag','lib','cap','must',
+                    'th●','●he','●nd','a●d','an●','wi●h','●or','th●y','t●e','the●',
+                    'th●m','ou●','no●','tha●','w●re','th●se','●ound','th●n','●hat',
+                    'etc','et cetera','b●ing','s●me','si●e','great','present','late','later','early',
+                    'earlier','earliest','latest','th●t','se●','●ll','bu●','●ut','w●ll','th●ir',
+                    'which','what','why','where','when','there','wh●ch','hi●','●ee','th●re',
+                    'al●o', '●ame','●rom','w●th','l●ke','w●ich','●ight','l●st','●et','●re',
+                    'le●t','thei●','me●','whi●h','fi●e','●ad', 'above','about',
+                    'he●', '●is','c●me','●●e','fo●','af●er', 'ha●', 'abou●', 'fi●st','w●nt',
+                    'grea●', 'the●e', 'wa●', '●hey', '●ot', '●ow', '●ome', '●and', 'th●●', 'o●her', 
+                    'h●m', 'h●s', 'call●d', '●hen', 'thi●', '●ave', 'wer●', '●it', 'ha●e', 
+                    'ye●','w●s','a●l','ha●h','fa●re','no●e','●ay', 'som●', 't●●', 'ar●', 'o●●', 
+                    'h●ue', 'we●e', '●●●', 'f●om','s●nd','do●','we●', 'n●w', '●ooke', 'f●r', 'al●', 
+                    'ther●', 'th●s', '●heir', 'the●r', 'h●d', 'fro●', 'of●', 's●●', '●an', 'thre●', 
+                    'a●ter', 'a●●', '●ur', 'da●es', 'lo●', 'sa●e', '●ent', 'hal●e', 'ma●●', 'a●e', '●ell', 
+                    'wo●ld', 'them●', '●ther','s●t', '●here', '●ort', 'wit●', '●ere', 'fr●m', 
+                    'c●lled', 'ma●', 'h●re', 'p●rt', 'co●', 'ma●e', 's●nt', 'o●e', '●ide', '●at', 'h●e','ne●t', 
+                    'every','place','places','placed','sen●', 'se●ne', 's●ore', 'h●r', 'o●r', '●old', 
+                    'ou●r', 'tho●e', 'sou●h', '●me', '●all', 'ba●ke', '●om', '●nto', 'eu●ry', 'thr●e', 'go●', '●hich', 
+                    '●ith', 'u●ry', '●ath', '●eare', 'bo●h', 'l●ft', 'hau●', '●e●', 'oth●rs', 'place●', 
+                    '●ill', 't●ey', '●oure', 'thos●', 'la●', '●ew', '●uery', 'se●t', 'whi●e', 'm●●', 
+                    'sa●d', 'co●e', 'b●t', 'm●y', '●ne', '●ire', 'on●','c●rtaine','certainly','certain',
+                    '●en', 'gr●at', '●ake', '●ing','●ither', '●eere', '●hose', 'kn●w', 'aft●r', 
+                    'definite','definitely','years','year','arrive','arrived','most','more'])
+    set(stop_words)
     return [[word for word in simple_preprocess(str(doc))
             if word not in stop_words] for doc in data]
 
