@@ -23,6 +23,7 @@ words = ['commodity','commodities','trade','merchandise',
         'exchanging','exchange','barter','bartering','drugs',
         'jews','iewes','mahomet','christendom','christian','company','companies',
         'arabs','arabia','cochinele','cochineal','oriental','england','money']
+
 dot = '●'
 variants = {}
 for word in words: 
