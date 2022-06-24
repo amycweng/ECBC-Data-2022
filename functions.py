@@ -1,11 +1,39 @@
 import os,re
 import pandas as pd
-from collections import Counter
 
 # import nltk
 # nltk.download('stopwords')
-#test
 
+from gensim.utils import simple_preprocess
+from nltk.corpus import stopwords
+stop_words = stopwords.words('english')
+
+def remove_stopwords(data):
+    stopwords.extend(['neve', 'printed', 'earlier', 'may', 'placed', 'unto', 'whereof', 
+                'began', 'inasmuch', 'shall', 'de', 'we', 'sir', 'later', 'until', 
+                'could', 'two', 'years', 'mr', 'long', 'till', 'thereof', 'indeed', 
+                'ie', 'himself', 'neither', 'doth', 'thence', 'seem', 'part', 'old', 
+                'definite', 'would', 'iq', 'aforesaid', 'ever', 'might', 'upon', 'how', 
+                'therein', 'through', 'done', 'begin', 'little', 'last', 'certain', 
+                'also', 'ew', 'etc', 'full', 'second', 'though', 'place', 'more', 'his', 
+                'must', 'whereas', 'thy', 'thee', 'themselves', 'he', 'why', 'seldom', 
+                'hear', 'what', 'think', 'matter', 'time', 'et cetera', 'present', 'great', 
+                'do', 'before', 'made', 'there', 'thereforeunto', 'when', 'whilst', 'herself', 
+                'definitely', 'her', 'arrived', 'per', 'afterward', 'far', 'dr', 'saying', 
+                'char', 'whereby', 'or', 'third', 'seems', 'mentioned', 'go', 'esq', 'year', 
+                'likewise','must', 'know', 'arrive', 'pag', 'conerning', 'earliest', 'ditto', 
+                'hath', 'without', 'self', 'lib', 'three', 'and', 'itself', 'suchtwo', 'otherwise', 
+                'seeing', 'him', 'latest', 'often', 'cannot', 'et', 'thou', 'est', 'it', 
+                'which', 'can', 'most', 'early', 'let', 'almost', 'say', 'places', 'late', 
+                'hereby', 'every', 'wherein', 'always', 'either', 'much', 'come', 'said', 
+                'day', 'else', 'near', 'cap', 'likewise', 'esq.', 'viz', 'heard', 'fol', 
+                'like', 'within', 'become', 'have', 'thus', 'first', 'certainly', 'one', 
+                'make', 'rather', 'she', 'eg', 'where', 'ne', 'since', 'four', 'fourth', 
+                'includes', 'even', 'us', 'gone', 'five', 'anno', 'went','thing'])
+
+    return [[word for word in simple_preprocess(str(doc))
+            if word not in stop_words] for doc in data]
+    
 def getTexts(folder):
     '''
     Takes in plain text files and outputs a tuple of lists, with the first being the text
@@ -22,61 +50,6 @@ def getTexts(folder):
         fileNames.append(name)
         f.close()
     return textStrings,fileNames
-
-from gensim.utils import simple_preprocess
-from nltk.corpus import stopwords
-stop_words = stopwords.words('english')
-
-def remove_stopwords(data):
-    stop_words.extend(['thus', 'thereof', 'thence', 'thee', 'therein', 
-                    'wherein', 'whereby', 'whereas', 'also', 'us', 'upon', 
-                    'would', 'within', 'indeed', 'become', 'viz', 'per', 'anno', 
-                    'whilst', 'shall','may','unto','say','day','one','make',
-                    'two','come','time','place','whereof','thou','thy', 
-                    'afterward','rather','etc','eg', 'ie', 'either', 'else',
-                    'ever','even','ew','often','seldom','ever','even','likewise'
-                    'must','without', 'thus', 'thereof', 'thence', 'thee', 'therein', 
-                    'wherein', 'whereby', 'whereas', 'whereof','also', 'us', 'upon', 
-                    'would', 'within', 'indeed', 'become', 'viz', 'per', 'anno', 
-                    'whilst', 'shall','may','unto','say','day','one','make','such'
-                    'two','come','time','place','said','hath','made','much','mr',
-                    'sir','how','like','full','three','four','five','say','thou','thy',
-                    'done','do','have','know','heard','hear','saying','think','rather',
-                    'either','neither','or','and','till','until','might','could','begin',
-                    'began','went','last','matter','seeing','go','gone','little','without',
-                    'long','aforesaid','old','can','afterward','before','therefore'
-                    'unto','part','through','let','neve','ne','de','est','et','though',
-                    'printed','doth','iq','esq','esq.','first','second','third','fourth',
-                    'dr','ditto','self','almost','conerning','near','far','since','always',
-                    'otherwise','hereby','inasmuch','includes','char','seems','seem','cannot',
-                    'themselves','himself','herself','itself','it','likewise','mentioned',
-                    'he','we','she','her','his','him','her','fol','pag','lib','cap','must',
-                    'th●','●he','●nd','a●d','an●','wi●h','●or','th●y','t●e','the●',
-                    'th●m','ou●','no●','tha●','w●re','th●se','●ound','th●n','●hat',
-                    'etc','et cetera','b●ing','s●me','si●e','great','present','late','later','early',
-                    'earlier','earliest','latest','th●t','se●','●ll','bu●','●ut','w●ll','th●ir',
-                    'which','what','why','where','when','there','wh●ch','hi●','●ee','th●re',
-                    'al●o', '●ame','●rom','w●th','l●ke','w●ich','●ight','l●st','●et','●re',
-                    'le●t','thei●','me●','whi●h','fi●e','●ad', 'above','about',
-                    'he●', '●is','c●me','●●e','fo●','af●er', 'ha●', 'abou●', 'fi●st','w●nt',
-                    'grea●', 'the●e', 'wa●', '●hey', '●ot', '●ow', '●ome', '●and', 'th●●', 'o●her', 
-                    'h●m', 'h●s', 'call●d', '●hen', 'thi●', '●ave', 'wer●', '●it', 'ha●e', 
-                    'ye●','w●s','a●l','ha●h','fa●re','no●e','●ay', 'som●', 't●●', 'ar●', 'o●●', 
-                    'h●ue', 'we●e', '●●●', 'f●om','s●nd','do●','we●', 'n●w', '●ooke', 'f●r', 'al●', 
-                    'ther●', 'th●s', '●heir', 'the●r', 'h●d', 'fro●', 'of●', 's●●', '●an', 'thre●', 
-                    'a●ter', 'a●●', '●ur', 'da●es', 'lo●', 'sa●e', '●ent', 'hal●e', 'ma●●', 'a●e', '●ell', 
-                    'wo●ld', 'them●', '●ther','s●t', '●here', '●ort', 'wit●', '●ere', 'fr●m', 
-                    'c●lled', 'ma●', 'h●re', 'p●rt', 'co●', 'ma●e', 's●nt', 'o●e', '●ide', '●at', 'h●e','ne●t', 
-                    'every','place','places','placed','sen●', 'se●ne', 's●ore', 'h●r', 'o●r', '●old', 
-                    'ou●r', 'tho●e', 'sou●h', '●me', '●all', 'ba●ke', '●om', '●nto', 'eu●ry', 'thr●e', 'go●', '●hich', 
-                    '●ith', 'u●ry', '●ath', '●eare', 'bo●h', 'l●ft', 'hau●', '●e●', 'oth●rs', 'place●', 
-                    '●ill', 't●ey', '●oure', 'thos●', 'la●', '●ew', '●uery', 'se●t', 'whi●e', 'm●●', 
-                    'sa●d', 'co●e', 'b●t', 'm●y', '●ne', '●ire', 'on●','c●rtaine','certainly','certain',
-                    '●en', 'gr●at', '●ake', '●ing','●ither', '●eere', '●hose', 'kn●w', 'aft●r', 
-                    'definite','definitely','years','year','arrive','arrived','most','more'])
-    set(stop_words)
-    return [[word for word in simple_preprocess(str(doc))
-            if word not in stop_words] for doc in data]
 
 def keywords(csv):
     '''
@@ -117,23 +90,4 @@ def keywords(csv):
         count += 1
     return dict 
 
-
 def date(soup):
-    '''
-    Converts the contents of the SECOND date tag in each XML file. 
-    Function keeps the contents unaltered if it is an estimated date range, but converts 
-    all other dates into a single date (type = string). 
-    For all other edge cases, the function returns "Date Unknown"
-    '''
-    dateStr = soup.find_all('date')[1].string
-    # keep dateStr unaltered if it is a date range, e.g., [between XXXX and XXXX] or [between XXXX-XXXX]
-    estimates = re.search('between',dateStr)
-    if estimates != None:
-        return dateStr
-    # otherwise, convert dateStr to a single date 
-    intDates = re.findall(r'\d{4}',dateStr)
-    if len(intDates) != 0:
-        for d in intDates:
-            if int(d) in range(1470,1800):
-                return d
-    return 'Date Unknown'

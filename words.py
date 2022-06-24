@@ -62,10 +62,12 @@ if option != 'nouns':
         outfile = open(output,'a+')
         outfile.write(str(dict(Counter(specials).most_common(n=5000)).keys()))
 else: 
+    option2 = input('Enter fileNouns or allNouns: ')
     epFolder = input('Enter EP folder: ')
     output = input('Enter output TXT file path: ')
     outfile = open(output,'w+')
     nouns = ['nn1','nn2','n1','n2','ng1','ng2']
+    allNouns = []
     for file in os.listdir(epFolder):
         fileName = os.path.join(epFolder,file)
         print(file)
@@ -86,9 +88,14 @@ else:
                 if re.search('pos',str(sibling)) and str(sibling['pos']) != 'n/a':
                     if sibling['pos'] in nouns: 
                         nounList.append(sibling['lemma'].lower())
-        nounCounts = dict(Counter(nounList))
-        outfile.write(file + ': ' + str(nounCounts) + '\n')
+        if option2 == 'fileNouns':
+            nounCounts = dict(Counter(nounList))
+            outfile.write(file + ': ' + str(nounCounts) + '\n')
+        elif option2 == 'allNouns':
+            allNouns.extend(nounList)
 
+if option2 == 'allNouns':
+    outfile.write(str(dict(Counter(allNouns))))
 end = time.time()
 print("The time of execution is :", end-start, ' seconds')
 
