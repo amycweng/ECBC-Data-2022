@@ -6,7 +6,7 @@ places = ['banda', 'plymouth', 'poland', 'venetia', 'scotland',
  'livonia', 'soldania', 'paracoussy', 'cataia', 'morea', 'biscay','muscovite',
  'johannes','sanderson','nicolo']
 
-interesting_words =['walter', 'tercera', 'capac' ]
+confuse =['walter', 'tercera', 'capac' ]
 
 lemmas = {'januarie':'january',
           'ganges':'gange',

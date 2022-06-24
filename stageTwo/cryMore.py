@@ -35,6 +35,7 @@ lemmas = {
     'england':'english', #also to check
     'england':'bristol',
     'mongolia':'mogoll',
+    'inca':'incan',
     'jew':'jewes',
     'jew':'jews',
     'jesuit':'jesuites',
@@ -123,7 +124,7 @@ listlemmas = {
     'russia':['russ', 'russe', 'russi', 'rvssia', 'moscovia','mosko','moscow', 'siberia', 'astracan', 'novogrod'],    
     'popery':['popaian','papist','poperie','papish','popish','papistrie','papistry'],
     'prussia':['prvissa', 'prussian', 'prussians', 'sprussia'],   
-    'spain':['spanishe', 'spanished', 'spanisshe',  'spanysh', 'spanyshe', 'seville', 'spanyssh', 'spanysshe','spaynysshe','spaine','spayne', 'spayn','espanna', 'hispanus', 'hispaniola', 'castille', 'castilian','barselona', 'granada', 'inca','incan'],
+    'spain':['spanishe', 'spanished', 'spanisshe',  'spanysh', 'spanyshe', 'seville', 'spanyssh', 'spanysshe','spaynysshe','spaine','spayne', 'spayn','espanna', 'hispanus', 'hispaniola', 'castille', 'castilian','barselona', 'granada'],
     'spaniard':['spainard', 'spainards','spaniarde' ,'spaniardes', 'spaniards',   'spanierds', 'spanyard', 'spanyardes', 'spanyards'],
     'tartar':['tartarian', 'tartarorum', 'tartaria'], #??
     'venice':['venetian','venitians','venisia','venetia']
