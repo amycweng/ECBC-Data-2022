@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import re,os,time
-from characterCleaner import simple_clean, txt_clean
 
 '''
 STAGE I TEXT PROCESSING for both body text and dedications. 
@@ -40,7 +39,7 @@ def dedication(soup):
             text_list.append(sibling['lemma'])
     return ' '.join(text_list)
 
-def convert(folder,file, textfolder):
+def convert(folder,file, textfolder,typeText):
     '''
     Master function for converting each XML file into a dataframe 
     '''
@@ -50,24 +49,25 @@ def convert(folder,file, textfolder):
     data = data.read()
     soup = BeautifulSoup(data,'html.parser')
     #call text function to output the body text as a plain text file 
-    with open(os.path.join(textfolder, name + '.txt'), 'a+') as file:
-        toFile = text(soup)
+    with open(os.path.join(textfolder, name + '.txt'), 'w+') as file:
+        if typeText == 'text': toFile = text(soup)
+        elif typeText == 'dedication': toFile = dedication(soup)
         file.write(toFile) 
 
 if __name__ == '__main__':
-    '''
-    Initializes and writes metadata to a new CSV file. 
-    '''
     folder = input('Enter folder path: ')
     textfolder = input('Enter the folder path for your output text files: ')
+    option = input('Enter A or B or with a number: ')
+    typeText = input('Enter text or dedication: ')
     
     start = time.time()
     count = 0
     for file in os.listdir(folder):
-        count += 1
-        if count % 10 == 0 and count != 0:
-            print("Processed " + str(count) + " files so far")
-        convert(folder,file,textfolder)
+        if option in file:
+            count += 1
+            if count % 10 == 0 and count != 0:
+                print("Processed " + str(count) + " files so far")
+            convert(folder,file,textfolder,typeText)
     print('The number of total files is ' + str(count))
     end = time.time()
     print("The time of execution is :", end-start, ' seconds')

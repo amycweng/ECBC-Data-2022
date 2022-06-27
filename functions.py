@@ -1,35 +1,45 @@
 import os,re
 import pandas as pd
 
-# import nltk
-# nltk.download('stopwords')
-
 from gensim.utils import simple_preprocess
-from nltk.corpus import stopwords
-stop_words = stopwords.words('english')
 
 def remove_stopwords(data):
-    stopwords.extend(['neve', 'printed', 'earlier', 'may', 'placed', 'unto', 'whereof', 
-                'began', 'inasmuch', 'shall', 'de', 'we', 'sir', 'later', 'until', 
-                'could', 'two', 'years', 'mr', 'long', 'till', 'thereof', 'indeed', 
-                'ie', 'himself', 'neither', 'doth', 'thence', 'seem', 'part', 'old', 
-                'definite', 'would', 'iq', 'aforesaid', 'ever', 'might', 'upon', 'how', 
-                'therein', 'through', 'done', 'begin', 'little', 'last', 'certain', 
-                'also', 'ew', 'etc', 'full', 'second', 'though', 'place', 'more', 'his', 
-                'must', 'whereas', 'thy', 'thee', 'themselves', 'he', 'why', 'seldom', 
-                'hear', 'what', 'think', 'matter', 'time', 'et cetera', 'present', 'great', 
-                'do', 'before', 'made', 'there', 'thereforeunto', 'when', 'whilst', 'herself', 
-                'definitely', 'her', 'arrived', 'per', 'afterward', 'far', 'dr', 'saying', 
-                'char', 'whereby', 'or', 'third', 'seems', 'mentioned', 'go', 'esq', 'year', 
-                'likewise','must', 'know', 'arrive', 'pag', 'conerning', 'earliest', 'ditto', 
-                'hath', 'without', 'self', 'lib', 'three', 'and', 'itself', 'suchtwo', 'otherwise', 
-                'seeing', 'him', 'latest', 'often', 'cannot', 'et', 'thou', 'est', 'it', 
-                'which', 'can', 'most', 'early', 'let', 'almost', 'say', 'places', 'late', 
-                'hereby', 'every', 'wherein', 'always', 'either', 'much', 'come', 'said', 
-                'day', 'else', 'near', 'cap', 'likewise', 'esq.', 'viz', 'heard', 'fol', 
-                'like', 'within', 'become', 'have', 'thus', 'first', 'certainly', 'one', 
-                'make', 'rather', 'she', 'eg', 'where', 'ne', 'since', 'four', 'fourth', 
-                'includes', 'even', 'us', 'gone', 'five', 'anno', 'went','thing'])
+    stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 
+                "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 
+                'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', 
+                "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 
+                'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 
+                'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 
+                'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'or', 
+                'as', 'until', 'while', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 
+                'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 
+                'down', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 
+                'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more',
+                'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 
+                'than', 'too', 'very', 's', 't', 'can', 'will', 'don', "don't", "should've", 'now', 
+                'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 
+                'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', 
+                "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', 
+                "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', 
+                "weren't", 'won', "won't", 'wouldn', "wouldn't", 'neve', 'earlier', 'may', 
+                'unto', 'whereof', 'began', 'inasmuch', 'shall', 'de', 'we', 'sir', 'later', 'until', 
+                'could', 'two', 'years', 'mr', 'long', 'till', 'thereof', 'indeed', 'ie', 'himself', 
+                'neither', 'doth', 'thence', 'seem', 'part', 'old', 'definite', 'would', 'iq', 
+                'aforesaid', 'ever', 'might', 'upon', 'how', 'therein', 'through', 'done', 'begin', 
+                'little', 'last', 'also', 'ew', 'etc', 'full', 'second', 'though', 'more', 'his', 
+                'whereas', 'thy', 'thee', 'themselves', 'he', 'why', 'seldom', 'hear', 'what', 
+                'think', 'matter', 'et cetera', 'present', 'do', 'before', 'made', 'there', 
+                'thereforeunto', 'when', 'whilst', 'herself', 'definitely', 'her', 'arrived', 
+                'per', 'afterward', 'far', 'dr', 'saying', 'char', 'whereby', 'or', 'third', 
+                'seems', 'mentioned', 'go', 'esq', 'year', 'likewise', 'must', 'know', 'pag', 
+                'conerning', 'earliest', 'ditto', 'hath', 'without', 'self', 'lib', 'three', 
+                'and', 'itself', 'suchtwo', 'otherwise', 'seeing', 'him', 'latest', 'often', 
+                'cannot', 'et', 'thou', 'est', 'it', 'which', 'can', 'most', 'let', 'almost', 
+                'say', 'late', 'hereby', 'every', 'wherein', 'either', 'much', 'come', 'said', 
+                'else', 'near', 'cap', 'likewise', 'esq.', 'viz', 'heard', 'fol', 'like', 
+                'within', 'have', 'thus', 'certainly', 'one', 'make', 'rather', 'she', 
+                'eg', 'where', 'ne', 'since', 'four', 'fourth', 'includes', 'even', 'us', 
+                'gone', 'five', 'anno', 'went', 'thing']
 
     return [[word for word in simple_preprocess(str(doc))
             if word not in stop_words] for doc in data]
@@ -89,5 +99,3 @@ def keywords(csv):
         dict[ids[count]] = (newWords,dates[count])
         count += 1
     return dict 
-
-def date(soup):

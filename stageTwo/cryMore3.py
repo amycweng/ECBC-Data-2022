@@ -21,16 +21,16 @@ confuse =['walter', 'tercera', 'capac', 'cocrk', 'cola', 'sabandar',
 'vandal', 'amacao' ]
 
 lemmas = {'januarie':'january',
-          'ganges':'gange',
-          'greecian':'greece',
+          #'ganges':'gange', #the ganges is an actual river
+          'greecian':'grecian',
           'curran':'currant',
-          'pengwin':'pinguin',
+          'pengwin':'penguin',
           'pinnasses':'pinnace',
           'cananor':'kannur',
           'straits':'strait',
-          'clothes':'clothe', #Not sure
-          'francis':'francisco', #Maybe?
-          'yeraslave':'yaroslavl', #Not sure
+          # 'clothes':'clothe', #Not sure
+          # 'francis':'francisco', #Maybe? #likely someone's name!
+          'yeraslave':'yaroslavl', #Not sure #i think so! it's a word in principal navigations, mentions that its a town
           'cantar':'kantar',
           'maronites':'maronite'
 }

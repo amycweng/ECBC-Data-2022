@@ -1,6 +1,5 @@
 import os,re,time
 from collections import Counter
-from tkinter import N 
 from bs4 import BeautifulSoup, SoupStrainer 
 
 def legomena(strings,output):
@@ -60,7 +59,7 @@ if option != 'nouns':
     if option == 'special':  
         specials = special(strings)
         outfile = open(output,'a+')
-        outfile.write(str(dict(Counter(specials).most_common(n=5000)).keys()))
+        outfile.write(str(dict(Counter(specials).most_common(n=100000)).keys()))
 else: 
     option2 = input('Enter fileNouns or allNouns: ')
     epFolder = input('Enter EP folder: ')
