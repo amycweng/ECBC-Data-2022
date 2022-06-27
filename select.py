@@ -2,11 +2,11 @@ import os
 import shutil
 
 # input a a list of TCP IDs for the texts you're wanting to copy
-search = open('/srv/data/ECBC-Data-2022/Text_Files/relevant.txt', 'r')
+search = open('/srv/data/ECBC-Data-2022/Text_Files/catalogue/relevant.txt', 'r')
 
 # specify which folder you're searching through
-dir = '/srv/data/allTCP'
-# dir = '/srv/data/eebotcp/texts'
+# dir = '/srv/data/originaldata/allTCP'
+dir = '/srv/data/originaldata/allTCP/eebotcp'
 
 # matches name in the supplied list to file names, copies over if it exists in specified folder
 for line in search:
@@ -21,9 +21,8 @@ for line in search:
                     count += 1
                     
                     # make sure to specify destination folder here!!
-                    shutil.copy(os.path.join(root, file), '/srv/data/relevantTCP')
+                    shutil.move(os.path.join(root, file), '/srv/data/relevantEPFiles')
                 
                 else: continue
     if count == 0:
         print(s,'is not in the folder :((((')
-
