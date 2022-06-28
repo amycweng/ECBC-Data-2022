@@ -1,4 +1,4 @@
-corrections = {
+{
     'wi●h':'wish',
     'fi●st':'first',
     'hau●':'have',
