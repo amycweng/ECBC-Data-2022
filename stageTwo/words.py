@@ -19,6 +19,7 @@ def special(strings):
     for string in strings: 
         text = string.split(' ')
         for t in text: 
+            t = t.lower()
             if '●' in t: 
                 specials.append(t)
     return specials
@@ -38,7 +39,6 @@ def specialNouns(file):
 option = input('Enter legomena or special or nouns or specialNouns: ')
 start = time.time()
 
-
 if option != 'nouns': 
     output = input('Enter output TXT file path: ')
     if option == 'specialNouns': 
@@ -52,14 +52,15 @@ if option != 'nouns':
     for file in os.listdir(folder):
         path = os.path.join(folder,file)
         f = open(path,'r')
-        line = f.readlines()[0]
-        strings.append(line)
+        for line in f:
+            data = line.strip()
+            strings.append(line)
         f.close()
     if option == 'legomena': legomena(strings,output)
     if option == 'special':  
         specials = special(strings)
-        outfile = open(output,'a+')
-        outfile.write(str(dict(Counter(specials).most_common(n=100000)).keys()))
+        outfile = open(output,'w+')
+        outfile.write(str(dict(Counter(specials).most_common(n=10000))))
 else: 
     option2 = input('Enter fileNouns or allNouns: ')
     epFolder = input('Enter EP folder: ')
@@ -93,8 +94,8 @@ else:
         elif option2 == 'allNouns':
             allNouns.extend(nounList)
 
-if option2 == 'allNouns':
-    outfile.write(str(dict(Counter(allNouns))))
+    if option2 == 'allNouns':
+        outfile.write(str(dict(Counter(allNouns))))
 end = time.time()
 print("The time of execution is :", end-start, ' seconds')
 

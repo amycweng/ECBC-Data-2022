@@ -1,6 +1,5 @@
 import os,re
 import pandas as pd
-
 from gensim.utils import simple_preprocess
 
 def remove_stopwords(data):
@@ -14,7 +13,7 @@ def remove_stopwords(data):
                 'as', 'until', 'while', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 
                 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 
                 'down', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 
-                'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more',
+                'there', 'when', 'whence','where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more',
                 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 
                 'than', 'too', 'very', 's', 't', 'can', 'will', 'don', "don't", "should've", 'now', 
                 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 
@@ -36,10 +35,11 @@ def remove_stopwords(data):
                 'and', 'itself', 'suchtwo', 'otherwise', 'seeing', 'him', 'latest', 'often', 
                 'cannot', 'et', 'thou', 'est', 'it', 'which', 'can', 'most', 'let', 'almost', 
                 'say', 'late', 'hereby', 'every', 'wherein', 'either', 'much', 'come', 'said', 
-                'else', 'near', 'cap', 'likewise', 'esq.', 'viz', 'heard', 'fol', 'like', 
+                'else', 'near', 'cap', 'esq', 'viz', 'heard', 'fol', 'like', 
                 'within', 'have', 'thus', 'certainly', 'one', 'make', 'rather', 'she', 
                 'eg', 'where', 'ne', 'since', 'four', 'fourth', 'includes', 'even', 'us', 
-                'gone', 'five', 'anno', 'went', 'thing']
+                'gone', 'five', 'anno', 'went', 'thing','according','hove','set',
+                'ettling', 'hee', 'bee', 'wee', 'mat', 'gen','rom']
 
     return [[word for word in simple_preprocess(str(doc))
             if word not in stop_words] for doc in data]
