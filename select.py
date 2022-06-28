@@ -6,7 +6,7 @@ search = open('/srv/data/ECBC-Data-2022/Text_Files/catalogue/relevant.txt', 'r')
 
 # specify which folder you're searching through
 # dir = '/srv/data/originaldata/allTCP'
-dir = '/srv/data/originaldata/allTCP/eebotcp'
+dir = '/srv/data/originaldata/eebotcp'
 
 # matches name in the supplied list to file names, copies over if it exists in specified folder
 for line in search:
