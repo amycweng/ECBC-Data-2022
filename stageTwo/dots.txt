@@ -1,6 +1,7 @@
-{
+corrections = {
+    '●urad':'murad',
     'wi●h':'wish',
-    'fi●st':'first',
+    'fi●st':'first', 
     'hau●':'have',
     'god●':'god',
     'm●n':'man',
@@ -98,7 +99,7 @@
     'n●uer':'never',
     'world●':'world',
     '●ruth':'truth',
-    'we●l':'well', 
+    'we●l':'well',
     'know●':'know',
     'say●':'say',
     'gre●t':'great',
@@ -300,6 +301,7 @@
     'superstitio●s':'superstitious',
     'jer●salem':'jerusalem',
     'je●usalem':'jerusalem',
+     
     'w●e': 'woe', 'w●st': 'west', 's●a': 'sea', '●rade': 'trade', 'fi●h': 'fish', 
     'ship●': 'ship', 'ke●pe': 'keep', 's●ll': 'sell', 'sp●niards': 'spaniard', 
     'u●e': 'use', 'us●': 'use', 'cap●': 'cape', 'diu●rs': 'diverse', 
@@ -391,6 +393,6 @@
     'earth●': 'earth', 'consta●tinople': 'constantinople', 'cath●ya': 'cataya', 
     'for●es': 'forces', 'englishmen●': 'englishman', 'constan●inople': 'constantinople',
     'na●ion': 'nation', 'londo●': 'london', 'china●': 'china', 'souldiers●': 'soldier', 
-    '●ich': 'rich', 'complain●●': 'complain', 'portinga●s': 'portuguese', 
-    'portingals●': 'portuguese'
+    '●ich': 'rich', 'complain●●': 'complain', 'portinga●s': 'portingal', 
+    'portingals●': 'portingal'
 }

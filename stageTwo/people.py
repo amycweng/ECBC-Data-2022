@@ -6,7 +6,8 @@ entities = ['vasco de gama','francis drake','walter ralegh','palaeologus',
             #richard shelley & john layfield are missing as authors 
             'john tradescant','robert harcourt','prester john','prester jean',
             #prester is missing as an author 
-            'muhammad sultan', 'john ferrar', 'nicholas ferrar', 'john harper', 
+            'muhammad sultan', 
+            'john ferrar', 'nicholas ferrar', 'john harper', 
             'humphrey gilbert', 'george peckham', 'richard hakluyt',
             'john rastell', 'thomas porter', 
             'edward maria wingfield', 'bartholomew gosnold', 'thomas smith',
@@ -14,7 +15,12 @@ entities = ['vasco de gama','francis drake','walter ralegh','palaeologus',
             'william cope', 'gabriel barbour',
             'sebastian cabot', 'john cabot', 'edward osborne',
             'richard staper', 'william harborne', 'murad', 'desoto',
-            'william garret', 'amerigo vespucci', 'christopher columbus'
+            'william garret', 'amerigo vespucci', 'christopher columbus',
+            #does not show up as author tag: columbus, vespucci, desoto, murad iii (though murad iv does show up)
+            # william harborne, richard staper, sebastian and john cabot, edward osborne, 
+            # gabriel barbour, william cope, edward maria wingfield, john and nicholas ferrar, 
+            # john harper, george peckham
+            'turkey company', 
             ]
 
 onlyauthor = ['Teixeira, José, 1543-1604', #we did not find a p.teixeira. J.T.'s works are voyages too 
@@ -26,7 +32,10 @@ onlyauthor = ['Teixeira, José, 1543-1604', #we did not find a p.teixeira. J.T.'
                 'Lithgow, William, 1582-1645?', # ONE of his texts is NOT within our range 
                 'Jessey, Henry, 1603-1663.', #all three of his texts are NOT within our range
                 'Heylyn, Peter, 1600-1662.', #many of his works are outside our range 
-                'Garrett, William, d. 1674 or 5.',
+                'Garrett, William, d. 1674 or 5.', #works outside our time range
+                'Porter, Thomas, fl. 1654-1668.', #works outside range, also two other author tags, see below
+                'Porter, T. (Thomas), 1636-1680.',
+                'Porter, Thomas, d. 1667.',
 
                 #the following are in our relevant corpus 
                 'Kemys, Lawrence, d. 1618.',
@@ -38,7 +47,15 @@ onlyauthor = ['Teixeira, José, 1543-1604', #we did not find a p.teixeira. J.T.'
                 'Roberts, Lewes, 1596-1640.',
                 'Harcourt, Robert, 1574?-1631.',
                 'Leo, Africanus, ca. 1492-ca. 1550.'
-                'Doddridge, John, Sir, 1555-1628.', ]
+                'Doddridge, John, Sir, 1555-1628.', #does not show up as a keyword in any search
+                'Gilbert, Humphrey, Sir, 1539?-1583.',
+                'Hakluyt, Richard, 1552?-1616.',
+                'Rastell, John, 1532-1577.',
+                'Sandys, Edwin, 1516?-1588.',
+                'Sandys, Edwin, 1611 or 12-1642.',
+                'Sandys, Edwin, Sir, 1561-1629.', #three edwin sandys author tags??
+                'Sandys, George, 1578-1644.'
+                ]
 
 noresult = ['john wrothe', 'erasmus ferrar', 'tristram conyam', 'john posar',
             'lott peere','robert sturmy',"laurent d'arvieux",'monsieur de thevenot',
