@@ -397,6 +397,19 @@ corrections = {
 }
 
 lemmas = {
+    # the following 
+    'fravncis':'francis','frauncis':'francis','frances':'francis',
+    'iohn':'john','couel':'covel','anthonie':'anthony', 
+    'ienkinson':'jenkinson','iessey':'jessey','jesseys':'jessey',
+    'heylyns':'heylyn','tradescants':'tradescant','harcovrt':'harcourt',
+    'iean':'jean','wroth':'wrothe', 'hvmphrey':'humphrey', 
+    'humfrey':'humphrey', 'humphrie':'humphrey', 'humfry':'humphrey', 
+    'gilberts':'gilbert', 'edwarde':'edward', 
+    'bartholmew':'bartholomew', 'smyth':'smith', 'smythe':'smith', 'smithes':'smith', 
+    'smiths':'smith', 'doddridge':'dodderidge', 'colvmbvs':'columbus', '●urad':'murad',
+    'edwyn':'edwin', 'stapers':'staper', 'ihon':'john', 'gosnoll':'gosnold',
+
+    #the following are based on the most commonly occuring words in 1580-1641 texts 
     'cor.':'corinthian',
     'psal':'psalm',
     'brethren':'brother', #check
@@ -737,8 +750,8 @@ lemmas = {
     'divers':'diverse',
     
     # the following are lemmas from the EP Tuning set of 26 texts 
-    'ralegh': 'raleigh', 'raliana': 'raleana', 'bereo': 'berreo', 'smythe': 'smith', 
-    'iohn': 'john', 'bargraue': 'bargrave', 'henrie': 'henry', 'magelane': 'magellan', 
+    'raleghs': 'ralegh', 'raliana': 'raleana', 'bereo': 'berreo', 'smythe': 'smith', 
+    'bargraue': 'bargrave', 'henrie': 'henry', 'magelane': 'magellan', 
     'christendome': 'christendom', 'plymmouth': 'plymouth', 'japon': 'japan', 
     'trinidado': 'trinidad', 'begala': 'belgium', 'soliman': 'suleiman', 
     'constantinop': 'constantinople', 'anatolia': 'turkey', 'portingal': 'portugal', 

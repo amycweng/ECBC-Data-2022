@@ -1,30 +1,20 @@
-John Wrothe
-John Ferrar
-Nicholas Ferrar
-Erasmus Ferrar
-John Harper
-Tristram Conyam
-Humphrey Gilbert
-George Peckham
-Richard Hakluyt (+LC)
-John Rastell
-John Posar
-Thomas Porter
-Edward Maria Wingfield→ strong interest and affinity (!!!) for Spain. One of the founding members of the Virginia Company
-Bartholomew Gosnold
-Sir Thomas Smith (or Smythe) (lived: c. 1558-1625): connected with Virginia Company, North-West Passage Company, Bermuda, Somers Islands Company; the Spanish Company, the French Company, a trip to Senegal, a trip to Russia, and helped the East India Company by sending them guns and anchors // first governor of EIC, also governor of LC
-John Dodderidge
-Edwin Sandys and George Sandys (+LC)
-Sir William Cope
-Lott Peere
-Gabriel Barbour
-Sebastian Cabot and John Cabot
-Edward Osborne
-Richard Staper
-William Harborne
-Murad III
-William Garrett
-Amerigo Vespucci / Christopher Columbus / Desoto / Vasco de Gama/Frances Drake/Walter Ralegh
+
+
+corrections = {
+    'iohn':'john', 'wroth':'wrothe', 'hvmphrey':'humphrey', 'humfrey':'humphrey', 
+    'humphrie':'humphrey', 'humfry':'humphrey, 'gilberts':'gilbert', 'edwarde':'edward', 
+    'bartholmew':'bartholomew', 'smyth':'smith', 'smythe':'smith', 'smithes':'smith', 
+    'smiths':'smith', 'doddridge':'dodderidge', 'colvmbvs':'columbus', '●urad':'murad',
+    'edwyn':'edwin", 'stapers':'staper', 'ihon':'john', 'gosnoll':'gosnold'
+    }
+
+
+
+
+
+Vasco de Gama
+Frances Drake
+Walter Ralegh
 Manuel Palaeologus (2nd to last byzantine emperor, 1400 visit to london)
 Robert Sturmy (mid-15th century bristol merchant to levant)
 Thomas Mun (Levant Company pamphlets)
