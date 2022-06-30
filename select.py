@@ -3,7 +3,6 @@ import shutil
 
 # input a a list of TCP IDs for the texts you're wanting to copy
 search = open('/srv/data/ECBC-Data-2022/Text_Files/catalogue/relevant.txt', 'r')
-
 # specify which folder you're searching through
 # dir = '/srv/data/originaldata/allTCP'
 dir = '/srv/data/originaldata/eebotcp'
@@ -21,7 +20,7 @@ for line in search:
                     count += 1
                     
                     # make sure to specify destination folder here!!
-                    shutil.move(os.path.join(root, file), '/srv/data/relevantEPFiles')
+                    shutil.copy(os.path.join(root, file), '/srv/data/otherCompanyTexts')
                 
                 else: continue
     if count == 0:
