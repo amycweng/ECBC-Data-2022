@@ -2,6 +2,8 @@
 
 We combine close and distant reading techniques to evaluate the metaphorical and ethical language surrounding three major English trading companies from 1580 to 1641. These are the English East India, Levant, and Virginia companies. We include 1641 because some English texts were still dated using the Julian calendar instead of the Gregorian calendar, so some dates can be one year off. More than just the exchange of goods, we explore the early modern documentation of how these companies facilitated cultural, religious, political, and economic affairs both peacefully and violently, as well as how authors used various arguments to justify England's colonial aspirations abroad. 
 
+**A comment on workflow**: All four of us worked in a shared folder on a virtual machine, and usually one of us pushed to the Git repo for all our work. Moreover, since we often collaborate on the files, we have chosen not to provide authorial details for individual files. If you have any questions, feel free to reach out to any of us. 
+
 ## We build upon the work of previous Duke University Data+ and Bass Connections projects:   
 
 Data+ Year 1 (2020) - For love of greed: tracing the early history of consumer culture 
@@ -24,7 +26,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - **VEP**: Visualizing Early Print (https://graphics.cs.wisc.edu/WP/vep/)
 
 ## Folder & File Descriptions 
-
+- *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. Filters TCP texts by keywords and dates. Creates word clouds for keywords metadata.
 - *company.py*: Filters through body text and authors of EP files to generate an expanded corpus related to all three companies
 - *functions.py*: Custom utility functions, e.g., functions for removing stopwords, extracting content from plain text files, and processing keywords
 - *network.ipynb*: Social network visualization based on TCP metadata
@@ -32,10 +34,22 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *supervised.ipynb*: Supervised text classification with logistic regression (see file for citations)
 - *topics.py*: LDA topic modeling w/ Gensim to generate 'topic words' for individual texts. Also generates word clouds of the topic words 
 - *unsupervised.ipynb*: Unsupervised k-means clustering and visualization (see file for citations)
-*vocab.ipynb*: TF-IDF analysis and visualization, term frequency word cloud generation and bigram models
+- *vocab.ipynb*: TF-IDF analysis and visualization, term frequency word cloud generation and bigram models
 - *wordembedbigram.ipynb*: Word embeddings w/ Word2Vec. PCA + heatmap visualizations  
-- *characterCleaner.py*: Preprocessing of XML and TXT files from VEP-Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/characterCleaner.py)
-- *conversion_dict.py*: Dictionary of ASCII equivalents of unicode characters in TCP from VEP Pipeline (https://github.com/uwgraphics/VEP-pipeline/blob/master/conversion_dict.py)
+
+## stageOne (Folder)
+- *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
+- *metadata.py*: Takes in a folder of individual TCP XML files and writes the desired metadata into a separate CSV file. 
+- *text.py*: Extracts either the text bodies or dedications from a specified EP folder
+
+## stageTwo (Folder)
+- *corrections.py*: Selective correction of words w/ missing characters, as well as lemmatization 
+- *dots.txt*: List of selective correction of words w/ missing characters, in a text file
+- *lemmas.txt*: List of selective standardization of important keywords, in a text file
+- *notes.py*: Lists of interesting terms we came across, alongside groupings of related words and concepts
+- *people.py*: Lists of key entities, along with their entire EP author tags and those that fall outside our date range
+- *replace.ipynb*: Takes in a folder of texts, and produces an output folder of standardized, lemmatized and corrected words.
+- *words.py*: Extracts and provides a list of all special characters, legomena or nouns (as needed) and their frequencies
 
 ## Text_Files (Folder)
 - *eebo_phase1_IDs_and_dates*: TCP Phase I text IDs and dates 
@@ -62,7 +76,6 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *special*: Words with special characters that occur in relevant EP texts.
 - *specialEPTuning.txt*: Words with special characters that occur in our EP tuning set of 26 files
 
-
 ## Image_Files (Folder)
 - *barTextsYear*: Bar graph of texts within 1580-1641, including texts with ranged dates 
 - *dateRangeTexts*: The distribution of texts with ranged dates 
@@ -71,17 +84,3 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *1600-1610 texts per year*: Bar graph for text counts in one decade 
 - *virginiaAuthorsGrouped.html*: Author network visualization for spreadsheet_Virginia set based on groups generated by k-means clustering 
 
-## stageOne (Folder)
-- *catalog.ipynb*: Catalogs existing and missing EP & TCP files. Converts the relevant missing TCP files into csvs. Filters TCP texts by keywords and dates. 
-- *dates.ipynb*: Extracts and converts date information from XML and TXT files. For date ranges, we simply examine the start date.  
-- *metadata.py*: Takes in a folder of individual TCP XML files and writes the desired metadata into a separate CSV file. 
-- *text.py*: Extracts either the text bodies or dedications from a specified EP folder
-
-## stageTwo (Folder)
-- *corrections.py*: Selective correction of words w/ missing characters, as well as lemmatization 
-- *dots.txt*: List of selective correction of words w/ missing characters, in a text file
-- *lemmas.txt*: List of selective standardization of important keywords, in a text file
-- *notes.py*: Lists of interesting terms we came across, alongside groupings of related words and concepts
-- *people.py*: Lists of key entities, along with their entire EP author tags and those that fall outside our date range
-- *replace.ipynb*: Takes in a folder of texts, and produces an output folder of standardized, lemmatized and corrected words.
-- *words.py*: Extracts and provides a list of all special characters, legomena or nouns (as needed) and their frequencies
