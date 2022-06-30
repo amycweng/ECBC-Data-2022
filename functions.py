@@ -51,14 +51,24 @@ def getTexts(folder):
     '''
     textStrings = []
     fileNames = []
+    underscores = {}
     for file in os.listdir(folder):
         path = os.path.join(folder,file)
         f = open(path,'r')
         text = f.readlines()[0]
-        textStrings.append(text)
-        name = file.split('.')[0]
-        fileNames.append(name)
+        if '_' in file: 
+            name = file.split('_')[0]
+            if name not in underscores.keys(): 
+                underscores[name] = text
+                fileNames.append(name)
+            else: underscores[name] = underscores[name] + ' ' + text
+        else: 
+            textStrings.append(text)
+            name = file.split('.')[0]
+            fileNames.append(name)
         f.close()
+    for text in underscores.values():
+        textStrings.append(text)
     return textStrings,fileNames
 
 def keywords(csv):
@@ -81,6 +91,7 @@ def keywords(csv):
         for w in words: 
             w = w.replace('.','')
             w = re.sub(r'\([^)]*\)','',w)
+            w = re.sub(r'[."\'-?:!;]', '', w)
             w = re.sub(r' ca|-|[0-9]{4}|,','',w)
             if re.search('Sultan of the Turks',w):
                 w = 'Sultan of the Turks'
@@ -91,7 +102,8 @@ def keywords(csv):
         newWords = set(newWords)
         newWords.discard('')
         newWords.discard('-')
-        newWords.discard('17th century')
+        newWords.discard('th century')
+        newWords.discard('I')
         newWords.discard('Early works to')
         newWords.discard('To')
         newWords.discard('No Keywords')
