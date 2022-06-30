@@ -1,5 +1,4 @@
-corrections = {
-    '●urad':'murad',
+{'●urad':'murad',
     'wi●h':'wish',
     'fi●st':'first', 
     'hau●':'have',
@@ -395,4 +394,4 @@ corrections = {
     'na●ion': 'nation', 'londo●': 'london', 'china●': 'china', 'souldiers●': 'soldier', 
     '●ich': 'rich', 'complain●●': 'complain', 'portinga●s': 'portingal', 
     'portingals●': 'portingal'
-}
+    }
