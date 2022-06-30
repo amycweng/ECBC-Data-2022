@@ -77,6 +77,32 @@ interesting = {'macao', # gambling card game
             'salem','minion','glut','offendor','bribery'
 }
 
+'''This keyTerms list is from the Google Doc of key terms that our PIs gave us'''
+keyTerms = ['commodity','trade','merchandise',
+        'commodious','merchandizing','profit','coffee',
+        'tobacco','sugar','sassafras','winauk','beaver',
+        'beaver','bever','furres','nullius','adventurer',
+        'adventure','copper','pearl','perles','mulberry',
+        'silk','turpentine','fantasia','virginiola',
+        'virginia','bermuda','whale','whaling',
+        'orient','glutton','gluttony','greed','greedy',
+        'busy','busyness','business','idleness','indies',
+        'indian','india','plymouth','plimmoth','massachusetts',
+        'colony','plantation','planter','spain',
+        'spanish','spaniard','hispanola','hispanis','venice',
+        'france','french','antwerp','levant','spices',
+        'indigo','currans','corrants','import','export',
+        'importation','exportation','raisins','cloth',
+        'giaour','infidel','cape','vasco','lepanto',
+        'pirates','piracy','moores','barbary','barbaries','customs',
+        'shippe','ship','joint','stock','trades','trading','traffic',
+        'merchant','merchants','insurance','aegypt','eqypt',
+        'excessive','defense','bullion','pleasure','indentured',
+        'negroes','negro','captives','strabo','novelty',
+        'exchanging','exchange','barter','bartering','drugs',
+        'jews','christendom','christian','company',
+        'arab','arabia','cochinele','cochineal','oriental','england','money']
+
 popeRelated = ['papal','papist','popery'
                 'popish','pope','popedom',
                 'popaian','papist','poperie',
