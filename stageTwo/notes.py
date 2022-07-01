@@ -109,7 +109,7 @@ popeRelated = ['papal','papist','popery'
                 'papish','papistrie','papistry',
                 'papistical']
 
-chinaRelated = ['cataya','cathaya','catay','cathay','canton', 'chineses','chinese']
+chinaRelated = ['cataya','cathaya','catay','cathay', 'chineses','chinese']
 
 #some of these spain-related ones are from EEBO rather than EP 
 spainRelated = ['spanishe', 'spanished', 'spanisshe',  'spanysh', 'spanyshe', 'seville', 'spanyssh', 'spanysshe','spaynysshe','spaine','spayne', 'spayn','espanna', 'hispanus', 'hispaniola', 'castille', 'castilian','barselona', 'granada']
