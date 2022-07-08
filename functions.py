@@ -23,24 +23,26 @@ def getTexts(folder):
     textStrings = []
     fileNames = []
     underscores = {}
-    for file in os.listdir(folder):
-        path = os.path.join(folder,file)
-        f = open(path,'r')
-        text = f.readlines()[0]
-        if '_' in file: 
-            name = file.split('_')[0]
-            if name not in underscores.keys(): 
-                underscores[name] = text
+    for root,dir,files in os.walk(folder):
+        for file in files:
+            if '.txt' not in file: continue
+            path = os.path.join(folder,file)
+            f = open(path,'r')
+            text = f.readlines()[0]
+            if '_' in file: 
+                name = file.split('_')[0]
+                if name not in underscores.keys(): 
+                    underscores[name] = text
+                    fileNames.append(name)
+                else: underscores[name] = underscores[name] + ' ' + text
+            else: 
+                textStrings.append(text)
+                name = file.split('.')[0]
                 fileNames.append(name)
-            else: underscores[name] = underscores[name] + ' ' + text
-        else: 
+            f.close()
+        for text in underscores.values():
             textStrings.append(text)
-            name = file.split('.')[0]
-            fileNames.append(name)
-        f.close()
-    for text in underscores.values():
-        textStrings.append(text)
-    return textStrings,fileNames
+        return textStrings,fileNames
 
 def keywords(csv):
     '''
