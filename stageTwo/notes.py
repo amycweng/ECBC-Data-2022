@@ -133,6 +133,3 @@ people = ['johannes','sanderson','nicolo', 'john', 'thomas', 'william',
 'pheodorowich', 'isabel', 'josephus', 'sio', 'sarmiento', 'rawlins',
 'anna', 'vasilowich', 'selim', 'cantan', 'mendoça','tartarian','welshman']
 
-doubleCheck = {
-    'cath●ya':'cataya',# double check 
-    }
