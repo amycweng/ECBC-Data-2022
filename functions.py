@@ -1,48 +1,5 @@
-import os,re
+import re
 import pandas as pd
-from gensim.utils import simple_preprocess
-
-def remove_stopwords(data):
-    '''
-    Additional stopwords beyond the ones removed in stageTwo, especially for topic modeling
-    '''
-    stop_words = ['if','of','because','since','part','yet','whether',
-                    'many','day','great','qua','out','man','time',
-                    'first','one','two','second','well','see','call',
-                    'against','never','john','word','place','therefore',
-                    'way','still','new']
-
-    return [[word for word in simple_preprocess(str(doc))
-            if word not in stop_words] for doc in data]
-    
-def getTexts(folder):
-    '''
-    Takes in plain text files and outputs a tuple of lists, with the first being the text
-    within each file as a string and the second list being the IDs of each text. 
-    '''
-    textStrings = []
-    fileNames = []
-    underscores = {}
-    for root,dir,files in os.walk(folder):
-        for file in files:
-            if '.txt' not in file: continue
-            path = os.path.join(folder,file)
-            f = open(path,'r')
-            text = f.readlines()[0]
-            if '_' in file: 
-                name = file.split('_')[0]
-                if name not in underscores.keys(): 
-                    underscores[name] = text
-                    fileNames.append(name)
-                else: underscores[name] = underscores[name] + ' ' + text
-            else: 
-                textStrings.append(text)
-                name = file.split('.')[0]
-                fileNames.append(name)
-            f.close()
-        for text in underscores.values():
-            textStrings.append(text)
-        return textStrings,fileNames
 
 def keywords(csv):
     '''
