@@ -1,0 +1,184 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+    <!-- Title goes here; change the dates  -->
+    <h1>XXXX-XXXX Tobacco N-Gram Network Documentation</h1>
+    </center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500;
+            height: 1000;
+            background-color: white;
+            border: 1px solid white;
+            position: relative;
+            float: left;
+        }
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // Paste node variable info here
+
+        // Paste edge variable info here 
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+<body>
+<right>
+    <h3>Legend of Colors</h3>
+    <!-- replace the info in the sentence starting w/ 'For this time period' with period-specific details  -->
+    <text>Each author node is colored based on the cluster in which the majority of their texts fall into. For this time period, k-means clustering with manual feature engineering and TFIDF vectorization yields five clusters (Clusters 0 to 4).  Each edge is colored based on the manual categorization of different n-grams. Node colors are encoded as circles, while edge colors are represented in boxes. For detailed documentation about clustering and n-grams, go to the Documentation page. Hover over each node or edge for details. 
+    </text>
+    <pre></pre>
+</right>
+<hr>
+<div id="mylegend"></div>
+<style type="text/css">
+    .circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    position: left
+    }
+</style>
+<script type="text/javascript">
+    // Replace colorList based on the num of clusters. 5 is max, so for any num of clusters less than 5, just simply remove entries from the dict 
+    var colorList = { ' Cluster 0': 'pink',  ' Cluster 1': 'purple', 
+                        ' Cluster 2': 'darkblue',' Cluster 3': 'plum',' Cluster 4': 'palevioletred'};
+    colorize = function(colorList) {
+        var container = document.getElementById('mylegend');
+        for (var key in colorList) {
+            var circleContainer = document.createElement("DIV");
+            var circle = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            circle.className = "circle";
+            circle.style.backgroundColor = colorList[key];
+            circleContainer.appendChild(circle);
+            circleContainer.appendChild(label);
+            container.appendChild(circleContainer);
+    }
+    }
+    colorize(colorList);
+</script>
+
+<div id="mylegendedge"></div>
+<style type="text/css">
+    .box {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    position: right; 
+    }
+</style>
+<script type="text/javascript">
+    var edgecolorList = { ' Plant': '#90C8AC',  ' Recreation': '#E8D7AD', ' Medical':'#8C88BA',
+                        ' Region': '#CCF1FF',' Trade': '#edc7ed',' Commodity': 'orange',
+                        ' Ethics': 'pink',' Miscellaneous': 'lemonchiffon',' Male/General':'#E0D7FF',
+                        ' Female': '#BCD2E3'};
+
+    colorizeEdge = function(edgecolorList) {
+        var container = document.getElementById('mylegendedge');
+        for (var key in edgecolorList) {
+            var boxContainer = document.createElement("DIV");
+            var box = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            box.className = "box";
+            box.style.backgroundColor = edgecolorList[key];
+            boxContainer.appendChild(box);
+            boxContainer.appendChild(label);
+            container.appendChild(boxContainer);
+    }
+    }
+    colorizeEdge(edgecolorList);
+</script>
+</body>
+</html>
