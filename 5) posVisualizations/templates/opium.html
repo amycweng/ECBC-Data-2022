@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,600;1,500;1,700&family=Kanit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/opium.css') }}">
+
+    <script src="{{url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
+
+</head>
+<body>
+	<div class="graph">
+        <div class="buttonBar">
+            <form method="POST" action="/">
+                <input class="button1 button" type="submit" name="action" value="Nouns"/>
+                <input class="button2 button" type="submit" name="action" value="Adjectives"/>
+                <input class="button3 button" type="submit" name="action" value="Verbs"/>
+                <input class="button4 button" type="submit" name="action" value="Adverbs"/>
+                <label id="checkbox-container" class="switch">
+                    <input name="switch" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </form>
+        </div>
+        <div class="topLeft">
+            <div class="head">
+                <h1>OPIUM</h1>
+                <p class="dates">{{pos}} in 1580-1599</p>
+            </div>
+            <div class="container">
+                
+                <div class="word">
+                    <p id="p1w1" data-color="{{ date1[0][1] }}">{{  date1[0][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p1w2" data-color="{{ date1[1][1] }}">{{  date1[1][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p1w3" data-color="{{ date1[2][1] }}">{{  date1[2][0]  }}</p>
+                </div>         
+                <div class="word">
+                    <p id="p1w4" data-color="{{ date1[3][1] }}">{{  date1[3][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w5" data-color="{{ date1[4][1] }}">{{  date1[4][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w6" data-color="{{ date1[5][1] }}">{{  date1[5][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w7" data-color="{{ date1[6][1] }}">{{  date1[6][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w8" data-color="{{ date1[7][1] }}">{{  date1[7][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w9" data-color="{{ date1[8][1] }}">{{  date1[8][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p1w10" data-color="{{ date1[9][1] }}">{{  date1[9][0]  }}</p>
+                </div>                 
+
+            </div>
+
+        </div>
+
+        <div class="topMiddle">
+            <div class="head">
+                <h1>OPIUM</h1>
+                <p class="dates"> {{pos}} in 1600-1617</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p id="p2w1" data-color="{{ date2[0][1] }}">{{  date2[0][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p2w2" data-color="{{ date2[1][1] }}">{{  date2[1][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p2w3" data-color="{{ date2[2][1] }}">{{  date2[2][0]  }}</p>
+                </div>         
+                <div class="word">
+                    <p id="p2w4" data-color="{{ date2[3][1] }}">{{  date2[3][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w5" data-color="{{ date2[4][1] }}">{{  date2[4][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w6" data-color="{{ date2[5][1] }}">{{  date2[5][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w7" data-color="{{ date2[6][1] }}">{{  date2[6][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w8" data-color="{{ date2[7][1] }}">{{  date2[7][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w9" data-color="{{ date2[8][1] }}">{{  date2[8][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p2w10" data-color="{{ date2[9][1] }}">{{  date2[9][0]  }}</p>
+                </div>                 
+
+            </div>
+            
+        </div>
+
+        <div class="topRight">
+            <div class="head">
+                <h1>OPIUM</h1>
+                <p class="dates"> {{pos}} in 1618-1624</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p id="p3w1" data-color="{{ date3[0][1] }}">{{  date3[0][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p3w2" data-color="{{ date3[1][1] }}">{{  date3[1][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p3w3" data-color="{{ date3[2][1] }}">{{  date3[2][0]  }}</p>
+                </div>         
+                <div class="word">
+                    <p id="p3w4" data-color="{{ date3[3][1] }}">{{  date3[3][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w5" data-color="{{ date3[4][1] }}">{{  date3[4][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w6" data-color="{{ date3[5][1] }}">{{  date3[5][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w7" data-color="{{ date3[6][1] }}">{{  date3[6][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w8" data-color="{{ date3[7][1] }}">{{  date3[7][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w9" data-color="{{ date3[8][1] }}">{{  date3[8][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p3w10" data-color="{{ date3[9][1] }}">{{  date3[9][0]  }}</p>
+                </div>                 
+
+            </div>
+            
+        </div>
+
+
+        <div class="bottomLeft">
+            <div class="head">
+                <h1>OPIUM</h1>
+                <p class="dates">{{pos}} in 1625-1634</p>
+            </div>
+            <div class="container">
+                <div class="word">
+                    <p id="p4w1" data-color="{{ date4[0][1] }}">{{  date4[0][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p4w2" data-color="{{ date4[1][1] }}">{{  date4[1][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p4w3" data-color="{{ date4[2][1] }}">{{  date4[2][0]  }}</p>
+                </div>         
+                <div class="word">
+                    <p id="p4w4" data-color="{{ date4[3][1] }}">{{  date4[3][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w5" data-color="{{ date4[4][1] }}">{{  date4[4][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w6" data-color="{{ date4[5][1] }}">{{  date4[5][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w7" data-color="{{ date4[6][1] }}">{{  date4[6][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w8" data-color="{{ date4[7][1] }}">{{  date4[7][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w9" data-color="{{ date4[8][1] }}">{{  date4[8][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p4w10" data-color="{{ date4[9][1] }}">{{  date4[9][0]  }}</p>
+                </div>                 
+
+            </div>
+        </div>
+<!--<hr>>-->
+        <div class="bottomMiddle">
+            <div class="head">
+                <h1>OPIUM</h1>
+                <p class="dates"> {{pos}} in 1635-1641</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p id="p5w1" data-color="{{ date5[0][1] }}">{{  date5[0][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p5w2" data-color="{{ date5[1][1] }}">{{  date5[1][0]  }}</p>
+                </div>
+                <div class="word">
+                    <p id="p5w3" data-color="{{ date5[2][1] }}">{{  date5[2][0]  }}</p>
+                </div>         
+                <div class="word">
+                    <p id="p5w4" data-color="{{ date5[3][1] }}">{{  date5[3][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w5" data-color="{{ date5[4][1] }}">{{  date5[4][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w6" data-color="{{ date5[5][1] }}">{{  date5[5][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w7" data-color="{{ date5[6][1] }}">{{  date5[6][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w8" data-color="{{ date5[7][1] }}">{{  date5[7][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w9" data-color="{{ date5[8][1] }}">{{  date5[8][0]  }}</p>
+                </div> 
+                <div class="word">
+                    <p id="p5w10" data-color="{{ date5[9][1] }}">{{  date5[9][0]  }}</p>
+                </div>                 
+
+            </div>
+        </div>
+        
+        <div class="bottomRight">
+            <div class="info">
+                <p id="about">This word graph was made using machine 
+                    defined part of speech tags. Each word that 
+                    shows up twice or more will be the same color.
+                </p>
+            <img src="/static/img/opium.png" alt="Opium chart"><!--style="width:128px;height:128px;"-->
+            </div>
+ 
+        </div>
+        
+    </div>
+
+    <script src="{{url_for('static', filename='js/opium.js')}}"></script>
+
+
+</body>
+</html>

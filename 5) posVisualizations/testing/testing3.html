@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,600;1,500;1,700&family=Kanit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #96366e;
+
+}
+.graph {
+  width: 100%;
+  height: 100%;
+}
+.topLeft {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+}
+
+.topMiddleL {
+    width: 25%;
+    height: 50%;
+    float: left;
+    
+    background-color: #f4f4f6;
+    border-collapse: collapse;
+}
+.topMiddleR {
+    width: 25%;
+    height: 50%;
+    float: left;
+    
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+}
+.topRight {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #f4f4f6;
+    border-collapse: collapse;
+}
+.bottomLeft {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #f4f4f6;
+    border-collapse: collapse;
+}
+
+.bottomMiddleL {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+}
+
+.bottomMiddleR {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #f4f4f6;
+    border-collapse: collapse;
+}
+.bottomRight {
+    width: 25%;
+    height: 50%;
+    float: left;
+
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+}
+
+.head {
+    height:100%;
+	width:30%;
+
+    float:left;
+
+    text-align: center;
+    
+    font-family: 'Kanit', sans-serif;
+    writing-mode: vertical-rl;
+	text-orientation: sideways;
+    font-size: 16px;
+    font-size: 2.75vw; /*2.5*/
+    letter-spacing: .1em; /*3px*/
+}
+.container {
+    height:100%;
+    width:70%;
+
+    float:right;
+
+    padding-bottom: 1em;
+}
+.word {
+    height:10%;
+    width:100%;
+
+    transform: translateY(-.03em);
+
+    font-family: 'Arimo', sans-serif;
+    
+    font-weight:800;
+    text-align: top;
+    font-size: 16px;
+    font-size: 2.15vw;
+    letter-spacing: .1em;
+
+}
+
+p {
+    margin: 0;
+    padding:0;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    padding:0; /*.05em*/
+    transform: translateX(.25em);
+}
+
+.dates {
+    transform: translateX(2.05em);
+    font-size: 1.5vw;
+}
+
+</style>
+</head>
+<body>
+	<div class="graph">
+        <div class="topLeft">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates">{{pos}} in 1580-1599</p>
+            </div>
+            <div class="container">
+                
+                <div class="word">
+                    <p style="color:#51b4e1;">{{  date1[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #48a0c8;">{{  date1[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #3f8caf;">{{  date1[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #367896;">{{  date1[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #2d647d;">{{  date1[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #245064;">{{  date1[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1b3c4b;">{{  date1[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #122832;">{{  date1[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #091419">{{  date1[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date1[9]  }}</p>
+                </div>                 
+
+            </div>
+
+        </div>
+        <!--
+    
+-->
+        <div class="topMiddleL">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates"> {{pos}} in 1600-1609</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p style="color: #e15151;">{{  date2[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #c84646;">{{  date2[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #b04040;">{{  date2[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #963636;">{{  date2[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #7c2d2d;">{{  date2[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #652424;">{{  date2[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #4b1b1b;">{{  date2[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #311212;">{{  date2[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1a0909;">{{  date2[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date2[9]  }}</p>
+                </div>                 
+
+            </div>
+            
+        </div>
+
+        <div class="topMiddleR">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates"> {{pos}} in 1600-1609</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p style="color: #e15151;">{{  date2[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #c84646;">{{  date2[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #b04040;">{{  date2[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #963636;">{{  date2[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #7c2d2d;">{{  date2[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #652424;">{{  date2[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #4b1b1b;">{{  date2[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #311212;">{{  date2[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1a0909;">{{  date2[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date2[9]  }}</p>
+                </div>                 
+
+            </div>
+            
+        </div>
+
+
+        <div class="topRight">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates">{{pos}} in 1610-1617</p>
+            </div>
+            <div class="container">
+                <div class="word">
+                    <p style="color: #7551e1;">{{  date3[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #6746c8;">{{  date3[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #5c40b0;">{{  date3[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #4e3696;">{{  date3[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #402d7c;">{{  date3[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #352465;">{{  date3[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #271b4b;">{{  date3[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #191231;">{{  date3[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #0e091a;">{{  date3[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date3[9]  }}</p>
+                </div>                 
+
+            </div>
+        </div>
+<!--<hr>>-->
+        <div class="bottomLeft">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates"> {{pos}} in 1618-1624</p>
+            </div>
+            <div class="container">
+
+                <div class="word">
+                    <p style="color: #51e15d;">{{  date4[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #46c851;">{{  date4[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #40b049;">{{  date4[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #36963e;">{{  date4[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #2d7c33;">{{  date4[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #24652a;">{{  date4[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1b4b1f;">{{  date4[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #123114;">{{  date4[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #091a0b">{{  date4[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date4[9]  }}</p>
+                </div>                 
+
+            </div>
+        </div>
+
+        <div class="bottomMiddleL">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates">{{pos}} in 1625-1634</p>
+            </div>
+            <div class="container">                
+                <div class="word">
+                    <p style="color: #e1d551;">{{  date5[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #c8bd46;">{{  date5[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #b0a740;">{{  date5[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #968e36;">{{  date5[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #7c752d;">{{  date5[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #656024;">{{  date5[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #4b471b;">{{  date5[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #312e12;">{{  date5[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1a1909;">{{  date5[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date5[9]  }}</p>
+                </div>                 
+            </div>
+        </div>
+
+        <div class="bottomMiddleR">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates">{{pos}} in 1625-1634</p>
+            </div>
+            <div class="container">                
+                <div class="word">
+                    <p style="color: #e1d551;">{{  date5[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #c8bd46;">{{  date5[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #b0a740;">{{  date5[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #968e36;">{{  date5[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #7c752d;">{{  date5[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #656024;">{{  date5[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #4b471b;">{{  date5[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #312e12;">{{  date5[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1a1909;">{{  date5[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date5[9]  }}</p>
+                </div>                 
+
+            </div>
+        </div>
+
+        <div class="bottomRight">
+            <div class="head">
+                <h1>TOBACCO</h1>
+                <p class="dates"> {{pos}} in 1635-1641</p>
+            </div>
+            <div class="container">
+                <div class="word">
+                    <p style="color: #e18151;">{{  date6[0]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #c87246;">{{  date6[1]  }}</p>
+                </div>
+                <div class="word">
+                    <p style="color: #b06540;">{{  date6[2]  }}</p>
+                </div>         
+                <div class="word">
+                    <p style="color: #965636;">{{  date6[3]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #7c472d;">{{  date6[4]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #653a24;">{{  date6[5]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #4b2b1b;">{{  date6[6]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #311c12;">{{  date6[7]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #1a0f09;">{{  date6[8]  }}</p>
+                </div> 
+                <div class="word">
+                    <p style="color: #000000;">{{  date6[9] }}</p>
+                </div>                 
+
+            </div>
+
+        </div>
+	</div>
+</body>
+</html>
