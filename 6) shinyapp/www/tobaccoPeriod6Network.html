@@ -1,0 +1,184 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1>1635-1638 Tobacco N-Gram Author Network</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500;
+            height: 1000;
+            background-color: white;
+            border: 1px solid white;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Baudier, Michel, 1589?-1645. Histoire de la cour du roy de la Chine. aut", "label": "Baudier, Michel, 1589?-1645. Histoire de la cour du roy de la Chine. aut", "labelHighlightBold": true, "shape": "dot", "title": "Baudier, Michel, 1589?-1645. Histoire de la cour du roy de la Chine. aut:\nA05751: tobacco_into\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Baudier, Michel, 1589?-1645.", "label": "Baudier, Michel, 1589?-1645.", "labelHighlightBold": true, "shape": "dot", "title": "Baudier, Michel, 1589?-1645.:\nA05751: tobacco_into\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Grimeston, Edward.", "label": "Grimeston, Edward.", "labelHighlightBold": true, "shape": "dot", "title": "Grimeston, Edward.:\nA05751: tobacco_into\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Peacham, Henry, 1576?-1643?", "label": "Peacham, Henry, 1576?-1643?", "labelHighlightBold": true, "shape": "dot", "title": "Peacham, Henry, 1576?-1643?:\nA09194: tobacco_which\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Maryland. aut", "label": "Maryland. aut", "labelHighlightBold": true, "shape": "dot", "title": "Maryland. aut:\nA07165: tobacco_this, tobacco_which\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Roberts, Lewes, 1596-1640.", "label": "Roberts, Lewes, 1596-1640.", "labelHighlightBold": true, "shape": "dot", "title": "Roberts, Lewes, 1596-1640.:\nA10821: tobacco_which, sugar_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Read, Alexander, 1586?-1641.", "label": "Read, Alexander, 1586?-1641.", "labelHighlightBold": true, "shape": "dot", "title": "Read, Alexander, 1586?-1641.:\nA10508: tobacco_two, green_tobacco,\n\tdry_tobacco, leaf_of_tobacco,\n\ttobacco_which, tobacco_have\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Ford, John, 1586-ca. 1640.", "label": "Ford, John, 1586-ca. 1640.", "labelHighlightBold": true, "shape": "dot", "title": "Ford, John, 1586-ca. 1640.:\nA01049: whiff_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Dekker, Thomas, ca. 1572-1632.", "label": "Dekker, Thomas, ca. 1572-1632.", "labelHighlightBold": true, "shape": "dot", "title": "Dekker, Thomas, ca. 1572-1632.:\nA20093: whiff_tobacco, drink_tobacco,\n\ttobacco_shop\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Basset, Robert.", "label": "Basset, Robert.", "labelHighlightBold": true, "shape": "dot", "title": "Basset, Robert.:\nA05418: take_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Younge, Richard.", "label": "Younge, Richard.", "labelHighlightBold": true, "shape": "dot", "title": "Younge, Richard.:\nA15845: take_tobacco, tobacco_that,\n\tdrink_and_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Shirley, James, 1596-1666.", "label": "Shirley, James, 1596-1666.", "labelHighlightBold": true, "shape": "dot", "title": "Shirley, James, 1596-1666.:\nA12142: tobacco_not, take_tobacco,\n\tgood_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Chamberlain, Robert, b. 1607, attributed name.", "label": "Chamberlain, Robert, b. 1607, attributed name.", "labelHighlightBold": true, "shape": "dot", "title": "Chamberlain, Robert, b. 1607, attributed name.:\nA18369: take_tobacco, tobacco_like,\n\ttobacco_say\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Chamberlain, Robert, b. 1607.", "label": "Chamberlain, Robert, b. 1607.", "labelHighlightBold": true, "shape": "dot", "title": "Chamberlain, Robert, b. 1607.:\nA18367: take_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "A. S.", "label": "A. S.", "labelHighlightBold": true, "shape": "dot", "title": "A. S.:\nA18367: take_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Swan, John, d. 1671.", "label": "Swan, John, d. 1671.", "labelHighlightBold": true, "shape": "dot", "title": "Swan, John, d. 1671.:\nA13217: tobacco_great, tobacco_help,\n\ttake_tobacco, tobacco_come,\n\ttobacco_and_not, leaf_of_tobacco,\n\ttobacco_there, kind_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Tarlton, Richard, d. 1588, attributed name.", "label": "Tarlton, Richard, d. 1588, attributed name.", "labelHighlightBold": true, "shape": "dot", "title": "Tarlton, Richard, d. 1588, attributed name.:\nA13376: take_tobacco, tobacco_whiff,\n\ttobacco_take\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Bacon, Francis, 1561-1626. Instauratio magna.", "label": "Bacon, Francis, 1561-1626. Instauratio magna.", "labelHighlightBold": true, "shape": "dot", "title": "Bacon, Francis, 1561-1626. Instauratio magna.:\nA01454: tobacco_nightshade\nA01446: hemlock_tobacco, tobacco_this\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Bacon, Francis, 1561-1626.", "label": "Bacon, Francis, 1561-1626.", "labelHighlightBold": true, "shape": "dot", "title": "Bacon, Francis, 1561-1626.:\nA01454: tobacco_nightshade\nA01446: hemlock_tobacco, tobacco_this\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Pinke, William, 1599?-1629.", "label": "Pinke, William, 1599?-1629.", "labelHighlightBold": true, "shape": "dot", "title": "Pinke, William, 1599?-1629.:\nA09674: pipe_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Lyford, William, 1598-1653.", "label": "Lyford, William, 1598-1653.", "labelHighlightBold": true, "shape": "dot", "title": "Lyford, William, 1598-1653.:\nA09674: pipe_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "label": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "labelHighlightBold": true, "shape": "dot", "title": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut:\nA09674: pipe_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Monro, Robert.", "label": "Monro, Robert.", "labelHighlightBold": true, "shape": "dot", "title": "Monro, Robert.:\nA07628: drink_tobacco, tobacco_pipe,\n\tpipe_of_tobacco, tobacco_and_pipe\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "label": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "labelHighlightBold": true, "shape": "dot", "title": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut:\nA09899: his_tobacco, tobacco_shop,\n\tpipe_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Powell, Thomas, 1572?-1635?", "label": "Powell, Thomas, 1572?-1635?", "labelHighlightBold": true, "shape": "dot", "title": "Powell, Thomas, 1572?-1635?:\nA09899: his_tobacco, tobacco_shop,\n\tpipe_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Hondius, Jodocus, 1563-1612.", "label": "Hondius, Jodocus, 1563-1612.", "labelHighlightBold": true, "shape": "dot", "title": "Hondius, Jodocus, 1563-1612.:\nA07439: plant_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Mercator, Gerhard, 1512-1594.", "label": "Mercator, Gerhard, 1512-1594.", "labelHighlightBold": true, "shape": "dot", "title": "Mercator, Gerhard, 1512-1594.:\nA07439: plant_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Saltonstall, Wye, fl. 1630-1640.", "label": "Saltonstall, Wye, fl. 1630-1640.", "labelHighlightBold": true, "shape": "dot", "title": "Saltonstall, Wye, fl. 1630-1640.:\nA07439: plant_tobacco\nA11386: tobacco_great, all_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Rawley, William, 1588?-1667.", "label": "Rawley, William, 1588?-1667.", "labelHighlightBold": true, "shape": "dot", "title": "Rawley, William, 1588?-1667.:\nA01454: tobacco_nightshade\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Anonymous", "label": "Anonymous", "labelHighlightBold": true, "shape": "dot", "title": "Anonymous:\nA10552: require_for_tobacco, strong_tobacco\nA00989: tobacco_pipe\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "G. F., defendour of Christian valoure.", "label": "G. F., defendour of Christian valoure.", "labelHighlightBold": true, "shape": "dot", "title": "G. F., defendour of Christian valoure.:\nA00503: tobacco_not, tobacco_pipe\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Wither, George, 1588-1667.", "label": "Wither, George, 1588-1667.", "labelHighlightBold": true, "shape": "dot", "title": "Wither, George, 1588-1667.:\nA15631: drink_and_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Taylor, John, 1580-1653.", "label": "Taylor, John, 1580-1653.", "labelHighlightBold": true, "shape": "dot", "title": "Taylor, John, 1580-1653.:\nA13482: small_tobacco\nA13502: tobacco_make\nA13429: tobacco_shop\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Herbert, Thomas, Sir, 1606-1682.", "label": "Herbert, Thomas, Sir, 1606-1682.", "labelHighlightBold": true, "shape": "dot", "title": "Herbert, Thomas, Sir, 1606-1682.:\nA03066: tobacco_out, tobacco_and_some,\n\ttobacco_make, weed_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "D\u0027Avenant, William, Sir, 1606-1668.", "label": "D\u0027Avenant, William, Sir, 1606-1668.", "labelHighlightBold": true, "shape": "dot", "title": "D\u0027Avenant, William, Sir, 1606-1668.:\nA19882: tobacco_shop\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "label": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "labelHighlightBold": true, "shape": "dot", "title": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren):\nA68015: tobacco_shop\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Mure, Andrew.", "label": "Mure, Andrew.", "labelHighlightBold": true, "shape": "dot", "title": "Mure, Andrew.:\nA07920: tobacco_help\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Squire, John, ca. 1588-1653.", "label": "Squire, John, ca. 1588-1653.", "labelHighlightBold": true, "shape": "dot", "title": "Squire, John, ca. 1588-1653.:\nA12814: smoke_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Lynch, John, 1590 or 91-1680. aut", "label": "Lynch, John, 1590 or 91-1680. aut", "labelHighlightBold": true, "shape": "dot", "title": "Lynch, John, 1590 or 91-1680. aut:\nA12814: smoke_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Lechmere, John.", "label": "Lechmere, John.", "labelHighlightBold": true, "shape": "dot", "title": "Lechmere, John.:\nA72527: light_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Lechmere, Edmund, d. 1640? Conference mentioned by Doctour Featly in the end of his Sacrilege.", "label": "Lechmere, Edmund, d. 1640? Conference mentioned by Doctour Featly in the end of his Sacrilege.", "labelHighlightBold": true, "shape": "dot", "title": "Lechmere, Edmund, d. 1640? Conference mentioned by Doctour Featly in the end of his Sacrilege.:\nA72527: light_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "L. P. (Laurence Price), fl. 1625-1680?", "label": "L. P. (Laurence Price), fl. 1625-1680?", "labelHighlightBold": true, "shape": "dot", "title": "L. P. (Laurence Price), fl. 1625-1680?:\nB00579: light_tobacco\n"}]);
+        edges = new vis.DataSet([{"arrows": "hide", "color": "lemonchiffon", "from": "Baudier, Michel, 1589?-1645. Histoire de la cour du roy de la Chine. aut", "title": "tobacco_into", "to": "Baudier, Michel, 1589?-1645.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Baudier, Michel, 1589?-1645. Histoire de la cour du roy de la Chine. aut", "title": "tobacco_into", "to": "Grimeston, Edward.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Baudier, Michel, 1589?-1645.", "title": "tobacco_into", "to": "Grimeston, Edward.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Peacham, Henry, 1576?-1643?", "title": "tobacco_which", "to": "Maryland. aut", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Peacham, Henry, 1576?-1643?", "title": "tobacco_which", "to": "Roberts, Lewes, 1596-1640.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Peacham, Henry, 1576?-1643?", "title": "tobacco_which", "to": "Read, Alexander, 1586?-1641.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Maryland. aut", "title": "tobacco_which", "to": "Roberts, Lewes, 1596-1640.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Maryland. aut", "title": "tobacco_which", "to": "Read, Alexander, 1586?-1641.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Roberts, Lewes, 1596-1640.", "title": "tobacco_which", "to": "Read, Alexander, 1586?-1641.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Ford, John, 1586-ca. 1640.", "title": "whiff_tobacco", "to": "Dekker, Thomas, ca. 1572-1632.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Younge, Richard.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Shirley, James, 1596-1666.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "A. S.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Basset, Robert.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "Shirley, James, 1596-1666.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "A. S.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Younge, Richard.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Shirley, James, 1596-1666.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Shirley, James, 1596-1666.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Shirley, James, 1596-1666.", "title": "take_tobacco", "to": "A. S.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Shirley, James, 1596-1666.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Shirley, James, 1596-1666.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607, attributed name.", "title": "take_tobacco", "to": "Chamberlain, Robert, b. 1607.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607, attributed name.", "title": "take_tobacco", "to": "A. S.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607, attributed name.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607, attributed name.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607.", "title": "take_tobacco", "to": "A. S.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chamberlain, Robert, b. 1607.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "A. S.", "title": "take_tobacco", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "A. S.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Swan, John, d. 1671.", "title": "take_tobacco", "to": "Tarlton, Richard, d. 1588, attributed name.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Maryland. aut", "title": "tobacco_this", "to": "Bacon, Francis, 1561-1626. Instauratio magna.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Maryland. aut", "title": "tobacco_this", "to": "Bacon, Francis, 1561-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bacon, Francis, 1561-1626. Instauratio magna.", "title": "tobacco_this", "to": "Bacon, Francis, 1561-1626.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629.", "title": "pipe_of_tobacco", "to": "Lyford, William, 1598-1653.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629.", "title": "pipe_of_tobacco", "to": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629.", "title": "pipe_of_tobacco", "to": "Monro, Robert.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lyford, William, 1598-1653.", "title": "pipe_of_tobacco", "to": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lyford, William, 1598-1653.", "title": "pipe_of_tobacco", "to": "Monro, Robert.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lyford, William, 1598-1653.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lyford, William, 1598-1653.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "title": "pipe_of_tobacco", "to": "Monro, Robert.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Pinke, William, 1599?-1629. Tryall of our sincere love to Christ. aut", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Monro, Robert.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Monro, Robert.", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "title": "pipe_of_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hondius, Jodocus, 1563-1612.", "title": "plant_tobacco", "to": "Mercator, Gerhard, 1512-1594.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hondius, Jodocus, 1563-1612.", "title": "plant_tobacco", "to": "Saltonstall, Wye, fl. 1630-1640.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Mercator, Gerhard, 1512-1594.", "title": "plant_tobacco", "to": "Saltonstall, Wye, fl. 1630-1640.", "width": 10}, {"arrows": "hide", "color": "#FFCCE1", "from": "Saltonstall, Wye, fl. 1630-1640.", "title": "tobacco_great", "to": "Swan, John, d. 1671.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Bacon, Francis, 1561-1626. Instauratio magna.", "title": "tobacco_nightshade", "to": "Bacon, Francis, 1561-1626.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Bacon, Francis, 1561-1626. Instauratio magna.", "title": "tobacco_nightshade", "to": "Rawley, William, 1588?-1667.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Bacon, Francis, 1561-1626.", "title": "tobacco_nightshade", "to": "Rawley, William, 1588?-1667.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Bacon, Francis, 1561-1626. Instauratio magna.", "title": "hemlock_tobacco", "to": "Bacon, Francis, 1561-1626.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Monro, Robert.", "title": "drink_tobacco", "to": "Dekker, Thomas, ca. 1572-1632.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Monro, Robert.", "title": "tobacco_pipe", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Monro, Robert.", "title": "tobacco_pipe", "to": "G. F., defendour of Christian valoure.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "tobacco_pipe", "to": "G. F., defendour of Christian valoure.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Wither, George, 1588-1667.", "title": "drink_and_tobacco", "to": "Younge, Richard.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Shirley, James, 1596-1666.", "title": "tobacco_not", "to": "G. F., defendour of Christian valoure.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Taylor, John, 1580-1653.", "title": "tobacco_make", "to": "Herbert, Thomas, Sir, 1606-1682.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Taylor, John, 1580-1653.", "title": "tobacco_shop", "to": "D\u0027Avenant, William, Sir, 1606-1668.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Taylor, John, 1580-1653.", "title": "tobacco_shop", "to": "Dekker, Thomas, ca. 1572-1632.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Taylor, John, 1580-1653.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Taylor, John, 1580-1653.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Taylor, John, 1580-1653.", "title": "tobacco_shop", "to": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "D\u0027Avenant, William, Sir, 1606-1668.", "title": "tobacco_shop", "to": "Dekker, Thomas, ca. 1572-1632.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "D\u0027Avenant, William, Sir, 1606-1668.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "D\u0027Avenant, William, Sir, 1606-1668.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "D\u0027Avenant, William, Sir, 1606-1668.", "title": "tobacco_shop", "to": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Dekker, Thomas, ca. 1572-1632.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Dekker, Thomas, ca. 1572-1632.", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Dekker, Thomas, ca. 1572-1632.", "title": "tobacco_shop", "to": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "title": "tobacco_shop", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "title": "tobacco_shop", "to": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Powell, Thomas, 1572?-1635?", "title": "tobacco_shop", "to": "Church of England. Diocese of Ely. Bishop (1638-1667 : Wren)", "width": 10}, {"arrows": "hide", "color": "#8C88BA", "from": "Swan, John, d. 1671.", "title": "tobacco_help", "to": "Mure, Andrew.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Swan, John, d. 1671.", "title": "leaf_of_tobacco", "to": "Read, Alexander, 1586?-1641.", "width": 10}, {"arrows": "hide", "color": "#E0D7FF", "from": "Powell, Thomas, 1572?-1635? Wheresoever you see mee, trust unto your selfe. aut", "title": "his_tobacco", "to": "Powell, Thomas, 1572?-1635?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Squire, John, ca. 1588-1653.", "title": "smoke_tobacco", "to": "Lynch, John, 1590 or 91-1680. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lechmere, John.", "title": "light_tobacco", "to": "Lechmere, Edmund, d. 1640? Conference mentioned by Doctour Featly in the end of his Sacrilege.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lechmere, John.", "title": "light_tobacco", "to": "L. P. (Laurence Price), fl. 1625-1680?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lechmere, Edmund, d. 1640? Conference mentioned by Doctour Featly in the end of his Sacrilege.", "title": "light_tobacco", "to": "L. P. (Laurence Price), fl. 1625-1680?", "width": 10}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+<body>
+<right>
+    <h3>Legend of Colors</h3>
+    <text>Each author node is colored based on the cluster in which the majority of their texts fall into. For this time period, k-means clustering with manual feature engineering and TFIDF vectorization yields two clusters (Clusters 0 to 1). Each edge is colored based on the manual categorization of different n-grams. Node colors are encoded as circles, while edge colors are represented in boxes. For detailed documentation about clustering and n-grams, go to the Documentation page. Hover over each node or edge for details. 
+    </text>
+    <pre></pre>
+</right>
+<hr>
+<div id="mylegend"></div>
+<style type="text/css">
+    .circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    position: left
+    }
+</style>
+<script type="text/javascript">
+
+    var colorList = { ' Cluster 0': 'pink', ' Cluster 1':'purple'}  
+    colorize = function(colorList) {
+        var container = document.getElementById('mylegend');
+        for (var key in colorList) {
+            var circleContainer = document.createElement("DIV");
+            var circle = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            circle.className = "circle";
+            circle.style.backgroundColor = colorList[key];
+            circleContainer.appendChild(circle);
+            circleContainer.appendChild(label);
+            container.appendChild(circleContainer);
+    }
+    }
+    colorize(colorList);
+</script>
+
+<div id="mylegendedge"></div>
+<style type="text/css">
+    .box {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    position: right; 
+    }
+</style>
+<script type="text/javascript">
+    var edgecolorList = { ' Plant': '#90C8AC',  ' Usage': '#E8D7AD', ' Medical':'#8C88BA',
+                        ' Region': '#CCF1FF',' Trade': '#edc7ed',' Commodity': 'orange',
+                        ' Moral': 'pink',' Miscellaneous': 'lemonchiffon',' Male/General':'#E0D7FF',
+                        ' Female': '#BCD2E3'};
+    colorizeEdge = function(edgecolorList) {
+        var container = document.getElementById('mylegendedge');
+        for (var key in edgecolorList) {
+            var boxContainer = document.createElement("DIV");
+            var box = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            box.className = "box";
+            box.style.backgroundColor = edgecolorList[key];
+            boxContainer.appendChild(box);
+            boxContainer.appendChild(label);
+            container.appendChild(boxContainer);
+    }
+    }
+    colorizeEdge(edgecolorList);
+</script>
+</body>
+</html>

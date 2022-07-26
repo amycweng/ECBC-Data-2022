@@ -1,0 +1,184 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1>1580-1599 Tobacco N-Gram Author Network</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500;
+            height: 1000;
+            background-color: white;
+            border: 1px solid white;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "White, John, fl. 1585-1593, artist.", "label": "White, John, fl. 1585-1593, artist.", "labelHighlightBold": true, "shape": "dot", "title": "White, John, fl. 1585-1593, artist.:\nA02655: call_tobacco, tobacco_which\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Hariot, Thomas, 1560-1621.", "label": "Hariot, Thomas, 1560-1621.", "labelHighlightBold": true, "shape": "dot", "title": "Hariot, Thomas, 1560-1621.:\nA02655: call_tobacco, tobacco_which\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Bry, Theodor de, 1528-1598. America.", "label": "Bry, Theodor de, 1528-1598. America.", "labelHighlightBold": true, "shape": "dot", "title": "Bry, Theodor de, 1528-1598. America.:\nA02655: call_tobacco, tobacco_which\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Hakluyt, Richard, 1552?-1616.", "label": "Hakluyt, Richard, 1552?-1616.", "labelHighlightBold": true, "shape": "dot", "title": "Hakluyt, Richard, 1552?-1616.:\nA02655: call_tobacco, tobacco_which\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Anonymous", "label": "Anonymous", "labelHighlightBold": true, "shape": "dot", "title": "Anonymous:\nA02495: store_of_tobacco, seed_of_tobacco,\n\tcall_tobacco, tobacco_the_leave,\n\ttake_tobacco, tobacco_with_they,\n\ttobacco_pipe, excellent_tobacco,\n\ttobacco_which\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Chute, Anthony, d. 1595?", "label": "Chute, Anthony, d. 1595?", "labelHighlightBold": true, "shape": "dot", "title": "Chute, Anthony, d. 1595?:\nA18770: drink_tobacco, seed_of_tobacco,\n\tgood_tobacco, tobacco_there,\n\texcellent_tobacco, tobacco_but,\n\ttobacco_which, tobacco_have\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Davies, John, Sir, 1569-1626.", "label": "Davies, John, Sir, 1569-1626.", "labelHighlightBold": true, "shape": "dot", "title": "Davies, John, Sir, 1569-1626.:\nA19921: take_tobacco, tobacco_which\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Ovid, 43 B.C.-17 or 18 A.D.", "label": "Ovid, 43 B.C.-17 or 18 A.D.", "labelHighlightBold": true, "shape": "dot", "title": "Ovid, 43 B.C.-17 or 18 A.D.:\nA19921: take_tobacco, tobacco_which\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Marlowe, Christopher, 1564-1593.", "label": "Marlowe, Christopher, 1564-1593.", "labelHighlightBold": true, "shape": "dot", "title": "Marlowe, Christopher, 1564-1593.:\nA19921: take_tobacco, tobacco_which\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "label": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "labelHighlightBold": true, "shape": "dot", "title": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.:\nA68945: tobacco_also\nA68946: store_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Gates, Thomas, Sir, d. 1621.", "label": "Gates, Thomas, Sir, d. 1621.", "labelHighlightBold": true, "shape": "dot", "title": "Gates, Thomas, Sir, d. 1621.:\nA68945: tobacco_also\nA68946: store_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Croftes, Lieutenant.", "label": "Croftes, Lieutenant.", "labelHighlightBold": true, "shape": "dot", "title": "Croftes, Lieutenant.:\nA68945: tobacco_also\nA68946: store_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Bigges, Walter, d. 1586.", "label": "Bigges, Walter, d. 1586.", "labelHighlightBold": true, "shape": "dot", "title": "Bigges, Walter, d. 1586.:\nA68945: tobacco_also\nA68946: store_of_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Kemys, Lawrence, d. 1618.", "label": "Kemys, Lawrence, d. 1618.", "labelHighlightBold": true, "shape": "dot", "title": "Kemys, Lawrence, d. 1618.:\nA04813: take_tobacco, tobacco_but\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Rich, Barnabe, 1540?-1617.", "label": "Rich, Barnabe, 1540?-1617.", "labelHighlightBold": true, "shape": "dot", "title": "Rich, Barnabe, 1540?-1617.:\nA10710: take_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Nash, Thomas, 1567-1601.", "label": "Nash, Thomas, 1567-1601.", "labelHighlightBold": true, "shape": "dot", "title": "Nash, Thomas, 1567-1601.:\nA08003: pipe_of_tobacco, tobacco_pipe\nA08015: tobacco_with_they\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Lodge, Thomas, 1558?-1625.", "label": "Lodge, Thomas, 1558?-1625.", "labelHighlightBold": true, "shape": "dot", "title": "Lodge, Thomas, 1558?-1625.:\nA06183: pipe_of_tobacco, tobacco_pipe\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Tyro, T.", "label": "Tyro, T.", "labelHighlightBold": true, "shape": "dot", "title": "Tyro, T.:\nA14160: tobacco_pipe\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Hall, Joseph, 1574-1656.", "label": "Hall, Joseph, 1574-1656.", "labelHighlightBold": true, "shape": "dot", "title": "Hall, Joseph, 1574-1656.:\nA71324: tobacco_pipe\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Chapman, George, 1559?-1634.", "label": "Chapman, George, 1559?-1634.", "labelHighlightBold": true, "shape": "dot", "title": "Chapman, George, 1559?-1634.:\nA18402: pipe_of_tobacco\nA18419: good_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "O. B., fl. 1594.", "label": "O. B., fl. 1594.", "labelHighlightBold": true, "shape": "dot", "title": "O. B., fl. 1594.:\nA00410: pipe_of_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Bastard, Thomas, 1565 or 6-1618.", "label": "Bastard, Thomas, 1565 or 6-1618.", "labelHighlightBold": true, "shape": "dot", "title": "Bastard, Thomas, 1565 or 6-1618.:\nA05458: tobacco_take\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Runt, Harrie. aut", "label": "Runt, Harrie. aut", "labelHighlightBold": true, "shape": "dot", "title": "Runt, Harrie. aut:\nA19797: tobacco_take\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Dando, John.", "label": "Dando, John.", "labelHighlightBold": true, "shape": "dot", "title": "Dando, John.:\nA19797: tobacco_take\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Harvey, Gabriel, 1550?-1631.", "label": "Harvey, Gabriel, 1550?-1631.", "labelHighlightBold": true, "shape": "dot", "title": "Harvey, Gabriel, 1550?-1631.:\nA02775: divine_tobacco\n"}, {"chosen": true, "color": "pink", "font": {"color": "black"}, "id": "Spenser, Edmund, 1552?-1599.", "label": "Spenser, Edmund, 1552?-1599.", "labelHighlightBold": true, "shape": "dot", "title": "Spenser, Edmund, 1552?-1599.:\nA12777: divine_tobacco\n"}, {"chosen": true, "color": "purple", "font": {"color": "black"}, "id": "Florio, John, 1553?-1625.", "label": "Florio, John, 1553?-1625.", "labelHighlightBold": true, "shape": "dot", "title": "Florio, John, 1553?-1625.:\nA00991: tobacco_also, drink_tobacco,\n\ttobacco_but\n"}]);
+        edges = new vis.DataSet([{"arrows": "hide", "color": "#90C8AC", "from": "White, John, fl. 1585-1593, artist.", "title": "call_tobacco", "to": "Hariot, Thomas, 1560-1621.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "White, John, fl. 1585-1593, artist.", "title": "call_tobacco", "to": "Bry, Theodor de, 1528-1598. America.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "White, John, fl. 1585-1593, artist.", "title": "call_tobacco", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "White, John, fl. 1585-1593, artist.", "title": "call_tobacco", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hariot, Thomas, 1560-1621.", "title": "call_tobacco", "to": "Bry, Theodor de, 1528-1598. America.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hariot, Thomas, 1560-1621.", "title": "call_tobacco", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hariot, Thomas, 1560-1621.", "title": "call_tobacco", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Bry, Theodor de, 1528-1598. America.", "title": "call_tobacco", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Bry, Theodor de, 1528-1598. America.", "title": "call_tobacco", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Hakluyt, Richard, 1552?-1616.", "title": "call_tobacco", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Hariot, Thomas, 1560-1621.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Bry, Theodor de, 1528-1598. America.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "White, John, fl. 1585-1593, artist.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Bry, Theodor de, 1528-1598. America.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hariot, Thomas, 1560-1621.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Hakluyt, Richard, 1552?-1616.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Bry, Theodor de, 1528-1598. America.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hakluyt, Richard, 1552?-1616.", "title": "tobacco_which", "to": "Anonymous", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hakluyt, Richard, 1552?-1616.", "title": "tobacco_which", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hakluyt, Richard, 1552?-1616.", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hakluyt, Richard, 1552?-1616.", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Hakluyt, Richard, 1552?-1616.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Anonymous", "title": "tobacco_which", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Anonymous", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Anonymous", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Anonymous", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Chute, Anthony, d. 1595?", "title": "tobacco_which", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Chute, Anthony, d. 1595?", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Chute, Anthony, d. 1595?", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Davies, John, Sir, 1569-1626.", "title": "tobacco_which", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Davies, John, Sir, 1569-1626.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Ovid, 43 B.C.-17 or 18 A.D.", "title": "tobacco_which", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Anonymous", "title": "store_of_tobacco", "to": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Anonymous", "title": "store_of_tobacco", "to": "Gates, Thomas, Sir, d. 1621.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Anonymous", "title": "store_of_tobacco", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Anonymous", "title": "store_of_tobacco", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "store_of_tobacco", "to": "Gates, Thomas, Sir, d. 1621.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "store_of_tobacco", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "store_of_tobacco", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Gates, Thomas, Sir, d. 1621.", "title": "store_of_tobacco", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Gates, Thomas, Sir, d. 1621.", "title": "store_of_tobacco", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "#edc7ed", "from": "Croftes, Lieutenant.", "title": "store_of_tobacco", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "#90C8AC", "from": "Anonymous", "title": "seed_of_tobacco", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "take_tobacco", "to": "Davies, John, Sir, 1569-1626.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "take_tobacco", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "take_tobacco", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "take_tobacco", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "take_tobacco", "to": "Rich, Barnabe, 1540?-1617.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Davies, John, Sir, 1569-1626.", "title": "take_tobacco", "to": "Ovid, 43 B.C.-17 or 18 A.D.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Davies, John, Sir, 1569-1626.", "title": "take_tobacco", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Davies, John, Sir, 1569-1626.", "title": "take_tobacco", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Davies, John, Sir, 1569-1626.", "title": "take_tobacco", "to": "Rich, Barnabe, 1540?-1617.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Ovid, 43 B.C.-17 or 18 A.D.", "title": "take_tobacco", "to": "Marlowe, Christopher, 1564-1593.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Ovid, 43 B.C.-17 or 18 A.D.", "title": "take_tobacco", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Ovid, 43 B.C.-17 or 18 A.D.", "title": "take_tobacco", "to": "Rich, Barnabe, 1540?-1617.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Marlowe, Christopher, 1564-1593.", "title": "take_tobacco", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Marlowe, Christopher, 1564-1593.", "title": "take_tobacco", "to": "Rich, Barnabe, 1540?-1617.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Kemys, Lawrence, d. 1618.", "title": "take_tobacco", "to": "Rich, Barnabe, 1540?-1617.", "width": 10}, {"arrows": "hide", "color": "#E0D7FF", "from": "Anonymous", "title": "tobacco_with_they", "to": "Nash, Thomas, 1567-1601.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "tobacco_pipe", "to": "Lodge, Thomas, 1558?-1625.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "tobacco_pipe", "to": "Nash, Thomas, 1567-1601.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "tobacco_pipe", "to": "Tyro, T.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Anonymous", "title": "tobacco_pipe", "to": "Hall, Joseph, 1574-1656.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "tobacco_pipe", "to": "Nash, Thomas, 1567-1601.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "tobacco_pipe", "to": "Tyro, T.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "tobacco_pipe", "to": "Hall, Joseph, 1574-1656.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Nash, Thomas, 1567-1601.", "title": "tobacco_pipe", "to": "Tyro, T.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Nash, Thomas, 1567-1601.", "title": "tobacco_pipe", "to": "Hall, Joseph, 1574-1656.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Tyro, T.", "title": "tobacco_pipe", "to": "Hall, Joseph, 1574-1656.", "width": 10}, {"arrows": "hide", "color": "#FFCCE1", "from": "Anonymous", "title": "excellent_tobacco", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "pipe_of_tobacco", "to": "Nash, Thomas, 1567-1601.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "pipe_of_tobacco", "to": "Chapman, George, 1559?-1634.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Lodge, Thomas, 1558?-1625.", "title": "pipe_of_tobacco", "to": "O. B., fl. 1594.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Nash, Thomas, 1567-1601.", "title": "pipe_of_tobacco", "to": "Chapman, George, 1559?-1634.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Nash, Thomas, 1567-1601.", "title": "pipe_of_tobacco", "to": "O. B., fl. 1594.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Chapman, George, 1559?-1634.", "title": "pipe_of_tobacco", "to": "O. B., fl. 1594.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Bastard, Thomas, 1565 or 6-1618.", "title": "tobacco_take", "to": "Runt, Harrie. aut", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Bastard, Thomas, 1565 or 6-1618.", "title": "tobacco_take", "to": "Dando, John.", "width": 10}, {"arrows": "hide", "color": "#E8D7AD", "from": "Runt, Harrie. aut", "title": "tobacco_take", "to": "Dando, John.", "width": 10}, {"arrows": "hide", "color": "#FFCCE1", "from": "Harvey, Gabriel, 1550?-1631.", "title": "divine_tobacco", "to": "Spenser, Edmund, 1552?-1599.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_also", "to": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_also", "to": "Gates, Thomas, Sir, d. 1621.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_also", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_also", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "tobacco_also", "to": "Gates, Thomas, Sir, d. 1621.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "tobacco_also", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Boazio, Baptista. Famouse West Indian voyadge made by the Englishe fleete of 23 shippes and barkes wherin weare gotten the townes of St\u00b7 Iago: :Sto: Domingo, Cartagena and :St: Augustines the same beinge begon from Plimmouth in the moneth of September 1585 and ended at Portesmouth in Iulie 1586.", "title": "tobacco_also", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Gates, Thomas, Sir, d. 1621.", "title": "tobacco_also", "to": "Croftes, Lieutenant.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Gates, Thomas, Sir, d. 1621.", "title": "tobacco_also", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Croftes, Lieutenant.", "title": "tobacco_also", "to": "Bigges, Walter, d. 1586.", "width": 10}, {"arrows": "hide", "color": "#FFD9C0", "from": "Florio, John, 1553?-1625.", "title": "drink_tobacco", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_but", "to": "Chute, Anthony, d. 1595?", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Florio, John, 1553?-1625.", "title": "tobacco_but", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "lemonchiffon", "from": "Chute, Anthony, d. 1595?", "title": "tobacco_but", "to": "Kemys, Lawrence, d. 1618.", "width": 10}, {"arrows": "hide", "color": "#FFCCE1", "from": "Chapman, George, 1559?-1634.", "title": "good_tobacco", "to": "Chute, Anthony, d. 1595?", "width": 10}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+<body>
+<right>
+    <h3>Legend of Colors</h3>
+    <text>Each author node is colored based on the cluster in which the majority of their texts fall into. For this time period, k-means clustering with manual feature engineering and TFIDF vectorization yields two clusters (Clusters 0 to 1). Each edge is colored based on the manual categorization of different n-grams. Node colors are encoded as circles, while edge colors are represented in boxes. For detailed documentation about clustering and n-grams, go to the Documentation page. Hover over each node or edge for details. 
+    </text>
+    <pre></pre>
+</right>
+<hr>
+<div id="mylegend"></div>
+<style type="text/css">
+    .circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    position: left
+    }
+</style>
+<script type="text/javascript">
+
+    var colorList = { ' Cluster 0': 'pink',' Cluster 1':'purple'}  
+    colorize = function(colorList) {
+        var container = document.getElementById('mylegend');
+        for (var key in colorList) {
+            var circleContainer = document.createElement("DIV");
+            var circle = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            circle.className = "circle";
+            circle.style.backgroundColor = colorList[key];
+            circleContainer.appendChild(circle);
+            circleContainer.appendChild(label);
+            container.appendChild(circleContainer);
+    }
+    }
+    colorize(colorList);
+</script>
+
+<div id="mylegendedge"></div>
+<style type="text/css">
+    .box {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    position: right; 
+    }
+</style>
+<script type="text/javascript">
+    var edgecolorList = { ' Plant': '#90C8AC',  ' Usage': '#E8D7AD', ' Medical':'#8C88BA',
+                        ' Region': '#CCF1FF',' Trade': '#edc7ed',' Commodity': 'orange',
+                        ' Moral': 'pink',' Miscellaneous': 'lemonchiffon',' Male/General':'#E0D7FF',
+                        ' Female': '#BCD2E3'};
+    colorizeEdge = function(edgecolorList) {
+        var container = document.getElementById('mylegendedge');
+        for (var key in edgecolorList) {
+            var boxContainer = document.createElement("DIV");
+            var box = document.createElement("DIV");
+            var label = document.createElement("SPAN");
+            label.innerHTML = key;
+            box.className = "box";
+            box.style.backgroundColor = edgecolorList[key];
+            boxContainer.appendChild(box);
+            boxContainer.appendChild(label);
+            container.appendChild(boxContainer);
+    }
+    }
+    colorizeEdge(edgecolorList);
+</script>
+</body>
+</html>

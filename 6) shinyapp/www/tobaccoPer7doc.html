@@ -1,0 +1,604 @@
+<html>
+<body>
+    <center>
+        <h1>1639-1641 Tobacco N-Gram Network Documentation</h1>
+        </center>
+<left>
+    <h3>K-Means Clustering</h3>
+    <text>
+        Each unique text is vectorized with a set of weighted features: the body text, topic words from Latent Dirichlet Allocation topic modeling (multiplied by 50), keywords metadata from the Library of Congress  (multiplied by 50), tobacco n-grams  (multiplied by 10), instances of tobacco or drug in the body text  (multiplied by 20), and key terms within the body texts (multiplied by 20). These features are vectorized using Scikit-Learn's TF-IDF vectorizer and clustered with the k-means algorithm. Then, the clusters are labeled based on the <b>top 20 TFIDF terms</b>, <b>10 keywords metadata</b> from the Library of Congress, and <b> 20 topic words</b>. Scroll to the <b>Text Information</b> section for details about authorship, titles, and dates for each text. 
+    </text>
+    <pre>&nbsp;</pre>
+    <p>
+Cluster 0:<br><ul><li><b>TCP IDs:</b> ['A02060', 'A15684', 'A06911', 'A09011', 'A09740']</li><li><b>TFIDF terms:</b> ['cloth', 'medicine', 'joint', 'turpentine', 'sugar', 'copper', 'french', 'the', 'with', 'they', 'that', 'you', 'take', 'his', 'then', 'for', 'horse', 'have', 'water', 'this']</li><li><b>Keywords:</b> [('Horses', 1), ('Diseases', 1), ('Formulae receipts prescriptions', 1), ('Botany Medical', 1), ('Medicine', 1), ('Urine', 1), ('Horsemanship', 1), ('Botany', 1), ('PreLinnean works', 1), ('History', 1)]</li><li><b>Topic words:</b> [('water', 4), ('take', 3), ('horse', 2), ('give', 2), ('well', 2), ('cure', 2), ('day', 2), ('powder', 2), ('good', 1), ('boil', 1)]</li></ul>Cluster 1:<br><ul><li><b>TCP IDs:</b> ['A64253', 'A64772', 'A72473', 'A37285', 'A01779', 'A13439', 'A13461', 'A14722', 'A15847', 'B07802', 'A85534', 'A30077', 'A47081', 'A47202', 'A10790', 'A03415', 'A13393', 'A04651', 'A05597', 'A15606', 'A09626', 'A19750', 'A56891', 'A73721', 'A46228', 'A77631', 'A01253', 'A01773', 'A13010', 'A13395', 'A15873', 'A07541', 'A19888', 'A09607']</li><li><b>TFIDF terms:</b> ['that', 'ship', 'money', 'have', 'you', 'company', 'his', 'christian', 'for', 'pleasure', 'they', 'will', 'but', 'with', 'not', 'thou', 'business', 'cloth', 'she', 'the']</li><li><b>Keywords:</b> [('Christian life', 3), ('Poetry', 2), ('Epigrams English', 2), ('Contentment', 1), ('Jesus Christ', 1), ('England and Wales', 1), ('Politics and government', 1), ('Humor', 1), ('Parliament', 1), ('Scolds', 1)]</li><li><b>Topic words:</b> [('good', 12), ('man', 11), ('out', 11), ('love', 11), ('see', 10), ('take', 9), ('time', 8), ('great', 8), ('god', 7), ('day', 7)]</li></ul>Cluster 2:<br><ul><li><b>TCP IDs:</b> ['B09294', 'A83496', 'A38817', 'A42872', 'A75518', 'A57437', 'A57520', 'A56323', 'A73387', 'A37557', 'A46035', 'A74707', 'A13516', 'A91395', 'A86223', 'A56127', 'A57391', 'A56322', 'A38224']</li><li><b>TFIDF terms:</b> ['england', 'ship', 'money', 'trade', 'commodity', 'merchant', 'profit', 'the', 'import', 'majesty', 'that', 'export', 'his', 'parliament', 'tobacco', 'plantation', 'cloth', 'grievance', 'have', 'kingdom']</li><li><b>Keywords:</b> [('History', 8), ('Ireland', 4), ('England', 4), ('Charles I', 4), ('Commerce', 4), ('Politics and government', 3), ('Sources', 3), ('Strafford Thomas Wentworth', 3), ('Earl of', 3), ('Commercial policy', 2)]</li><li><b>Topic words:</b> [('great', 13), ('kingdom', 11), ('majesty', 9), ('parliament', 7), ('subject', 7), ('law', 7), ('grievance', 6), ('england', 6), ('king', 6), ('lord', 4)]</li></ul>Cluster 3:<br><ul><li><b>TCP IDs:</b> ['B00113', 'B06331', 'B32508', 'A91057', 'A56145', 'A43605', 'A28264', 'A84935', 'A56346', 'A43602', 'A40049', 'A76768', 'A69561', 'B13588', 'A90502', 'A42169', 'A42368', 'A22634', 'A03960']</li><li><b>TFIDF terms:</b> ['tobacco', 'england', 'sources', 'laud', 'ballads', 'trade', 'they', 'have', 'humor', 'good', 'bishop', 'politics', 'that', 'patent', 'church', 'william', 'bishops', 'money', 'great', 'take']</li><li><b>Keywords:</b> [('England', 5), ('History', 4), ('Charles I', 4), ('Sources', 4), ('Humor', 3), ('Laud William', 3), ('Politics and government', 3), ('Church of England', 3), ('Ballads English', 2), ('London', 2)]</li><li><b>Topic words:</b> [('good', 6), ('man', 6), ('take', 5), ('great', 5), ('house', 4), ('well', 4), ('patent', 3), ('judge', 3), ('bishop', 3), ('stand', 3)]</li></ul>
+
+    </p>
+        
+
+    </p>
+    <pre></pre>
+
+    <hr>
+    <h3>Text Information</h3>
+    <text>
+        <b>A07541:</b> Cluster 1 <ul><li><b>Author: </b> ['Mill, Humphrey, fl. 1646.']</li><li><b>Title: </b> A nights search· Discovering the nature and condition of all sorts of night-walkers; with their associates. As also, the life and death of many of them. Together with divers fearfull and strange accidents, occasioned by such ill livers. Digested into a poeme by Humphry Mill.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_box</b>
+        <ul><li>mint give the wall else will draw stab make usher paint drab his wealth hang his back let have mock his riches lie his tobacco box valiant pity want sword the gentleman must buy pass his word furnish and then will brag and boast and hack</li></ul>
+        <ul><li>but will help woo she these jovial blade must make merry day talk more the reckon call pay pimp purse empty but his tobacco box all free they will best beware of pox open glass they must drink the round then suck the weed of eighteen</li></ul>
+        <li><b>light_tobacco</b>
+        <ul><li>crown but bear your share will keep shame this sinner make our recreation after dinner laugh his folly then will serve light tobacco for every winter night thou simple fool think will have lse within house our trade descry some feather</li></ul>
+        </ul><br>
+        <b>A09626:</b> Cluster 1 <ul><li><b>Author: </b> ['Pick, Samuel.']</li><li><b>Title: </b> Festum voluptatis, or The banquet of pleasure furnished with much variety of speculations, wittie, pleasant, and delightfull. Containing divers choyce love-posies, songs, sonnets, odes, madrigals, satyrs, epigrams, epitaphs and elegies. For varietie and pleasure the like never before published. By S.P. Gent.</li><li><b>Date: </b> 1639</li>
+        <li><b>use_tobacco</b>
+        <ul><li>which will vaunt of his adventure penury and scant yet if you please read slender muse shall describe the humour use tobacco botle ale hot pippin pie such traffic merchandise daily buy with belly timber cram his gut with double jug</li></ul>
+        </ul><br>
+        <b>A05597:</b> Cluster 1 <ul><li><b>Author: </b> ['Lithgow, William, 1582-1645?']</li><li><b>Title: </b> The totall discourse, of the rare adventures, and painefull peregrinations of long nineteene yeares travailes from Scotland, to the most famous kingdomes in Europe, Asia, and Affrica Perfited by three deare bought voyages, in surveying of forty eight kingdomes ancient and modern; twenty one rei-publicks, ten absolute principalities, with two hundred islands. ... divided into three bookes: being newly corrected, and augmented in many severall places, with the addition of a table thereunto annexed of all the chiefe heads. Wherein is contayed an exact relation of the lawes, religions, policies and governments of all their princes, potentates and people. Together with the grievous tortures he suffered by the Inquisition of Malaga in Spaine ... And of his last and late returne from the Northern Isles, and other places adjacent. By William Lithgow.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>all though now time alter every thing gratia become courtly tobacconist more for fashion then for like the turkish tobacco pipe more than yard long and common of wood cane join three part with lead white iron their several mouth</li></ul>
+        <li><b>whiff_of_tobacco</b>
+        <ul><li>their consort their auditor fill and fetch more their text spanish sack their prayer carrouse their sing of psalm the whiff of tobacco their last blessing and all their doctrine sound drunkenness and whensoever these party meet flat</li></ul>
+        <li><b>ounce_of_tobacco</b>
+        <ul><li>than yard long and common of wood cane join three part with lead white iron their several mouth receive once whole ounce of tobacco which last long space and because of the long pipe the smoke exceed cold their swallow throat our</li></ul>
+        <li><b>tobacco_when</b>
+        <ul><li>recall the aforesaid turk the master of the mule that carry provision and who the journey have bestow the most part of tobacco when have more give and suspect the contrary counsel his associate beat sound and dismount victual and water</li></ul>
+        </ul><br>
+        <b>A03415:</b> Cluster 1 <ul><li><b>Author: </b> ['Bancroft, Thomas, fl. 1633-1658.']</li><li><b>Title: </b> Tvvo bookes of epigrammes, and epitaphs Dedicated to two top-branches of gentry: Sir Charles Shirley, Baronet, and William Davenport, Esquire. Written by Thomas Bancroft.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_take</b>
+        <ul><li>hale amain the marine water tower the arctic wain which make that pair of beast draw more than all ere yoke nature see tobacco take the old germane that their divination make from ass head upon hot ember lay see they but now what frequent</li></ul>
+        </ul><br>
+        <b>A01253:</b> Cluster 1 <ul><li><b>Author: </b> ['Freeman, Ralph, Sir, fl. 1610-1655.']</li><li><b>Title: </b> Imperiale a tragedie.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_that</b>
+        <ul><li>both examine apart and make believe each other have confess some plot like steal silver spoon purchase opium the drug tobacco that the height of their ambitious theft but hark they knock prithee thou and will take order have sango send</li></ul>
+        </ul><br>
+        <b>A04651:</b> Cluster 1 <ul><li><b>Author: </b> ['Jonson, Ben, 1573?-1637.']</li><li><b>Title: </b> Ben: Ionson's execration against Vulcan· VVith divers epigrams by the same author to severall noble personages in this kingdome. Never published before.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_save</b>
+        <ul><li>thou may have yet enjoy thy cruelty with some more thirst and more variety thou may have have perish piece piece light tobacco save roast goose singe capon crispe pig drop their eye condemn they the oven with the pie and have keep die</li></ul>
+        </ul><br>
+        <b>A01779:</b> Cluster 1 <ul><li><b>Author: </b> ['Glapthorne, Henry.']</li><li><b>Title: </b> Wit in a constable A comedy written 1639. The author Henry Glapthorne. And now printed as it was lately acted at the Cock-pit in Drury lane, by their Majesties Servants, with good allowance.</li><li><b>Date: </b> 1640</li>
+        <li><b>herb_tobacco</b>
+        <ul><li>home must drink sometime too than you must not whine and cry out maid again will never marry any that take this wicked herb tobacco those injunction and some few hundred more of the same nature seal and deliver your promise may win wed</li></ul>
+        <li><b>tobacco_man</b>
+        <ul><li>whale such thing you know there nature far stranger peace you bookworm fit only devour more paper than thousand grand tobacco man legion of boy pellet their eldern gun think live this life still you not now among your eaves cambridge but</li></ul>
+        <li><b>tobacco_too</b>
+        <ul><li>sir see you wit very wit the modern term spark mere spark such one since leave off those idle toy call book will take tobacco too and with grace spit the rub chamber though his testy wife cry fie upon very spark and worthy your</li></ul>
+        </ul><br>
+        <b>A06911:</b> Cluster 0 <ul><li><b>Author: </b> ['Markham, Gervase, 1568?-1637.']</li><li><b>Title: </b> The complete farriar, or The kings high-way to horsmanship Experimentally unfolding 1. The dyeting and governing of the running horse. 2. How to order, feed, and keep any horse for war, pleasure, hunting, or travell. 3. How to know the age of any horse. Lastly, certaine rare and approved secrets for the cure of the worst infirmities in horses. By G. Markam.</li><li><b>Date: </b> 1639</li>
+        <li><b>best_tobacco</b>
+        <ul><li>leprosy wheresoever first let blood then take quart of old urine o^^ineger and break quarter of pound better of the best tobacco than set fire of ember where may simmer and not boil and let stew all whole night then with this water</li></ul>
+        </ul><br>
+        <b>A01773:</b> Cluster 1 <ul><li><b>Author: </b> ['Glapthorne, Henry.']</li><li><b>Title: </b> The Hollander A comedy written 1635. The author Henry Glapthorne. And now printed as it was then acted at the Cock-pit in Drury lane, by their Majesties Servants, with good allowance. And at the court before both their Majesties.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_but</b>
+        <ul><li>have knit and hundred of his country man your land will not pester with butter box think have purchase monopoly for tobacco but that the vintner take snuff and inform the gallant who have like smoke for admirable project afterwards</li></ul>
+        </ul><br>
+        <b>A19888:</b> Cluster 1 <ul><li><b>Author: </b> ['Davenport, Robert, fl. 1623.']</li><li><b>Title: </b> A pleasant and vvitty comedy: called, A new tricke to cheat the Divell . Written by R.D. Gent</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_woman</b>
+        <ul><li>nor the lady can without her gentleman usher your citizen wife her journeyman your country wench her sweetheart your tobacco woman her pipe maker and every whore her pander farewell geoffrey god with you gentlefolk wife wife wife nay</li></ul>
+        </ul><br>
+        <b>A13516:</b> Cluster 2 <ul><li><b>Author: </b> ['Taylor, John, 1580-1653.']</li><li><b>Title: </b> A valorous and perillous sea-fight Fought with three Turkish ships, pirats or men of warre, on the coast of Cornewall, (or Westerne part of England) by the good ship named the Elizabeth, of Plimmouth, she being of the Burthen of 200 tuns, which fight was bravely fought, on Wednesday, the 17 of Iune last part. 1640.</li><li><b>Date: </b> 1640</li>
+        <li><b>forget_tobacco</b>
+        <ul><li>stuff copper cotton mash yard pitch rosin tar turpentine fruit fish coal and million of commodity more have almost forget tobacco from america and some rattle baby and hobby horse from holland all these not for ship mariner</li></ul>
+        </ul><br>
+        <b>A10790:</b> Cluster 1 <ul><li><b>Author: </b> ['Rivers, George.']</li><li><b>Title: </b> The heroinæ: or, The lives of Arria, Paulina, Lucrecia, Dido, Theutilla, Cypriana, Aretaphila</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>meat you shall have the whole sect of epicure if their opinion stick your stomach you shall take all the sum of arabia tobacco pipe concoct they here that will chain your care the perpetual sound of aretaphila for your touch you midas</li></ul>
+        <ul><li>here shall you see the wrack of your body wrack how the only physician of himself the wound roman state like break tobacco pipe cure blood war cure the turkish lethargy the egyptian dropsy cure drink one month year the whole country</li></ul>
+        </ul><br>
+        <b>A15873:</b> Cluster 1 <ul><li><b>Author: </b> ['Zouch, Richard, 1590-1661.']</li><li><b>Title: </b> The sophister· A comedy.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_man</b>
+        <ul><li>sir and now what these suitor that much trouble you master you have see death dance boccus merchant victualler vintner tobacco man informer projector all those that mourn tigellius his funeral sure you know they and know myself unable</li></ul>
+        </ul><br>
+        <b>A19750:</b> Cluster 1 <ul><li><b>Author: </b> ['Day, John, 1574-1640?, attributed name.', 'J. D., Gent.']</li><li><b>Title: </b> The knave in graine, new vampt A witty comedy, acted at at the Fortune many dayes together with great applause. Written by J.D. Gent.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>puff his tobacco foul his room practise who shall break most hole and cleanly the bottom of quart pot with piece of tobacco pipe cry good morrow host have make mad night vow and trance gallant and can this but this course either</li></ul>
+        <ul><li>time over all besmear the rusty spit and dripping pan break all break glass beat the bottom out of can beat all foul tobacco pipe into fraction and what end all this perlahay friend shall hear more of that the reckon sweet monkey when</li></ul>
+        <li><b>his_tobacco</b>
+        <ul><li>more out thus can wake the constable trouble the neighbour disquiet the master and whole family spill his wine puff his tobacco foul his room practise who shall break most hole and cleanly the bottom of quart pot with piece of tobacco</li></ul>
+        </ul><br>
+        <b>A13461:</b> Cluster 1 <ul><li><b>Author: </b> ['Taylor, John, 1580-1653.']</li><li><b>Title: </b> A iuniper lecture With the description of all sorts of women, good, and bad: from the modest to the maddest, from the most civil, to the scold rampant, their praise and dispraise compendiously related. Also the authors advice how to tame a shrew, or vexe her.</li><li><b>Date: </b> 1639</li>
+        <li><b>wine_and_tobacco</b>
+        <ul><li>sound the act and lose your life and all this ensue your ingurgitate and excessive drink of wine such like liquor for wine and tobacco both hot heat and burn you within that weaken and impair your strength very much and especial tobacco</li></ul>
+        <li><b>tobacco_that</b>
+        <ul><li>for you may read these ensue line which dare say honest man write they and they true and woman friend will assure you tobacco that outlandish weed weaken the body spoil the seed hurt the brain and dim the sight true husband if you</li></ul>
+        </ul><br>
+        <b>A15606:</b> Cluster 1 <ul><li><b>Author: </b> ['Herbert, George, 1592-1637.']</li><li><b>Title: </b> Wits recreations. Selected from the finest fancies of moderne muses</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_take</b>
+        <ul><li>his kitchen box and roast pipe the same if man flesh like swine say the metamorphosis soon make then full faced gnatho tobacco take smoke your corpse lest bacon you make another tomorrow commend thou above all know that sold thy cushion</li></ul>
+        <li><b>call_tobacco</b>
+        <ul><li>sir let for these hilt will brain you shall base patch with appearance wrong will kill the villain pray not prolong call tobacco putrify stuff tell stink say dross snuff sirrah what you why sir what will you apprentice and will knock</li></ul>
+        <li><b>tobacco_till</b>
+        <ul><li>who oath fly through ear how like lord of pluto court swear how dutchman like swallow down his drink how sweet take tobacco till stink how lofty spright disdain boor how faithful heart how cock tail proud himself advance how rare his</li></ul>
+        <li><b>tobacco_tobacco</b>
+        <ul><li>rufus that the cause of all that sold for with frank gamester oft befall they throw all till throw quite out of all tobacco tobacco weed of great power that like earth all feed devour ne^ dick rage deep discourtesy call attorny mere</li></ul>
+        <li><b>then_tobacco</b>
+        <ul><li>and youth admire not youth despise not age although some young grave most old man child grow orus orus sell wine and then tobacco now aquavitae his friend allow what ere have sell save his life and now turn pander sell his wife woman</li></ul>
+        <li><b>tobacco_that</b>
+        <ul><li>^ir debt indebt shame man say mistress maryna start see frog naked rapier creep mouse hear gun bark mastiff dog smell tobacco that defile her house taste of fish man alive shall woeher yet fear she not what flesh can unto she woman</li></ul>
+        </ul><br>
+        <b>A13393:</b> Cluster 1 <ul><li><b>Author: </b> ['Tatham, John, fl. 1632-1664.']</li><li><b>Title: </b> The fancies theater· By Iohn Tatham Gent</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>ca^buncles number grow but the beauty of thy nose will fright man out of his cloth dance naked round delay when the tobacco pipe you play and the pale brightness of thy lip will force the sun eclipse thy cheek of fat and foggy stuff</li></ul>
+        </ul><br>
+        <b>A13010:</b> Cluster 1 <ul><li><b>Author: </b> ['Stoughton, John, d. 1639.', 'Burgess, Anthony, d. 1664.']</li><li><b>Title: </b> XI. choice sermons preached upon selected occasions, in Cambridge. Viz. I. The preachers dignity, and duty: in five sermons, upon 2. Corinth. 5. 20. II. Christ crucified, the tree of life: in six sermons, on 1. Corinth. 2. 2. By John Stoughton, Doctor in Divinity, sometimes fellow of Immanuel Colledge in Cambridge, late preacher of Aldermanburie, London. According to the originall copie, which was left perfected by the authour before his death.</li><li><b>Date: </b> 1640</li>
+        <li><b>their_tobacco</b>
+        <ul><li>against christian who the son of god lest against his ambassador petty treason and when they belch forth this among their tobacco smoke collow they they utter the phrase what if ahab frown and fret and charge the prophet of sharpness</li></ul>
+        </ul><br>
+        <b>A13395:</b> Cluster 1 <ul><li><b>Author: </b> ['Hit-him-home, Ioane. aut', 'Taylor, John, 1580-1653. aut', 'Tattle-well, Mary.']</li><li><b>Title: </b> The womens sharpe revenge: or an answer to Sir Seldome Sober that writ those railing pamphelets called the Iuniper and Crabtree lectures, &c. Being a sound reply and a full confutation of those bookes: with an apology in this case for the defence of us women. Performed by Mary Tattle-well, and Ioane Hit-him-home, spinsters.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>five howl the treble like wolf and six grunt the base like that what with the ravish sound of sackebuts canary pipe tobacco pipe flout flute shame bad pipe weight oboe clink and knock of pot stamp dance and sing confuse noise there</li></ul>
+        <ul><li>and slay one another there have two kill the same unkind kind within these few year with only stab into the eye with tobacco pipe and likewise more proper the like foolish way they have throw pot down the stair and drawer some other</li></ul>
+        <ul><li>example put the constable into business keep the watch wake visit the justice see the clerk profitable the chandler tobacco pipe maker and potent patentee keep the drawer perpetual motion beneficial the glass house enrich the wine</li></ul>
+        <li><b>chandler_tobacco</b>
+        <ul><li>much for example put the constable into business keep the watch wake visit the justice see the clerk profitable the chandler tobacco pipe maker and potent patentee keep the drawer perpetual motion beneficial the glass house enrich the</li></ul>
+        <li><b>tobacco_some</b>
+        <ul><li>and win take fine commodity cheat dear rate gingerbread rattle mousetrap tormentor for flea tennis ball and mundunga tobacco some have sell their good and land their ale and they have beggar ever after sober add this many of sir seldom</li></ul>
+        <li><b>pipe_tobacco</b>
+        <ul><li>hound five howl the treble like wolf and six grunt the base like that what with the ravish sound of sackebuts canary pipe tobacco pipe flout flute shame bad pipe weight oboe clink and knock of pot stamp dance and sing confuse noise</li></ul>
+        </ul><br>
+        <b>A14722:</b> Cluster 1 <ul><li><b>Author: </b> ['Ward, Robert, fl. 1639.']</li><li><b>Title: </b> Anima'dversions of vvarre; or, A militarie magazine of the truest rules, and ablest instructions, for the managing of warre Composed, of the most refined discipline, and choice experiments that these late Netherlandish, and Swedish warres have produced. With divers new inventions, both of fortifications and stratagems. As also sundry collections taken out of the most approved authors, ancient and moderne, either in Greeke. Latine. Italian. French. Spanish. Dutch, or English. In two bookes. By Robert Ward, Gentleman and commander.</li><li><b>Date: </b> 1639</li>
+        <li><b>butter_tobacco</b>
+        <ul><li>who expert of all place and passage there about and forward accomplish any thing command for reward undertake carry butter tobacco and cheese the besiege town make show of have narrow and with great danger escape the enemy sentinel and</li></ul>
+        <li><b>tobacco_pipe</b>
+        <ul><li>and the height of they six either side of these hollow quill form of earth solder of latin about the bigness of tobacco pipe these from the top of these pot just the bottom convey the the train of powder the touchhole the bottom</li></ul>
+        </ul><br>
+        <b>A13439:</b> Cluster 1 <ul><li><b>Author: </b> ['Taylor, John, 1580-1653.']</li><li><b>Title: </b> Divers crabtree lectures Expressing the severall languages that shrews read to their husbands, either at morning, noone, or night. With a pleasant relation of a shrewes Munday, and shrewes Tuesday, and why they were so called. Also a lecture betweene a pedler and his wife in the canting language. With a new tricke to tame a shrew.</li><li><b>Date: </b> 1639</li>
+        <li><b>his_tobacco</b>
+        <ul><li>wife her husband tobacco woman wont borrow from her neighbour the apothecary the name of glister pipe and tell take his tobacco the wrong way for shall rather take his tail than his mouth for the best medicine for the wind colic and</li></ul>
+        <li><b>your_tobacco</b>
+        <ul><li>which she reply manner with mischief and duty the devil name you owley glasse before next june will teach you light your tobacco with nothing but juniper and have not customer then come she have more large her lecture pewterer wife and</li></ul>
+        <li><b>wine_and_tobacco</b>
+        <ul><li>confess woodcock they may if you can find spring catch they you get nothing now day but flattery and dissemble only wine and tobacco keep some young novice company humour tell some strange story and idle fable and then night come home</li></ul>
+        <li><b>tobacco_man</b>
+        <ul><li>they together heyloft which doubtful answer put into worse quandary than if she have enter direct with into quarrel of tobacco man wife her husband tobacco woman wont borrow from her neighbour the apothecary the name of glister pipe and</li></ul>
+        <li><b>tobacco_woman</b>
+        <ul><li>answer put into worse quandary than if she have enter direct with into quarrel of tobacco man wife her husband tobacco woman wont borrow from her neighbour the apothecary the name of glister pipe and tell take his tobacco the</li></ul>
+        </ul><br>
+        <b>A28264:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> The Bishops potion, or, A dialogue betweene the Bishop of Canterbury and his phisitian wherein he desireth the doctor to have a care of his bodie and to preserve him from being let blood in the neck when the signe is in Taurus.</li><li><b>Date: </b> 1641</li>
+        <li><b>ounce_of_tobacco</b>
+        <ul><li>book of canon charge with the horrible monster now pretty well ease but pray master doctor what this make of why lord ounce of tobacco scruple of pillory powder scruple of his brain that look over london bridge and three handful of the</li></ul>
+        </ul><br>
+        <b>A22634:</b> Cluster 3 <ul><li><b>Author: </b> ['England and Wales. Sovereign (1625-1649 : Charles I)', 'Charles I, King of England, 1600-1649.']</li><li><b>Title: </b> By the King a proclamation concerning tobacco.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_their</b>
+        <ul><li>themselves any other take receive any recompense for the same and whereas diverse of our subject who license retail tobacco their own house only notwithstanding retail tobacco fair and market abroad the prejudice of such person license</li></ul>
+        <li><b>foreign_tobacco</b>
+        <ul><li>of our love subject have since take several and respective licence under our great seal of england sell and utter foreign tobacco retail such respective city town and place the same licence express render our heir and successor such</li></ul>
+        <li><b>all_tobacco</b>
+        <ul><li>of they within our dominion of wales town of barwick within our island of jersey garnsey and man any of they and that all tobacco already plant and now grow there present displant and utter destroy and the end the hereof not any wise</li></ul>
+        <li><b>tobacco_have</b>
+        <ul><li>droit the king proclamation concern tobacco have heretofore inform that through the immoderate take of tobacco provoke the taker thereof excessive drink</li></ul>
+        <li><b>tobacco_also</b>
+        <ul><li>adulterate tobacco whatsoever and the better prevent the great abuse offer and our love subject the sale of english tobacco also strait charge and command that person whatsoever any time hereafter plant cause plant any tobacco within</li></ul>
+        <li><b>any_tobacco</b>
+        <ul><li>charge and command all our love subjectt that none of they from henceforth presume direct indirect sell utter deliver any tobacco retail any place place within our say kingdom of england dominion of wales and town of barwick any of they</li></ul>
+        <ul><li>and every other interloper interloper whatsoever that none of they from henceforth direct indirect sell utter deliver any tobacco retail under colour pretext of give tobacco themselves any other take receive any recompense for the same</li></ul>
+        <ul><li>and ireland dominion of wales and town of barwick any of they from henceforth presume buy sell utter direct indirect any tobacco of the growth of our kingdom of england and ireland dominion of wales and town of barwick island of jersey</li></ul>
+        <ul><li>the sale of english tobacco also strait charge and command that person whatsoever any time hereafter plant cause plant any tobacco within our kingdom of england and ireland either of they within our dominion of wales town of barwick</li></ul>
+        <li><b>english_tobacco</b>
+        <ul><li>according the purport and true meaning of their respective licence under our great seal and whereas inform that much english tobacco which through the coldness of the climate and unaptness of the soil not come perfect maturity</li></ul>
+        <ul><li>any mix adulterate tobacco whatsoever and the better prevent the great abuse offer and our love subject the sale of english tobacco also strait charge and command that person whatsoever any time hereafter plant cause plant any tobacco</li></ul>
+        <li><b>tobacco_that</b>
+        <ul><li>the premise diverse ill affect person endeavour for some small advantage themselves bring the retail of tobacco that confuse and ungoverned liberty have before have contempt of our say proclamation presume without our</li></ul>
+        <li><b>sell_tobacco</b>
+        <ul><li>which have the rather occasion for that restraint have make of the number nor regard have of the quality of those that sell tobacco retail but person of the mean condition have promiscuous use retail the same keep order assize therein</li></ul>
+        <ul><li>their own house only notwithstanding retail tobacco fair and market abroad the prejudice of such person license sell tobacco those place our will and pleasure and hereby strait charge and command that from henceforth they and every</li></ul>
+        </ul><br>
+        <b>A37285:</b> Cluster 1 <ul><li><b>Author: </b> ['Day, John, 1574-1640?']</li><li><b>Title: </b> The parliament of bees, with their proper characters. Or a bee-hive furnisht with twelve hony-combes, as pleasant as profitable Being an allegoricall description of the actions of good and bad men in these our daies. By John Daye, sometimes student of Caius Colledge in Cambridge.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_whiff</b>
+        <ul><li>smoke pilcher vanish proud don with the ochre face will but desire meet thou breach amid smoke and fire and for tobacco whiff gunpowder out of brazen pipe that shall puff loud than thunder roar there though illiterate daw thou</li></ul>
+        </ul><br>
+        <b>A38817:</b> Cluster 2 <ul><li><b>Author: </b> ['Evelyn, Robert, 17th cent.']</li><li><b>Title: </b> A direction for adventurers with small stock to get two for one, and good land freely and for gentlemen and all servants, labourers, and artificers to live plentifully : and the true description of the healthiest, pleasantest, and richest plantation of new Albion in North Virginia proved by thirteen witnesses : together with a letter from Master Robert Evelin, that lived there many yeares, shewing the particularities and excellency thereof ...</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_will</b>
+        <ul><li>pease with charge day work with seed yield quarter acre the same wheat time big and weighty beside potato woad mad and tobacco will yield half tun of flax and tun of hemp worth acre and day work here province france walnut milk oil ground</li></ul>
+        </ul><br>
+        <b>A43605:</b> Cluster 3 <ul><li><b>Author: </b> ['Heywood, Thomas, d. 1641.']</li><li><b>Title: </b> Reader, here you'l plainly see iudgement perverted by these three, a priest, a judge, a patentee written by Thomas Heywood.</li><li><b>Date: </b> 1641</li>
+        <li><b>even_tobacco</b>
+        <ul><li>our skin and needle sow with they make boot of every thing wear from head foot nay may speak they with pox find they even tobacco box leave your petty feoffor and feoffee and come your brave scarlet patentee who when our soap of sweet</li></ul>
+        </ul><br>
+        <b>A42368:</b> Cluster 3 <ul><li><b>Author: </b> ['Gwin, John, b. 1605, defendant.']</li><li><b>Title: </b> Articles ministred by His Majesties commissioners for causes ecclesiasticall, presented to the high court of Parliament against John Gwin, vicar of Cople in the county of Bedford wherein is discovered his lascivious wenching, drunkenesse and wanton life and most vild and unbecoming courses, most unfit for his function.</li><li><b>Date: </b> 1641</li>
+        <li><b>beer_and_tobacco</b>
+        <ul><li>but like drunkard have reel and down and have necklect his study divinity have spend his time carouse and drink ale beer and tobacco the most part of the tipple house and upon the lord day have there sit until clock night that the say</li></ul>
+        </ul><br>
+        <b>A42169:</b> Cluster 3 <ul><li><b>Author: </b> ['Grimston, Harbottle, Sir, 1603-1685.']</li><li><b>Title: </b> Mr. Grymstons speech in Parliament upon the accusation and impeachment of William Laud Arch-bishop of Canterbury upon high treason declaring his wicked proceedings and ex-orbitant power, both in church and common-wealth.</li><li><b>Date: </b> 1641</li>
+        <li><b>rake_the_tobacco</b>
+        <ul><li>use their trade certain speaker may hav^ spend his time better and more for his grace the pulpit then thus shark and rake the tobacco shop speaker all know what have charge withal here this house crime of dangerous consequence ^nd of</li></ul>
+        <li><b>tobacco_wherein</b>
+        <ul><li>last past and rather than will stand out have most unworthy truck and chaffer the mean of them for instance that of tobacco wherein thousand of poor people have strip and turn out of their trade for which they have serve apprentice all</li></ul>
+        </ul><br>
+        <b>A42872:</b> Cluster 2 <ul><li><b>Author: </b> ['England and Wales. Parliament. House of Commons.', 'Glynne, John, Sir, 1603-1666.']</li><li><b>Title: </b> Master Glyn's reply to the Earle of Straffords defence of the severall articles objected against him by the House of Commons Published by speciall direction, out of an authentick copy.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_which</b>
+        <ul><li>shelter and protect himself under justify exorbitant action but if your lordship call mind the business of custom for tobacco which truth the king right and due and great profit thereby advance and trust advance the king must lose of his</li></ul>
+        <li><b>tobacco_into</b>
+        <ul><li>his hand for the advancement of his revenue that may maintain himself and may not abuse and other live but take the tobacco into his hand never nor can produce witness prove such their desire and therefore under favour fix wrong upon</li></ul>
+        <ul><li>nor can make good for there such thing but if you observe the course take make proclamation hinder the import of tobacco into ireland that if import must sell his own rate and this mean first hinder the liberty of the subject from</li></ul>
+        <li><b>tobacco_wherein</b>
+        <ul><li>export they but that will not have mention if have let slip over come the twelve article and that concerning the tobacco wherein pretend the king service and if memory fail not the desire of the parliament that shall take this into</li></ul>
+        </ul><br>
+        <b>A43602:</b> Cluster 3 <ul><li><b>Author: </b> ['Heywood, Thomas, d. 1641.']</li><li><b>Title: </b> Machiavels ghost, as he lately appeared to his deare sons, the moderne projectors divulged for the pretended good of the kingdomes of England, Scotland, and Ireland.</li><li><b>Date: </b> 1641</li>
+        <li><b>wine_tobacco</b>
+        <ul><li>of gain they will drop all three into hangman budget if article not cozen rare extracter of the quintence of beer ale wine tobacco malt bricke tile soap starch alum card die and tapster the pure spirit get impose fine and annual rent</li></ul>
+        </ul><br>
+        <b>A46228:</b> Cluster 1 <ul><li><b>Author: </b> ['Jonson, Ben, 1573?-1637.']</li><li><b>Title: </b> The divell is an asse a comedie acted in the yeare 1616, by His Majesties servants / the author, Ben. Iohnson.</li><li><b>Date: </b> 1641</li>
+        <li><b>take_of_tobacco</b>
+        <ul><li>vex too manifest and give soap act with give more soap foam with now lie still and act little what now sir show the take of tobacco with which the devil delight hum and call for hum you taker of water and tobacco mark this yellow</li></ul>
+        <li><b>their_tobacco</b>
+        <ul><li>not unless vice of quality fashion now they take none from carman get into the yellow starch and chimney sweeper their tobacco and strong water hum meath and obarni must therefore aim extraordinary subtle one now when send keep</li></ul>
+        <li><b>water_and_tobacco</b>
+        <ul><li>and act little what now sir show the take of tobacco with which the devil delight hum and call for hum you taker of water and tobacco mark this yellow yellow yellow yellow that starch the devil idol of that colour ratify clap of his</li></ul>
+        </ul><br>
+        <b>A57520:</b> Cluster 2 <ul><li><b>Author: </b> ['Roe, Thomas, Sir, 1581?-1644.']</li><li><b>Title: </b> Sir Thomas Roe his speech in Parliament wherein he sheweth the cause of the decay of coyne and trade in this land, especially of merchants trade, and also propoundeth a vvay to the House, how they may be increased.</li><li><b>Date: </b> 1641</li>
+        <li><b>barter_for_tobacco</b>
+        <ul><li>trade there some particular the spanish trade perhaps worthy of animadversion undersell good commodity make money barter for tobacco the imbasement of our own staple for smoke which due place ought take into regulation another</li></ul>
+        </ul><br>
+        <b>A56127:</b> Cluster 2 <ul><li><b>Author: </b> ['Prynne, William, 1600-1669.']</li><li><b>Title: </b> The antipathie of the English lordly prelacie, both to regall monarchy, and civill unity: or, An historicall collection of the severall execrable treasons, conspiracies, rebellions, seditions, state-schismes, contumacies, oppressions, & anti-monarchicall practices, of our English, Brittish, French, Scottish, & Irish lordly prelates, against our kings, kingdomes, laws, liberties; and of the severall warres, and civill dissentions occasioned by them in, or against our realm, in former and latter ages Together with the judgement of our owne ancient writers, & most judicious authors, touching the pretended divine jurisdiction, the calling, lordlinesse, temporalities, wealth, secular imployments, trayterous practises, unprofitablenesse, and mischievousnesse of lordly prelates, both to King, state, Church; with an answer to the chiefe objections made for the divinity, or continuance of their lordly function. The first part. By William Prynne, late (and now againe) an utter-barester of Lincolnes Inne.</li><li><b>Date: </b> 1641</li>
+        <li><b>take_the_tobacco</b>
+        <ul><li>use their trade certain speaker may have spend his time better and more for his grace the pulpit then thus shark and take the tobacco shop speaker all know what have charge withal here this house crime of dangerous consequence and of</li></ul>
+        <li><b>tobacco_wherein</b>
+        <ul><li>last pass and rather than will stand out have most unworthy truck and chaffer the mean of they for instance that of tobacco wherein thousand of poor people have strip and turn out of their trade^ for which they have serve apprentice</li></ul>
+        <li><b>drink_of_tobacco</b>
+        <ul><li>queen elizabeth just displeasure for his misdemeanour martin history godwin whereupon fall cure his care immoderate drink of tobacco and june the fifteen die sudden his house london see well sick and dead one quarter of hour richard</li></ul>
+        </ul><br>
+        <b>A57391:</b> Cluster 2 <ul><li><b>Author: </b> ['Roberts, Lewes, 1596-1640.']</li><li><b>Title: </b> The treasure of traffike, or, A discourse of forraigne trade wherein is shewed the benefit and commoditie arising to a commonwealth or kingdome, by the skilfull merchant, and by a well ordered commerce and regular traffike / by Lewes Roberts ...</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_shall</b>
+        <ul><li>custom etc england will amount unto pound whereas holland the say tun will clear for pound now though the say tun of tobacco shall here again ship out within the year and the impost repay yet the merchant lose infinite bring into the</li></ul>
+        <li><b>tobacco_the_like</b>
+        <ul><li>into another kingdom but must great loser they for the hollander can still undersell and yet gainer thereby ^uns of tobacco the like may allege of two ship of two hundred tun piece come alike lade with tun of tobacco from barmuda saint</li></ul>
+        </ul><br>
+        <b>A56346:</b> Cluster 3 <ul><li><b>Author: </b> ['Pym, John, 1584-1643.']</li><li><b>Title: </b> Mr. Pym his speech in Parliament the XXV of Ianuary MDCXLI against the bishops charge, hastening their triall.</li><li><b>Date: </b> 1641</li>
+        <li><b>that_of_tobacco</b>
+        <ul><li>last past and rather than they will stand out they have most unworthy truck and chaffer the mean of they for instance that of tobacco wherein thousand of poor people have strip and turn out of their trade for which they have serve</li></ul>
+        </ul><br>
+        <b>A56145:</b> Cluster 3 <ul><li><b>Author: </b> ['Prynne, William, 1600-1669.']</li><li><b>Title: </b> Canterburies tooles, or, Instruments wherewith he hath effected many rare feats, and egregarious exploits ...</li><li><b>Date: </b> 1641</li>
+        <li><b>chandler_tobacco</b>
+        <ul><li>hold but vain for the convocation mould cast they anew yet they worth their weight of brown paper any time for grocer chandler tobacco shop and physician for such patient have lax and trot ague often thou stool if they have but new canon</li></ul>
+        </ul><br>
+        <b>A57437:</b> Cluster 2 <ul><li><b>Author: </b> ['Robinson, Henry, 1605?-1664?']</li><li><b>Title: </b> Englands safety in trades encrease most humbly presented to the high court of Parliament / by Henry Robinson ...</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_and_other</b>
+        <ul><li>than necessary and only make these new town of staple magazine and warehouse of corn wine salt fish flax cotton wool tobacco and other foreign commodity furnish our northerly neighbour nation may compass with the same advantage which</li></ul>
+        </ul><br>
+        <b>A64772:</b> Cluster 1 <ul><li><b>Author: </b> ['Vaughan, William, 1577-1641.']</li><li><b>Title: </b> The sovles exercise in the daily contemplation of our Saviours birth, life, passion, and resurrection William Vavghan, knight.</li><li><b>Date: </b> 1641</li>
+        <li><b>smoke_tobacco</b>
+        <ul><li>hear faith get room but if fit their sense quail their quail hurt the wit then let this brass marble place who smoke tobacco much dote last who can deny but satan our age let more loose with violence rage and with his angel daily</li></ul>
+        <li><b>why_tobacco</b>
+        <ul><li>trencher daub with colloquintids pill how the sun glass thing remote may fire yield the reason will not reason tire why tobacco the vomick nut opium henbane the sense glut why the juice of spurge tithimall hold the gum cause all the</li></ul>
+        </ul><br>
+        <b>A64253:</b> Cluster 1 <ul><li><b>Author: </b> ['Taylor, Thomas, 1576-1632.', 'Taylor, Thomas, 1576-1632. Holy warre.', 'Taylor, Thomas, 1576-1632. Treatise of the improvement of time.']</li><li><b>Title: </b> A treatise of contentment leading a Christian with much patience through all afflicted conditions by sundry rules of heavenly wisedome : whereunto is annexed first, A treatise of the improvement of time, secondly, The holy warre, in a visitation sermon / by T.T.</li><li><b>Date: </b> 1641</li>
+        <li><b>wine_tobacco</b>
+        <ul><li>have the apostle charge titus that minister shall tit temperate sober drinker that affect and excessive either of wine tobacco and one branch of sobriety contentation with man estate not covetous but take the lesson of john baptist</li></ul>
+        </ul><br>
+        <b>B00113:</b> Cluster 3 <ul><li><b>Author: </b> ['[Guy, Robert, writer of ballads.]']</li><li><b>Title: </b> The merry old vvoman: or, This is a good old woman, this is a merry old woman, her counsell is good ile warrant, for shee doth wish ill to no man. To the tune, This is my grannams deedle.</li><li><b>Date: </b> 1640</li>
+        <li><b>drink_and_tobacco</b>
+        <ul><li>show shall of all scholar hate this good old woman etc that will goodfellow of mean must prepare if that love drink and tobacco else shall fear this good old woman etc that will tailor must active and nimble and that will</li></ul>
+        </ul><br>
+        <b>A03960:</b> Cluster 3 <ul><li><b>Author: </b> ['T. J., fl. 1640.']</li><li><b>Title: </b> A discourse, betvveene Vpright the shoomaker and Master Pattent, the smith Both meeting on the horse exchange in Smithfield, on the 20. day of Aprill 1639. Ne sutor vltra crepidam. By T.J.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_vow</b>
+        <ul><li>well and thyself can never live well very good not very have sir you talk off you hear patent the spanish merchant don tobacco vow revenge upon thou and much fear will take thy life for say will send his two factor verinus and mandungus</li></ul>
+        <li><b>tobacco_pipe</b>
+        <ul><li>forsake the wear of hatbond will have all our fiddle string from rome and venice and smith have conceit make iron tobacco pipe and steel comb and our old man when they once grow dim sight shall have their writing read they this</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>of the whole kingdom these fashion beside your iron work will good for have many phantaslike company keeper that only take tobacco break the pipe and shall behold other nation for fiddle string comb our head with horse comb beside there</li></ul>
+        </ul><br>
+        <b>A02060:</b> Cluster 0 <ul><li><b>Author: </b> ['De Grey, Thomas.']</li><li><b>Title: </b> The compleat horseman and expert ferrier In two bookes. The first, shewing the best manner of breeding good horses, with their choyce, nature, riding and dyeting ... The second, directing the most exact and approved manner how to know and cure all maladies and diseases in horses ... dedicated to his most Excellent Majestie, by Thomas de Gray Esquire.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_will</b>
+        <ul><li>use take tobacco then forbear blow yourself but let some other who take not any blow for the very scent and steam of tobacco will cause your horse swell both the shoulder and all along under his belly even the sheath and stone most</li></ul>
+        <li><b>much_tobacco</b>
+        <ul><li>wheat meal much will suffice and give drink another take quart of the best ale and warm upon the fire and put into much tobacco make into fine powder you can take upon shilling twice and much dry rosemary fine powder you may take upon</li></ul>
+        <li><b>strong_tobacco</b>
+        <ul><li>and short time will whole this very good another take first of white wine vineger one pint and put unto of the strong tobacco the roll you can get one ounce open the leaf and shred the tobacco small and boil until the vinegar</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>work they together till become of ash colour and anoint therewith and will twice thrice dress kill they all another take tobacco much will suffice and shred very small and put into small beer and put of alum powder much will suffice</li></ul>
+        <ul><li>endanger the life of your horse for the like myself have but have rowel your horse and that you blow if you use take tobacco then forbear blow yourself but let some other who take not any blow for the very scent and steam of</li></ul>
+        </ul><br>
+        <b>A09011:</b> Cluster 0 <ul><li><b>Author: </b> ['Parkinson, John, 1567-1650.']</li><li><b>Title: </b> Theatrum botanicum: = The theater of plants. Or, An herball of a large extent containing therein a more ample and exact history and declaration of the physicall herbs and plants that are in other authours, encreased by the accesse of many hundreds of new, rare, and strange plants from all the parts of the world, with sundry gummes, and other physicall materials, than hath beene hitherto published by any before; and a most large demonstration of their natures and vertues. Shevving vvithall the many errors, differences, and oversights of sundry authors that have formerly written of them; and a certaine confidence, or most probable conjecture of the true and genuine herbes and plants. Distributed into sundry classes or tribes, for the more easie knowledge of the many herbes of one nature and property, with the chiefe notes of Dr. Lobel, Dr. Bonham, and others inserted therein. Collected by the many yeares travaile, industry, and experience in this subject, by Iohn Parkinson apothecary of London, and the Kings herbarist. And published by the Kings Majestyes especial</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_and_not</b>
+        <ul><li>which continue think also some that john nicot the french man agent portugal for the french king send this sort of tobacco and not any other the french queen and call thereupon and from himself nicotiana which probable because the</li></ul>
+        <li><b>tobacco_pipe</b>
+        <ul><li>for those that burst bellied provoke woman term course other drink apply the place the sum thereof take through reed tobacco pipe either itself with some dry turpentine cure they that have cough put into bath for woman sit also into</li></ul>
+        <ul><li>for that purpose but have know glister give this manner good purpose glister ready give with bladder the small end of tobacco pipe put into the bladder and tie but that may draw close after the pipe pull out that have tobacco the bowl</li></ul>
+        <li><b>take_of_tobacco</b>
+        <ul><li>have profitable take due manner that fast and bed ward and before meat thevet say that the woman america forbear the take of tobacco because that they have teach that will hinder conception and bodily lust the herb bruise and apply the</li></ul>
+        <li><b>leaf_of_tobacco</b>
+        <ul><li>mix with and the reins of the back anoint therewith will take away the shake fit of ague plaster make thereof and the leaf of tobacco will heal the sting bite of any venomous beast the decoction of the husk themselves make with water and</li></ul>
+        <ul><li>use another if they will have they strong able intoxicate their brain like unto drunkenness senseless they put the leaf of tobacco and take great pleasure those course chap betre betle betele bethle the indian bindweed call beetle</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>and dry the fresh leaf juice syrup make thereof fit for hot drycough and for wine and shortness of breath the dry leaf take tobacco the like manner good for the thin rheum distillation and cough also the root take like sort dioscorides</li></ul>
+        <li><b>like_tobacco</b>
+        <ul><li>leaf very profitable for woman that trouble with the white if they daily take the dry leaf shred small and take pipe like tobacco take help those much that have any cough tisick consumption warm and dry the thin distillation which cause</li></ul>
+        <ul><li>stalk which rise three four foot high more large and long than those below set without order and compass the bottom like tobacco leave all of they little uneven dent about the edge the flower upon the top of the leaf of the several</li></ul>
+        <li><b>kind_of_tobacco</b>
+        <ul><li>the other sort hyoscyamus and call hyoscyamus and and thereupon some have call english yellow henbane the virtue this kind of tobacco although not think strong sweet for such take the pipe and yet have know walter raleigh when prisoner</li></ul>
+        <li><b>small_tobacco</b>
+        <ul><li>somewhat agree with the former set lobels red berry nightshade grow like common nightshade but great the leaf like small tobacco leave the flower white like the ordinary sort the berry small and round of orient reddish colour with</li></ul>
+        <li><b>good_tobacco</b>
+        <ul><li>sweet for such take the pipe and yet have know walter raleigh when prisoner the tower make choice of this sort make good tobacco of which know right cure they call tobacco anguicum english tobacco that hold almost good that which come</li></ul>
+        <li><b>english_tobacco</b>
+        <ul><li>black and the second white peculiar set down and agree upon all but the yellow say not plain determine some take the english tobacco the indian kind quite differ effect this hot and stupefactive the other cold and soperiferous but if</li></ul>
+        <ul><li>last also also speedy heal all green wound and effectual also old ulcer the secret well the other part chap tobacco english tobacco have former book give you the knowledge of diverse sort of tobacco such for their flower sake may fit</li></ul>
+        <ul><li>that time the indian name of picielt and perebecenne more proper take the other indian kind usual call england english tobacco not that natural of england but because more common grow every country garden almost and better endure</li></ul>
+        <ul><li>when prisoner the tower make choice of this sort make good tobacco of which know right cure they call tobacco anguicum english tobacco that hold almost good that which come from the indies and full good any other make england nor yet</li></ul>
+        </ul><br>
+        <b>A09740:</b> Cluster 0 <ul><li><b>Author: </b> ['Plattes, Gabriel, fl. 1638-1640.']</li><li><b>Title: </b> A discovery of subterraneall treasure viz. of all manner of mines and mineralls, from the gold to the coale; with plaine directions and rules for the finding of them in all kingdoms and countries. And also the art of melting, refining, and assaying of them is plainly declared, so that every ordinary man, that is indifferently capacious, may with small change presently try the value of such oares as shall be found either by rule or by accident. Whereunto is added a reall experiment whereby every ignorant man may presently try whether any peece of gold that shal come to his hands be true or connterfeit [sic] ... Also a perfect way to try what colour any berry, leafe, flower, stalke, root, fruit, seed, barke, or wood will give: with a perfect way to make colours that they shall not stayne nor fade like ordinary colours. ...</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>put bottle beere beat they fine powder and searce they fine meal take of this meal four pound of the fine powder of tobacco pipe clay one pound temper they together with the red fattish water that issue out of horse dunghill beat</li></ul>
+        <li><b>tobacco_and_such</b>
+        <ul><li>these lose and neglect shame the planter for these mine if they prove rich will yield more gain one year than their tobacco and such trifle will yield their whole life chap now that come the melt and refine of metal will begin first</li></ul>
+        </ul><br>
+        <b>A09607:</b> Cluster 1 <ul><li><b>Author: </b> ['J. G. (John Gough), fl. 1640, attributed name.', 'Philomusus, fl. 1639.']</li><li><b>Title: </b> The academy of complements VVherin ladyes gentlewomen, schollers, and stranges may accomodate their courtly practice with most curious ceremonies, complementall, amorous, high expressions, and formes of speaking, or writing. A worke perused and most exactly perfected and most exactly perfected by the author with additions of witty amorous poems. And a table expounding the hard English words.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>imagination the sorrow sustain contemplation of long absence how sigh and groan and oftentimes play upon the drone of tobacco pipe refresh wit when they sad discontent fit you will then pardon who now live forlorn sorrow and sigh and</li></ul>
+        </ul><br>
+        <b>A15847:</b> Cluster 1 <ul><li><b>Author: </b> ['Younge, Richard.']</li><li><b>Title: </b> Sinne stigmatizd: or, The art to know savingly, believe rightly, live religiously taught both by similitude and contrariety from a serious scrutiny or survey of the profound humanist, cunning polititian, cauterized drunkard, experimentall Christian: wherein the beauties of all Christian graces are illustrated by the blacknesse of their opposite vices. Also, that enmity which God proclaimed in Paradise betweene the seed of the Serpent and the seed of the woman, unvailed and anatomized. Whereunto is annexed, compleat armor against evill society ... By R. Junius.</li><li><b>Date: </b> 1639</li>
+        <li><b>drink_and_tobacco</b>
+        <ul><li>call melancholy because they call but the truth they vex like saul with evil spirit which nothing will drive away but drink and tobacco which they david harp sam they wound their conscience with oath intentional murder rape and other</li></ul>
+        <li><b>tobacco_that</b>
+        <ul><li>see they have hundred device natural artificial wickedness make themselves still insatiable this end also they use tobacco that drunkenness they may both expel drunkenness and glut with wine they drink smoke that this variety may not</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>person but civil complete and well qualify gentleman that spend the whole day yes every day but bouse and bowl and take tobacco the number of man and woman this city that all the day idle yet have not idle hour afford either the</li></ul>
+        </ul><br>
+        <b>A15684:</b> Cluster 0 <ul><li><b>Author: </b> ['Read, Alexander, 1586?-1641.', 'Wood, Owen, fl. 1639.']</li><li><b>Title: </b> An alphabetical book of physicall secrets for all those diseases that are most predominant and dangerous (curable by art) in the body of man. Collected for the benefit, most especially of house-holders in the country, who are either farre remote, or else not able to entertaine a learned physician: as likewise for the help of such ladies and gentlewomen, who of charity labour to doe good. Whereunto is annexed a small treatise of the judgement of vrines. By Owen Wood.</li><li><b>Date: </b> 1639</li>
+        <li><b>tobacco_take</b>
+        <ul><li>these herb purge head and brain the powder of the root of stink gladwine snuff take with pipe the powder fume of tobacco take aforesaid the root of lacerwort chew the mouth purge and ease the toothache the root of primrose stamp and</li></ul>
+        </ul><br>
+        <b>A30077:</b> Cluster 1 <ul><li><b>Author: </b> ['J. B. (John Bullokar)']</li><li><b>Title: </b> An English expositor teaching the interpretation of the hardest words used in our language : with sundry explications, descriptions and discourses / by I.B., doctor of physick.</li><li><b>Date: </b> 1641</li>
+        <li><b>herb_tobacco</b>
+        <ul><li>sinew neuter neither the one side nor the other indifferent party neutrality reckless being neither side nicotiane the herb tobacco call of french man name who first bring the knowledge of this herb into france niefe our common law</li></ul>
+        </ul><br>
+        <b>A38224:</b> Cluster 2 <ul><li><b>Author: </b> ['England and Wales. Parliament. House of Commons.']</li><li><b>Title: </b> Depositions and articles against Thomas Earle of Strafford Febr. 16. 1640</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>rigorous and undue mean raise several other monopoly and unlawful exaction for his own gain viz starch iron pot glass tobacco pipe and several other commodity that flax one of the principal native commodity of that kingdom of ireland the</li></ul>
+        <li><b>tobacco_the_say</b>
+        <ul><li>own hand sell great and excessive price such listen impose for his own profit and the more assure the say monopoly of tobacco the say earl the day of february the thirteen year aforesaid issue another proclamation command that none shall</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>and yet the say earl though enhance the custom where concern the merchant general yet draw down the impost former take tobacco from fix penny the pound penny the pound for his own profit and the say earl the same and other rigorous</li></ul>
+        <li><b>tobacco_into</b>
+        <ul><li>ireland the nine day of january the thirteen year of his majesty reign then under colour regulate the importation of tobacco into the say realm of ireland issue proclamation his majesty name prohibit the importation of tobacco without</li></ul>
+        <ul><li>tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any ship bring tobacco into any port there the say earl and his agent use buy the same his own use their own price and if that the</li></ul>
+        <ul><li>let have the same under value than they not permit vent the same which undue mean the earl have get the whole trade of tobacco into his own hand sell great and excessive price such listen impose for his own profit and the more assure the</li></ul>
+        <li><b>ship_with_tobacco</b>
+        <ul><li>earl notwithstanding the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any ship bring tobacco into any port there the say earl and his</li></ul>
+        <li><b>quantity_of_tobacco</b>
+        <ul><li>the first day of may dom after which restraint the say earl notwithstanding the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any</li></ul>
+        <li><b>tobacco_shall</b>
+        <ul><li>seize appoint six penny the pound for reward such person shall seize the same and the person who custody the unseal tobacco shall find commit goal which last proclamation cover pretence for the restrain of the seal of unwholesome</li></ul>
+        <li><b>tobacco_without_licence</b>
+        <ul><li>importation of tobacco into the say realm of ireland issue proclamation his majesty name prohibit the importation of tobacco without licence of and the counsel there from and after the first day of may dom after which restraint the say</li></ul>
+        <li><b>unwholesome_tobacco</b>
+        <ul><li>the unseal tobacco shall find commit goal which last proclamation cover pretence for the restrain of the seal of unwholesome tobacco but true advance the say monopoly which proclamation the say earl rigorous put execution seize the</li></ul>
+        <li><b>trade_of_tobacco</b>
+        <ul><li>refuse let have the same under value than they not permit vent the same which undue mean the earl have get the whole trade of tobacco into his own hand sell great and excessive price such listen impose for his own profit and the more</li></ul>
+        </ul><br>
+        <b>A37557:</b> Cluster 2 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> The East-India trade a true narration of divers ports in East-India, of the commodities and trade one kingdome holdeth with another, whereby it appeareth how much profit this nation is deprived by restraint of trade to those parts, which is farre greater then all the trade of Europe.</li><li><b>Date: </b> 1641</li>
+        <li><b>butter_tobacco</b>
+        <ul><li>the commodity best know gold ivory ebony wood turtellshel negro ambergris ostrich feather manna sea horse tooth hide butter tobacco rice and all sort of grain rhinoceros horn and many other good commodity yet unknown red sea moha aden</li></ul>
+        </ul><br>
+        <b>A40049:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> Foure fugitives meeting, or, The Discourse amongst my Lord Finche, Sir Francis Windebank, Sir Iohn Sucklin, and Doctor Roane as they accidently met in France with a detection of their severall pranks in England.</li><li><b>Date: </b> 1641</li>
+        <li><b>his_tobacco</b>
+        <ul><li>that lord of canterbury will remit the great fine the high commission the condition here but believe if have stay all his tobacco will not have cure the stop throat if secure his own well for part ever hold head myself and honour but</li></ul>
+        </ul><br>
+        <b>A47202:</b> Cluster 1 <ul><li><b>Author: </b> ['Kellett, Edward, 1583-1641.']</li><li><b>Title: </b> Tricoenivm Christi in nocte proditionis suæ The threefold svpper of Christ in the night that he vvas betrayed / explained by Edvvard Kellett.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_good</b>
+        <ul><li>abuse these swinish epicure prodigal consumer of god blessing tobacco the never unseasonable tobacco the all usefull tobacco good for meat drink and clothing they say good for cold heat and all disease this must sharpen their appetite</li></ul>
+        <ul><li>and some sick people aquavita strong water the abuse the bailiff of death the executioner lead man destruction tobacco good for few the hourly daily use good for complexion that will use these not otherwise then physic not year</li></ul>
+        </ul><br>
+        <b>A47081:</b> Cluster 1 <ul><li><b>Author: </b> ['Jones, Thomas, of Hereford.']</li><li><b>Title: </b> Mercy triumphing over judgement or, A warning for Sabbath-breakers Published for Gods glory and the benefit of all true Christians. By me Thomas Jones, of the City of Hereford. Who for prophaning the Lords Day was [m]ost miraculously strucken by the hand of God, and ut[te]rly depriv'd of all my senses, for the space of 4 years; [an]d now by his great mercy (upon my hearty repen[ta]nce) being perfectly restored to my former health, I [w]as moved to set forth this ensuing relation, as a testi[m]ony of my thankfulnesse to God for his fatherly [ch]astisement; and that all others by my example, may [b]e deterred from so hainous an offence as Sabbath-breaking.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_take</b>
+        <ul><li>disdain and swear heart vex which make then forbear church ease trouble mind but alehouse think more ease find where tobacco take and health drink of whitsunday never once think nor of god will that morn thus spend till divine prayer</li></ul>
+        </ul><br>
+        <b>A46035:</b> Cluster 2 <ul><li><b>Author: </b> ['Ireland. Parliament.']</li><li><b>Title: </b> The hvmble and jvst remonstrance of the knights, citizens and burgesses in Parliament assembled in Ireland</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_which</b>
+        <ul><li>the law and without precedent example of any former age six the proclamation for the sole exemption and utter of tobacco which buy very low rate and utter high and excessive rate mean whereof thousand of family within this kingdom</li></ul>
+        </ul><br>
+        <b>A56322:</b> Cluster 2 <ul><li><b>Author: </b> ['Pym, John, 1584-1643.']</li><li><b>Title: </b> A declaration of the grievances of the Kingdom delivered in Parliament by John Pym.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_upon</b>
+        <ul><li>and the enlargement of his majesty dominion the adventurer this noble work have for the most part other support but tobacco upon which such heavy rate set that the king receive twice much the true value of the commodity the owner</li></ul>
+        </ul><br>
+        <b>A56323:</b> Cluster 2 <ul><li><b>Author: </b> ['Pym, John, 1584-1643.']</li><li><b>Title: </b> A declaration presented to the honourable House of Commons with a speech delivered at conference with the Lords, January 25, 1641 : by occasion of the petitions from the city of London and the counties of Middlesex, Essex, and Hartford / by Iohn Pym ...</li><li><b>Date: </b> 1641</li>
+        <li><b>but_tobacco</b>
+        <ul><li>and the enlargement of his majesty dominion the adventurer this noble work have for the most part other support but tobacco upon which such heavy rate set that the king receive twice much the true value of the commodity the owner</li></ul>
+        </ul><br>
+        <b>A56891:</b> Cluster 1 <ul><li><b>Author: </b> ['Quevedo, Francisco de, 1580-1645.', 'Messervy, Edward.']</li><li><b>Title: </b> Hell reformed or A glasse for favorits Their falls and complaints also the complaints of princes against their favorits. With the dangerous mischiefes of state politicks, flatterers, suborners, secret accusers, false witnesses, &c. Also the reasons of a devill, why he had rather continue in hell; then returne and live againe on earth. With the acclamations of a testator, for making his will before hee dyed: and his advice to others therein. Also the decree of Lucifer, for reformation. With many other notable passages, worthy observation. Discovered in a vision, by D:F:Q:V: A Spanish knight, of the Order of Saint Iames, and Lord of Ivan-Abad. Published by E:M: gent.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_among</b>
+        <ul><li>have say avenge the indies of the outrage which the spaniard have there for have more harm unto the spaniard introduct tobacco among they than the king of spain unto the indian when send they colon cortes alemyro and pizarro because far</li></ul>
+        <li><b>this_tobacco</b>
+        <ul><li>from they vapour and foam least infection but they always remain possess with the evil spirit for they idolator of this tobacco they make deity of which ravish they they praise and extol above all thing they tempt and persecute every</li></ul>
+        <li><b>tobacco_engender</b>
+        <ul><li>sword and lance then among the snot sneezing belch giddiness and sometime the contagious purple which the stink use of tobacco engender these taker of tobacco mere resemble the possess when they exercise there forth from they vapour and</li></ul>
+        </ul><br>
+        <b>A69561:</b> Cluster 3 <ul><li><b>Author: </b> ['T. B.']</li><li><b>Title: </b> Nevves from Rome, or, A relation of the Pope and his patentees pilgrimage into hell with their entertainment and the popes returne backe againe to Rome : with an elegiacall confabulation betweene Death and Honour : a lecture which may be read to the greatest monarch in the world.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>his patent friend that they shall fall each his knee present each his gift think gain great favour his drift the first tobacco pipe well stuff present pluto after puff which when the black tartarian god smell fret fume and say not hell</li></ul>
+        </ul><br>
+        <b>A76768:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> Bishops, iudges, monopolists</li><li><b>Date: </b> 1641</li>
+        <li><b>even_tobacco</b>
+        <ul><li>our skin and needle sow with they make boot of every thing wear from head foot nay may speak they with pox find they even tobacco box leave your petty feoffor and feoffee and come your brave scarlet patentee who when our soap of sweet</li></ul>
+        </ul><br>
+        <b>A73387:</b> Cluster 2 <ul><li><b>Author: </b> ['England and Wales. Parliament. House of Commons.']</li><li><b>Title: </b> Depositions and articles against Thomas Earle of Strafford, Febr. 16. 1640</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_pipe</b>
+        <ul><li>rigorous and undue mean raise several other monopoly and unlawful exaction for his own gain viz starch iron pot glass tobacco pipe and several other commodity that flax one of the principal and native commodity of that kingdom of ireland</li></ul>
+        <li><b>unseal_tobacco</b>
+        <ul><li>not seal seize appoint six penny the pound for reward such person shall seize the same and the person who custody the unseal tobacco shall find commit gaol which last proclamation cover pretence of the restrain of the sale of unwhole</li></ul>
+        <li><b>monopoly_of_tobacco</b>
+        <ul><li>into his own hand sell great and excessive price such listen impose for his own profit and the more assure the say monopoly of tobacco the say earl the day of february the thirteen year aforesaid issue another proclamation command</li></ul>
+        <li><b>some_tobacco</b>
+        <ul><li>unseal tobacco shall find commit gaol which last proclamation cover pretence of the restrain of the sale of unwhole some tobacco but true advance the say monopoly which proclamation the say earl rigorous put execution seize the good</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>and yet the say earl though enhance the custom where concern the merchant general yet draw down the impost former take tobacco from six penny the pound three penny the pound for his own profit and the say earl the same and other</li></ul>
+        <li><b>tobacco_into</b>
+        <ul><li>of ireland the nine day of jan the thirteen year of his majesty reign then under colour regulate the importation of tobacco into the say realm of ireland issue proclamation his majesty name prohibit the importation of tobacco without</li></ul>
+        <ul><li>tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any ship bring tobacco into any port there the say earl and his agent use buy the same his own use their own price and if that the</li></ul>
+        <ul><li>have the same under value than they not permit vent the same which undue mean the say earl have get the whole trade of tobacco into his own hand sell great and excessive price such listen impose for his own profit and the more assure the</li></ul>
+        <li><b>any_tobacco</b>
+        <ul><li>say earl the day of february the thirteen year aforesaid issue another proclamation command that none shall put sale any tobacco whole sale from and after the last day of may then next follow but what shall make into roll and the same</li></ul>
+        <li><b>ship_with_tobacco</b>
+        <ul><li>earl notwithstanding the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any ship bring tobacco into any port there the say earl and his</li></ul>
+        <li><b>quantity_of_tobacco</b>
+        <ul><li>the first day of may dom after which restraint the say earl notwithstanding the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import his own use and that if any</li></ul>
+        <li><b>tobacco_without_licence</b>
+        <ul><li>importation of tobacco into the say realm of ireland issue proclamation his majesty name prohibit the importation of tobacco without licence of and the council there from and after the first day of may dom after which restraint the say</li></ul>
+        </ul><br>
+        <b>A77631:</b> Cluster 1 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> The Brothers of the blade: answerable to the sisters of the scaberd. Or, A dialogue betweene two hot-spurres of the times, Serjeant Slice-man, alias Smell-smock of Coney-court in Chick-lane, and Corporall Dam-mee of Bell-alley neere Pick-hatch. At their first meeting in the walkes in Moorefields, upon the returne of the one from the leaguer in the Low-Countries, and the late comming to London of the other from the campe in the North, at the disbanding of the army.</li><li><b>Date: </b> 1641</li>
+        <li><b>take_tobacco</b>
+        <ul><li>novice take with the name of gentleman that will have though buy and cost dear usual come london every term learn take tobacco and now come this week see new motion and puppit playes bartholemew fair his kingdom when can but get into</li></ul>
+        </ul><br>
+        <b>A74707:</b> Cluster 2 <ul><li><b>Author: </b> ['Ireland. Parliament.']</li><li><b>Title: </b> The humble and just remonstrance. Of the knights, citizens, and burgesses, in Parliament assembled in Ireland.</li><li><b>Date: </b> 1641</li>
+        <li><b>utter_of_tobacco</b>
+        <ul><li>contrary the law and without precedent example of any former age six the proclamation for the sole exemption and utter of tobacco which buy very low rate and utter high and excessive rate mean whereof thousand of family within this</li></ul>
+        </ul><br>
+        <b>A73721:</b> Cluster 1 <ul><li><b>Author: </b> ['Chamberlain, Robert, b. 1607.']</li><li><b>Title: </b> Jocabella, or a cabinet of conceits. Whereunto are added epigrams and other poems, by R. C.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_shop</b>
+        <ul><li>one that marry candlemakers widow that suppose little too light ask why marry she answer because love light one say tobacco shop of all other place the most dangerous come into because there none ever frequent they but smoke for one</li></ul>
+        <ul><li>for his whole life nothing else but action one ask his friend how shall use tobacco that may good answer you must keep tobacco shop and sell for certain there none else find good simple fellow gay cloth say one like cinnamon tree the bark</li></ul>
+        <li><b>tobacco_that</b>
+        <ul><li>epitaph upon another answer must then put his epitaph the house of office for there bury one say his friend take not tobacco that pipe for foul foul say his friend dead then for otherwise will fly away one ask how old another answer</li></ul>
+        <ul><li>idle employment of you mistake say another for his whole life nothing else but action one ask his friend how shall use tobacco that may good answer you must keep tobacco shop and sell for certain there none else find good simple fellow</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>merry company one bid another mend his lest for they all crack they ought say for jest till break one sit the fire take tobacco say the fire his friend and present spit into which one reply you not well quench your friend love spit</li></ul>
+        </ul><br>
+        <b>A75518:</b> Cluster 2 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> An appeale of the orthodox ministers of the Church of England against Richard Mountague, late Bishop of Chichester, now Bishop of Norwich. To the most illustrious, high, and honourable court of Parliament. And to the nobilitie, orthodox clergie, gentry, and communaltie of England. With the proceedings against him in Bow-Church. And an epistle to B. Mountague himselfe. also, a supplication of the ministers of Scotland against the said Mountague. Wherein his dangerous heresies are revealed; and the character of an Arminian or Mountaguists is added.</li><li><b>Date: </b> 1641</li>
+        <li><b>take_tobacco</b>
+        <ul><li>and song early and late every place where come all the way and what since come among but feast and epicurise and and take tobacco yes eftsoon open his mouth wide against the puritan of london for like mountagu term all honest orthodox</li></ul>
+        </ul><br>
+        <b>A72473:</b> Cluster 1 <ul><li><b>Author: </b> ['Digby, Kenelm, Sir, 1603-1665.', 'Jonson, Ben, 1573?-1637.']</li><li><b>Title: </b> The vvorkes of Beniamin Ionson. The second volume. Containing these playes, viz. 1 Bartholomew Fayre. 2 The staple of newes. 3 The Divell is an asse</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_good</b>
+        <ul><li>first this bird london breed you may see his horn head and have like have take his shop jvy lane where sell the peney tobacco good any but whether provoke his conscience sell smoke some other toy take towards his calling look flee</li></ul>
+        <li><b>tobacco_taker</b>
+        <ul><li>her pan you see even now without fine similitude that sir you see the pan yes sir nay the hole the nose here of some tobacco taker the three nostril if may call which make that they can vent the tobacco out like the ace of club rather</li></ul>
+        <li><b>tobacco_mark</b>
+        <ul><li>what now show the take of tobacco with which the devil delight humh and call for hum you taker of strong water and tobacco mark this yellow yellow yellow yellow etc that starch the devil idol of that colour ratify with clap of his</li></ul>
+        <li><b>weed_tobacco</b>
+        <ul><li>will become you why will you hear because ass and may kin the cokes good numps neither thou lust after that tawny weed tobacco brave word who complexion like the indian that vent they not brave word sister and who can tell if before</li></ul>
+        <li><b>take_of_tobacco</b>
+        <ul><li>how vex too manifest give more soap foam with now lie still and give soap act with and act little what now show the take of tobacco with which the devil delight humh and call for hum you taker of strong water and tobacco mark this</li></ul>
+        <li><b>tobacco_pipe</b>
+        <ul><li>such course and loud one some of they must will even desire of fate may dwell drum and take sustenance with old break tobacco pipe and straw thou ever think bring thy ear stomach the patience of dry grace long thy tablecloth and drown</li></ul>
+        <ul><li>udder well shall meet with your mumble mouth one day what thou will poison with newt bottle of ale will thou spider tobacco pipe urs come there malice these fat folk never fear thou and can escape thy lean mooncalf here let drink out</li></ul>
+        <ul><li>faith sir and will try but earth fit make brick and tile of pock upon but for pot pipkin the best if will keep good tobacco pipe worth keep porclane dish there some hope but this hungry soil and must help who will hold any land have</li></ul>
+        <ul><li>mas broker shall have feeling supple sir the nerve shall palpable make thou run through hoop thumb ring the nose of tobacco pipe and draw thy ductile bone out like knit needle serve subtle turn shall obey sir and run thread like</li></ul>
+        <li><b>tobacco_when</b>
+        <ul><li>make that they can vent the tobacco out like the ace of club rather the fleur lis cause from the tobacco the mere tobacco when the poor innocent pox have nothing there miserable and most unconscionable slander who will have miss this</li></ul>
+        <li><b>tobacco_out</b>
+        <ul><li>sir nay the hole the nose here of some tobacco taker the three nostril if may call which make that they can vent the tobacco out like the ace of club rather the fleur lis cause from the tobacco the mere tobacco when the poor innocent</li></ul>
+        <li><b>smoke_of_tobacco</b>
+        <ul><li>of banner and bottle ale drink of satan diet drink of satan devise puff and make swell this latter age of vanity the smoke of tobacco keep mist and error but the fleshly woman which you call ursula above all avoid have the mark upon she</li></ul>
+        <li><b>tobacco_save</b>
+        <ul><li>thou may have yet enjoy thy cruelty with some more thrift and more variety thou may have have perish piece piece light tobacco save roast goose sing capon poor pig drop their eye condemn the oven with the pie and have keep die whole age</li></ul>
+        <li><b>this_tobacco</b>
+        <ul><li>too stand open the while that the send of the vapour before and behind have foul perfume must part of the isle and this tobacco the learned suppose which since country court and town the devil glister pipe smoke the nose of polle and</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>myself prerogative for near overgrow superannuate poet of they all shall not give the law will censure and witty and take tobacco and enjoy of reprehension predecessor have before even licence and absurdity not now because the</li></ul>
+        <li><b>tobacco_his</b>
+        <ul><li>with hair what you say ruffian fitz ale excellent sight if not stale but then can mix with modern vapour the child of tobacco his pipe and his paper you talk of elinor rumming have rather see ellen of troy her you shall see but credit</li></ul>
+        <li><b>whiff_of_tobacco</b>
+        <ul><li>already fast can two stone suet adays proportion can but hold life soul together with this here you nightingale and whiff of tobacco most where pipe now not fill thou errant incubee nay ursula thou will gall between the tongue and the</li></ul>
+        <li><b>their_tobacco</b>
+        <ul><li>not unless vice of quality fashion now they take none from carman get into the yellow starch and chimney sweeper their tobacco and strong water humh meath and obarni must therefore aim extraordinary subtle one now when send keep</li></ul>
+        <li><b>tobacco_there</b>
+        <ul><li>coat about male and female get away think will have run mad of the black boy bucklersbury that take the scurvy roguy tobacco there you say true master numps there such one indeed matter whether there what that you will not allow of john</li></ul>
+        <li><b>tobacco_let</b>
+        <ul><li>and away the fair fill apace company begin come and have never pig ready yet well say fill the cup and light the tobacco let give fire the work and noble vapour and shall have smock ursula and good whimsy come you your bawdy vain</li></ul>
+        <li><b>any_tobacco</b>
+        <ul><li>mooncalf very passionate mistress they have weep out eye master arthur of bradley melancholy here body talk will you any tobacco master arthur boy let meditation alone study for oration now if can with this day travel and all policy but</li></ul>
+        <li><b>good_tobacco</b>
+        <ul><li>temper faith sir and will try but earth fit make brick and tile of pock upon but for pot pipkin the best if will keep good tobacco pipe worth keep porclane dish there some hope but this hungry soil and must help who will hold any land</li></ul>
+        <li><b>pipe_of_tobacco</b>
+        <ul><li>and melt down pillar of the fair pray thou take thy chair again and keep state and let have fresh bottle of ale and pipe of tobacco and vapour will have this belly of thou take and thy grass scour wench look here ezechiel edgeworth</li></ul>
+        <ul><li>who yonder ned win wife and quarlous think yes give all give all master win wife master quarlous will you take pipe of tobacco with not discredit now zekiel not see the roar horse courser pray thou let avoid turn down this way</li></ul>
+        </ul><br>
+        <b>A84935:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> The frogges of Egypt, or the caterpillers of the commonwealth truely dissected and laid open; vvith the subjects thankefulnesse unto God for their deliverance from that nest of vermine.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_shop</b>
+        <ul><li>lay they dead drink but hang they they crafty that although they fall down wine cellar yet they know how rise again tobacco shop but hope before they rise there they will first rise the gall house where ile leave they these and the</li></ul>
+        </ul><br>
+        <b>A86223:</b> Cluster 2 <ul><li><b>Author: </b> ['Herbert, Thomas, 1597-1642?']</li><li><b>Title: </b> Newes newly discovered, in a pleasant dialo[g]ue betwixt Papa the false Pope, and Benedict an honest Fryer, shewing the merry conceits which the Friers have in their cloysters amongst handsome Nuns, and how the Pope complains for want of that pastime, with the many shifts of his friends in England. / By Thomas Herbert.</li><li><b>Date: </b> 1641</li>
+        <li><b>more_tobacco</b>
+        <ul><li>buy rope hang they which tarry behind and you will very well invite some english projector over you they can get you more tobacco soap and wine than the best jesuit rome holy water peter pence cross but you must send quick lest shrove</li></ul>
+        </ul><br>
+        <b>A83496:</b> Cluster 2 <ul><li><b>Author: </b> ['England and Wales. Parliament.', 'Mervyn, Audley, Sir, d. 1675.', 'Strafford, Thomas Wentworth, Earl of, 1593-1641.', 'Pym, John, 1584-1643.']</li><li><b>Title: </b> Speeches and passages of this great and happy Parliament: from the third of November, 1640, to this instant June, 1641. Collected into one volume, and according to the most perfect originalls, exactly published.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_import</b>
+        <ul><li>day of may dom after which restraint the say earl notwithstanding the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import high own use and that if any ship bring</li></ul>
+        <li><b>buy_tobacco</b>
+        <ul><li>of their liberty and property three that have join with the earl take thousand pound out of the exchequer ireland and buy tobacco therewith and convert the same profit their own use four that have traitorous confederate with the earl</li></ul>
+        <li><b>tobacco_which</b>
+        <ul><li>the say restraint cause diverse great quantity of tobacco import his own use and fraught diverse ship with tobacco which import high own use and that if any ship bring acco into any port there the say earl and his agent use</li></ul>
+        <ul><li>the law and without precedent example of any former age six the proclamation for the sole exemption and utter of tobacco which buy very low rate and utter high and excessive rate mean whereof thousand of family within this kingdom</li></ul>
+        <ul><li>contrary the law and without precedent example of any former age the proclamation for the sole emption and utter of tobacco which buy every low rate and utter high and excessive rate mean whereof thousand of family within this kingdom</li></ul>
+        <li><b>tobacco_the_say</b>
+        <ul><li>own hand sell great and excessive prize such l^st impose for high own profit and the more assure the say monopoly of tobacco the say earl the the and twenty day of february the thirteen year aforesaid issue another proclamation command</li></ul>
+        <li><b>tobacco_wherein</b>
+        <ul><li>last pass and rather than will stand out have most unworthy truck and chafer the mean of they for instance that of tobacco wherein thousand of poor people have strip and turn out of their trade for which they have serve apprentize all</li></ul>
+        <li><b>utter_of_tobacco</b>
+        <ul><li>contrary the law and without precedent example of any former age six the proclamation for the sole exemption and utter of tobacco which buy very low rate and utter high and excessive rate mean whereof thousand of family within this</li></ul>
+        <ul><li>estate contrary the law and without precedent example of any former age the proclamation for the sole emption and utter of tobacco which buy every low rate and utter high and excessive rate mean whereof thousand of family within this</li></ul>
+        <li><b>tobacco_shop</b>
+        <ul><li>master speaker may have spend his time much better and more for his grace the pulpit than thus shirk and rake the tobacco shop master speaker all know what have charge withal here this house crime of dangerous consequence and of</li></ul>
+        <ul><li>permit suffer any person person the time of divine service any other time upon the sunday drink play any tavern inn tobacco shop alehouse other victual house whatsoever nor suffer any fruiterer milkwoman hearbwoman stand with fruit</li></ul>
+        <li><b>importation_of_tobacco</b>
+        <ul><li>deputy of ireland the nine day of january the thirteen year of his majesty reign ^id then under colour regulate the importation of tobacco into the say realm of ireland issue proclamation his majesty name prohi the importation of</li></ul>
+        <ul><li>colour regulate the importation of tobacco into the say realm of ireland issue proclamation his majesty name prohi the importation of tobacco h^ut licence of and the counsel there from an^ after the first day of may dom after which</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>and yet the say earl though enhance the custom where concern the merchant general yet draw down the impost former take tobacco from six penny the pound three penny the pound for his own profit and the say earl the same and other</li></ul>
+        <ul><li>ward that hereafter they receive not suffer remain any person person whatsoever their guest customer tipple eat drink take tobacco their house upon any sunday other than that inholder may receive their ordinary guest traveller and such</li></ul>
+        <li><b>rake_the_tobacco</b>
+        <ul><li>trade certain master speaker may have spend his time much better and more for his grace the pulpit than thus shirk and rake the tobacco shop master speaker all know what have charge withal here this house crime of dangerous consequence</li></ul>
+        <li><b>barter_for_tobacco</b>
+        <ul><li>trade there some particular the spanish trade perhaps worthy of animadversion underselling good commodity make money barter for tobacco the imbasement of our own staple for smoke which due place ought take into regulation another</li></ul>
+        <li><b>tobacco_into</b>
+        <ul><li>the nine day of january the thirteen year of his majesty reign ^id then under colour regulate the importation of tobacco into the say realm of ireland issue proclamation his majesty name prohi the importation of tobacco h^ut licence</li></ul>
+        <ul><li>let have the same undervalues than they not permit vent the same which mean the earl have get the whole trade of tobacco into his own hand sell great and excessive prize such l^st impose for high own profit and the more assure the</li></ul>
+        <li><b>tobacco_from_six</b>
+        <ul><li>and yet the say earl though enhance the custom where concern the merchant general yet draw down the impost former take tobacco from six penny the pound three penny the pound for his own profit and the say earl the same and other rigorous</li></ul>
+        <li><b>tobacco_shall</b>
+        <ul><li>seize appoint six penny the pound for reward such person shall seize the same and the person who custody the unseal tobacco shall find commit goal which last proclamation cover pretence for the restrain of the seal of unwholesome</li></ul>
+        <li><b>unwholesome_tobacco</b>
+        <ul><li>the unseal tobacco shall find commit goal which last proclamation cover pretence for the restrain of the seal of unwholesome tobacco but true advance the say monopoly which proclamation the say earl rigorcus put execution seize the</li></ul>
+        <li><b>glass_tobacco</b>
+        <ul><li>other rigorous and undue mean raise several other monopoly and unlawful exaction for his own gain viz starch iron pot glass tobacco pipe and several other commodity that flax one of the principal and native commodity of that kingdom of</li></ul>
+        <li><b>trade_of_tobacco</b>
+        <ul><li>owner refuse let have the same undervalues than they not permit vent the same which mean the earl have get the whole trade of tobacco into his own hand sell great and excessive prize such l^st impose for high own profit and the more</li></ul>
+        </ul><br>
+        <b>A85534:</b> Cluster 1 <ul><li><b>Author: </b> ['Grant, William, d. 1678.']</li><li><b>Title: </b> The vindication of the vicar of Istleworth, in the county of Middlesex. From a scandalous pamphlet, contayning one and twenty articles; invented by some, closely; subscribed unto but by six, publiquely; presented but by one, openly; and now vented in print surreptitiously (in the name of the whole parish) by a no-body. Whereunto are likewise added certaine notorious impieties and misdeameanours of Gilbert Barrell attorney, the promoter: which shall be fairely and fully proved, upon just occasion. / By William Grant vicar of Istelworth aforesaid.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_shall</b>
+        <ul><li>tell they if they will please refresh themselves shall take kind and may may use the phrase that glass of wine pipe of tobacco shall for they that please but why this speech of that speak those gentleman mere courtesy upon first</li></ul>
+        <li><b>tobacco_for_all</b>
+        <ul><li>that say that all good fellowship lay aside the parish but will bring again and maintain and will have wine and tobacco for all that will come his vicarage house sunday after prayer and make good harbour there such time the deboist</li></ul>
+        </ul><br>
+        <b>A91057:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> The proctor and parator their mourning: or, The lamentation of the Doctors Commons for their downfall. Being a true dialogue, relating the fearfull abuses and exorbitancies of those spirituall courts, under the names of Sponge the proctor, and Hunter the parator.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_shop</b>
+        <ul><li>enough confess and not long since have get good booty from transgressor against holy day of chandler alehouse tavern tobacco shop butcher comfit maker gunsmith baker broker cook weaver diverse other malefactor against our terrible canon</li></ul>
+        </ul><br>
+        <b>A91395:</b> Cluster 2 <ul><li><b>Author: </b> ['Pym, John, 1584-1643.']</li><li><b>Title: </b> A speech delivered in Parliament, by a worthy member thereof, and a most faithfull vvell-wisher to the Church and Common-weale; concerning the grievances of the kingdome. By I.P. Esquire.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_upon</b>
+        <ul><li>and the enlargement of his majesty dominion the adventurer this noble work have for the most part other support but tobacco upon which such heavy rate set that the king receive twice much the true value of the commodity the owner</li></ul>
+        </ul><br>
+        <b>A90502:</b> Cluster 3 <ul><li><b>Author: </b> ['Anonymous']</li><li><b>Title: </b> A pack of patentees. Opened. Shuffled. Cut. Dealt. And played.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_now</b>
+        <ul><li>purse but will find although before come behind easy know what his gain amount but very hard cast his account enter tobacco now come alone for have raise great profit out of naught and will praise for his industry cause love the king</li></ul>
+        <li><b>break_tobacco</b>
+        <ul><li>middle not agree shuffle one another they proceed take the dice and end with throw pin above and marrowbone below have break tobacco pipe have dry new corporation bet his side make gold weight his partner and bonelace will play with pin</li></ul>
+        </ul><br>
+        <b>B07802:</b> Cluster 1 <ul><li><b>Author: </b> ['Lenton, Francis, fl. 1630-1640.']</li><li><b>Title: </b> A piece of the world, painted in proper colours. Presented to the illusterous [sic] Majesty of our most gracious Queene Mary. / By Francis Lenton gent. Her Majesties poet..</li><li><b>Date: </b> 1640</li>
+        <li><b>tavern_tobacco</b>
+        <ul><li>thing mere for ornament matter of special use his recreation and loose expense of time his only study play dance fence tavern tobacco and dalliance which if with time irrevocable and the allure bait of ill dispose extravagant roar when</li></ul>
+        <li><b>tobacco_his</b>
+        <ul><li>his legacy have angle himself into coin enough purchase company which dissolve into dutch ale and dry with more dull tobacco his lady with her coach have run themselves out of their way her out of wit and out of his money uphold her</li></ul>
+        </ul><br>
+        <b>B06331:</b> Cluster 3 <ul><li><b>Author: </b> ['Taylor, John, 1580-1653.']</li><li><b>Title: </b> The complaint of M. Tenter-hooke the proiector, and Sir Thomas Dodger the patentee.</li><li><b>Date: </b> 1641</li>
+        <li><b>weed_tobacco</b>
+        <ul><li>fast but now quite slip from last the project for the starch thy wit find out stiff while now limber clout the pagan weed tobacco our hope leaf prick role ball pudding pipe rope brasseele varina meavis trinidad saint christopher</li></ul>
+        <li><b>starch_tobacco</b>
+        <ul><li>all hear wherein your worship profit prefer the other taste all thing good bad hog will where profit may have grape starch tobacco pipe pin butter hay wine coal card die and all come way bring your worship every day and hour and hope</li></ul>
+        <li><b>forget_tobacco</b>
+        <ul><li>break and all our hope turn smoke thou framd the butter patent thy brain rope and butter take thou for thy pain have forget tobacco pipe which now like thou and but brittle ware die run against card cross both turn noddy and all lose</li></ul>
+        </ul><br>
+        <b>B09294:</b> Cluster 2 <ul><li><b>Author: </b> ['Ireland. Parliament.']</li><li><b>Title: </b> The hvmble and ivst remonstrance of the knights, citizens and burgesses in Parliament assembled in Jreland</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_which</b>
+        <ul><li>the law and without precedent example of any former age six the proclamation for the sole exemption and utter of tobacco which buy very low rate and utter high and excessive rate mean whereof thousand of family within this kingdom</li></ul>
+        </ul><br>
+        <b>B13588:</b> Cluster 3 <ul><li><b>Author: </b> ['E. F. (Edward Ford), fl. 1630?-1660.']</li><li><b>Title: </b> ... or A merry discourse, twixt him and his Joane that sometimes did live as never did none, but now at the last she proves very kinde, and doth what heed have her, as here you may finde. To three severall tunes, called, But I know what I know, Captaine Ward, and Gilty Coate Peggy.</li><li><b>Date: </b> 1640</li>
+        <li><b>tobacco_too</b>
+        <ul><li>captain etc come joan satisfy pray forgive what past and will thou never offend whilst life and breath last pot and tobacco too will turn for brief into dainty household loaf and lusty powder beefe well if think all this true and that</li></ul>
+        </ul><br>
+        <b>B32508:</b> Cluster 3 <ul><li><b>Author: </b> ['Gurney, Richard, Sir, 1577-1647.', 'England and Wales. Parliament.', 'City of London (England). Lord Mayor.']</li><li><b>Title: </b> By the maior. The order of the House of Commons to the Lord Maior, for the due observing the Sabbath day.</li><li><b>Date: </b> 1641</li>
+        <li><b>tobacco_shop</b>
+        <ul><li>permit suffer any person person the time of divine service any other time upon the sunday drink play any tavern inn tobacco shop alehouse other victual house whatsoever nor suffer any fruiterer milkewoman hearbwoman stand with fruit</li></ul>
+        <li><b>take_tobacco</b>
+        <ul><li>ward that hereafter they receive not suffer remain any person person whatsoever their guest customer tipple eat drink take tobacco their house upon any sunday other than that inholder may receive their ordinary guest traveller and such</li></ul>
+        </ul><br>
+
