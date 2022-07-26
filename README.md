@@ -2,7 +2,7 @@
 
 We combine close and distant reading techniques to evaluate the ethical, economic, and medical language surrounding tobacco and opium from 1580 to 1641, a time period marked by the rise of mercantile trade and monopolies. Our computational work includes (1) text and metadata extraction, (2) selective spelling correction and standardization, (3) social network visualization of n-grams with feature engineering and k-means clustering, (4) visualization of cosine similarities of select word-pairs over time, (5) part of speech visualizations, and (6) an R Shiny app to showcase our work. We include 1641 because some English texts were still dated using the Julian calendar instead of the Gregorian calendar, so some dates can be one year off. 
 
-See our poster here: https://drive.google.com/file/d/15tDH1l-4fHOx2FllbB9yv_u95vZ91R8W/preview
+View our poster here: https://drive.google.com/file/d/1xIM-4AAsxqGlntNn_HXnPJBhezGZqU-B/preview
 
 **A comment on workflow**: All four of us worked in a shared folder on a virtual machine, and usually one of us pushed to the Git repo for all our work. Moreover, since we often collaborate on the files, we have chosen not to provide authorial details for individual files. If you have any questions, feel free to reach out to any of us. 
 
