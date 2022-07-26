@@ -74,6 +74,12 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *overtime.ipynb*: Examine cosine similarities of word-pairs over time 
 - *sevenTimePeriods.py*: Lists of TCP IDs grouped by time period 
 
+## posVisualizations
+- *wordGraph.py* contains the flack backend for the webpage
+- *cleaningFunctions* containes the functions for extracting and cleaning the text and pos tags from EP
+- *static contains the css, img, and javascript files the webpage uses
+- *database.ipynb* is the notebook that creates *both.db* which is used store al the pos data
+
 ## shinyapp (Folder)
 - *app.R*: Codes for the entire shiny app, including UI and server
 - *data+.Rproj*, *.Rhistory*, *.RData*: Default files for the shiny app project
