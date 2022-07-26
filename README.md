@@ -77,7 +77,7 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 ## posVisualizations
 - *wordGraph.py* contains the flack backend for the webpage
 - *cleaningFunctions* containes the functions for extracting and cleaning the text and pos tags from EP
-- *static contains the css, img, and javascript files the webpage uses
+- *static* contains the css, img, and javascript files the webpage uses
 - *database.ipynb* is the notebook that creates *both.db* which is used store al the pos data
 
 ## shinyapp (Folder)
