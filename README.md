@@ -136,3 +136,5 @@ https://bassconnections.duke.edu/project-teams/ethical-consumption-capitalism-20
 - *1600-1610 texts per year*: Bar graph for text counts in one decade 
 - *poster.png*: Final project poster 
 
+## TCP metadata (Folder)
+- Contains all the metadata for TCP XML versions of EEBO texts, generated using the code in metadata.py (stageOne folder). 
